@@ -23,8 +23,11 @@ public abstract class TokenBase
         Timer = timer;
     }
 
-    public virtual void Use()
-    {
+    public abstract void AcquireToken();
 
-    }
+    public abstract void StartStage();
+
+    public abstract void Update();
+
+    public abstract void Use();
 }
