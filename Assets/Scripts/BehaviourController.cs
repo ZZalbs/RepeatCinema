@@ -3,12 +3,13 @@ using UnityEngine;
 using UnityEngine.InputSystem.XR;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class CharacterController : MonoBehaviour
+public class BehaviourController : MonoBehaviour
 {
-    [HideInInspector] public Rigidbody2D Body;
+    public Rigidbody2D Body;
     public float Speed;
-    [HideInInspector] public bool IsGrounded;
-    [HideInInspector] public Vector2 moveDir;
+    public int CurJumpCount;
+    public int MaxJumpCount;
+    public Vector2 moveDir;
     public float JumpForce;
 
     public List<IBehaviour> Behaviours;
@@ -27,5 +28,15 @@ public class CharacterController : MonoBehaviour
     private void FixedUpdate()
     {
         Body.velocity = new Vector2(moveDir.x * Speed * Time.deltaTime, Body.velocity.y);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Ground")
+            && CurJumpCount > 0
+            && Body.velocity.y <= 0)
+        {
+            CurJumpCount = 0;
+        }
     }
 }

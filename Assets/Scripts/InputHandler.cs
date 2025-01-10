@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(BehaviourController))]
 public class InputHandler : MonoBehaviour
 {
     private PlayerInputActions actions;
@@ -13,7 +13,7 @@ public class InputHandler : MonoBehaviour
     private Dictionary<BehaviourType, InputAction> playerEntries;
     private Dictionary<BehaviourType, InputAction> uiEntries;
 
-    private CharacterController characterController;
+    private BehaviourController characterController;
 
     private void Start()
     {
@@ -30,7 +30,7 @@ public class InputHandler : MonoBehaviour
 
         uiActions = actions.UI;
 
-        characterController = GetComponent<CharacterController>();
+        characterController = GetComponent<BehaviourController>();
 
         // register callback
         foreach(var behaviour in characterController.Behaviours)

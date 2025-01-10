@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(BehaviourController))]
 public class LeftMove : IBehaviour
 {
-    [SerializeField] CharacterController controller;
+    [SerializeField] BehaviourController controller;
 
     public BehaviourType Type => BehaviourType.LMove;
 
-    public LeftMove(CharacterController controller)
+    public LeftMove(BehaviourController controller)
     {
         this.controller = controller;
     }

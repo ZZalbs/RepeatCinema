@@ -1,13 +1,13 @@
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(BehaviourController))]
 public class RightMove : IBehaviour
 {
-    CharacterController controller;
+    BehaviourController controller;
 
     public BehaviourType Type => BehaviourType.RMove;
 
-    public RightMove(CharacterController controller)
+    public RightMove(BehaviourController controller)
     {
         this.controller = controller;
     }
