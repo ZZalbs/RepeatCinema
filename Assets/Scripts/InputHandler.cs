@@ -1,15 +1,11 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(CharacterController))]
 public class InputHandler : MonoBehaviour
 {
-    public enum BehaviourType {
-        LMove,
-        RMove,
-        Jump,
-    }
-
     private PlayerInputActions actions;
     private PlayerInputActions.PlayerActions playerActions;
     private PlayerInputActions.UIActions uiActions;
@@ -17,12 +13,15 @@ public class InputHandler : MonoBehaviour
     private Dictionary<BehaviourType, InputAction> playerEntries;
     private Dictionary<BehaviourType, InputAction> uiEntries;
 
-    private void Awake()
+    private CharacterController characterController;
+
+    private void Start()
     {
         playerEntries = new();
         uiEntries = new();
 
         actions = new PlayerInputActions();
+        actions.Enable();
         playerActions = actions.Player;
 
         playerEntries[BehaviourType.LMove] = playerActions.LMove;
@@ -30,12 +29,27 @@ public class InputHandler : MonoBehaviour
         playerEntries[BehaviourType.Jump] = playerActions.Jump;
 
         uiActions = actions.UI;
+
+        characterController = GetComponent<CharacterController>();
+
+        // register callback
+        foreach(var behaviour in characterController.Behaviours)
+        {
+            Debug.Log(behaviour);
+            AddPlayerBehaviour(behaviour);
+        }
     }
 
-    private void AddPlayerBehaviour(BehaviourType eventType, IBehaviour callbackBehaviour)
+    private void AddPlayerBehaviour(IBehaviour callbackBehaviour)
     {
-        if (!playerEntries.TryGetValue(eventType, out InputAction action)) return;
+        if (!playerEntries.TryGetValue(callbackBehaviour.Type, out InputAction action)) return;
 
-        action.performed += ctx =>  callbackBehaviour.Perform();
+
+        action.performed += ctx =>
+        {
+            callbackBehaviour.OnPressed();
+            Debug.Log("behaviour");
+        };
+        action.canceled += ctx => callbackBehaviour.OnReleased();
     }
 }

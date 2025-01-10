@@ -1,21 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class RightMove : IBehaviour
 {
-    [SerializeField]CharacterController controller;
-    private Vector2 moveDir;
+    CharacterController controller;
 
-    public void Init()
+    public BehaviourType Type => BehaviourType.RMove;
+
+    public RightMove(CharacterController controller)
     {
-        moveDir = Vector2.right;
+        this.controller = controller;
     }
 
-    public void Perform()
+    public void OnPressed()
     {
-        controller.Body.velocity = moveDir * controller.Body.velocity;
+        controller.moveDir += Vector2.right;
     }
 
+    public void OnReleased()
+    {
+        controller.moveDir -= Vector2.right;
+    }
 }

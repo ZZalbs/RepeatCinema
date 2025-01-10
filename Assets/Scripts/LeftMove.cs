@@ -6,16 +6,21 @@ using UnityEngine;
 public class LeftMove : IBehaviour
 {
     [SerializeField] CharacterController controller;
-    private Vector2 moveDir;
 
-    public void Init()
+    public BehaviourType Type => BehaviourType.LMove;
+
+    public LeftMove(CharacterController controller)
     {
-        moveDir = Vector2.left;
+        this.controller = controller;
     }
 
-    public void Perform()
+    public void OnPressed()
     {
-        controller.Body.velocity = moveDir * controller.Body.velocity;
+        controller.moveDir += Vector2.left;
     }
 
+    public void OnReleased()
+    {
+        controller.moveDir -= Vector2.left;
+    }
 }

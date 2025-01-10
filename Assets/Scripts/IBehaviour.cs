@@ -7,5 +7,6 @@ public enum BehaviourType
 public interface IBehaviour
 {
     public BehaviourType Type { get; }
-    public void Perform();
+    public void OnPressed();
+    public void OnReleased();
 }
