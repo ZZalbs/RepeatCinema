@@ -19,6 +19,7 @@ public class Jump : IBehaviour
         if (controller.CurJumpCount < controller.MaxJumpCount)
         {
             controller.CurJumpCount++;
+            controller.Body.velocity = new Vector2(controller.Body.velocity.x, 0);
             controller.Body.AddForce(Vector2.up * controller.JumpForce, ForceMode2D.Impulse);
         }
     }
