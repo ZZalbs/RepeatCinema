@@ -9,6 +9,12 @@ public class MaxLifePlusToken : TokenBase
 
     public override void Acquire()
     {
+        base.Acquire();
         controller.LifeController.MaxLife++;
     }
+    public override void OnDestroy()
+    {
+        controller.LifeController.MaxLife--;
+    }
+
 }

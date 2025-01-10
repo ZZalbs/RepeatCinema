@@ -9,6 +9,12 @@ public class BonusJumpToken : TokenBase
 
     public override void Acquire()
     {
+        base.Acquire();
         controller.PlayerBehaviourController.MaxJumpCount++;
+    }
+
+    public override void OnDestroy()
+    {
+        controller.PlayerBehaviourController.MaxJumpCount--;
     }
 }

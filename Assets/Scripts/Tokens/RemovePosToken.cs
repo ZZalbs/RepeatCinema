@@ -9,6 +9,7 @@ public class RemovePosToken : TokenBase
 
     public override void Acquire()
     {
+        base.Acquire();
         controller.DestroyOnePositiveToken();
     }
 }
