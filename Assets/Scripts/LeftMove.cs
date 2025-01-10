@@ -15,7 +15,7 @@ public class LeftMove : MonoBehaviour, IBehaviour
 
     public void Perform()
     {
-        controller.RigidBody2D.velocity = moveDir * controller.RegidBody2D.velocity;
+        controller.Body.velocity = moveDir * controller.Body.velocity;
     }
 
 }
