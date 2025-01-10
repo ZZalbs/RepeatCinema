@@ -16,11 +16,12 @@ public class LeftMove : IBehaviour
 
     public void OnPressed()
     {
-        controller.moveDir += Vector2.left;
+        controller.MoveDir += Vector2.left;
+        controller.isLookingRight = false;
     }
 
     public void OnReleased()
     {
-        controller.moveDir -= Vector2.left;
+        controller.MoveDir -= Vector2.left;
     }
 }

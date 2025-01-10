@@ -14,7 +14,11 @@ public class LifeController : MonoBehaviour
             curLife = value;
 
             if (curLife > MaxLife) curLife = MaxLife;
-            else if (curLife <= 0) curLife = 0; // die
+            else if (curLife <= 0)
+            {
+                curLife = 0;
+                OnDead();
+            }
         }
     }
     private int curLife;
@@ -23,6 +27,12 @@ public class LifeController : MonoBehaviour
     public int CurShield;
 
     public bool IsImmune;
+
+    private void Awake()
+    {
+        StageController stageController = GetComponent<StageController>();
+        stageController.AddStageEventListener(StageEventType.Awake, Init);
+    }
 
     public void Init()
     {
@@ -61,6 +71,11 @@ public class LifeController : MonoBehaviour
                 curLife = 0;
                 break;
         }
+    }
+
+    public void OnDead()
+    {
+
     }
 
     public void Addimmunity(float time)

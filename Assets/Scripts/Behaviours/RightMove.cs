@@ -14,11 +14,12 @@ public class RightMove : IBehaviour
 
     public void OnPressed()
     {
-        controller.moveDir += Vector2.right;
+        controller.MoveDir += Vector2.right;
+        controller.isLookingRight = true;
     }
 
     public void OnReleased()
     {
-        controller.moveDir -= Vector2.right;
+        controller.MoveDir -= Vector2.right;
     }
 }

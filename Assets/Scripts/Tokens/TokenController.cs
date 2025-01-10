@@ -1,25 +1,29 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
 
-[RequireComponent(typeof(BehaviourController), typeof(LifeController), typeof(InputHandler))]
+[RequireComponent(typeof(BehaviourController), typeof(LifeController), typeof(InputController))]
 public class TokenController : MonoBehaviour
 {
     public BehaviourController PlayerBehaviourController;
     public LifeController LifeController;
-    public InputHandler InputController;
+    public InputController InputController;
 
     private Dictionary<int, TokenBase> PositiveTokens;
     private Dictionary<int, TokenBase> NegativeTokens;
+
+
 
     private void Awake()
     {
         PlayerBehaviourController = GetComponent<BehaviourController>();
         LifeController = GetComponent<LifeController>();
-        InputController = GetComponent<InputHandler>();
+        InputController = GetComponent<InputController>();
 
         PositiveTokens = new();
         NegativeTokens = new();
+
+        StageController stageController = GetComponent<StageController>();
+        stageController.AddStageEventListener(StageEventType.Start, Init);
     }
 
     private void Update()
@@ -34,27 +38,35 @@ public class TokenController : MonoBehaviour
         }
     }
 
+    public void Init()
+    {
+        foreach (var token in PositiveTokens.Values)
+        {
+            token.OnStartStage();
+        }
+        foreach (var token in NegativeTokens.Values)
+        {
+            token.OnStartStage();
+        }
+    }
+
     public void SelectToken(TokenBase newToken)
     {
-        if(PositiveTokens.ContainsKey(newToken.Id))
-        {
-            PositiveTokens[newToken.Id].LevelUp();
-        }
-        else
+        if(!PositiveTokens.ContainsKey(newToken.Id))
         {
             PositiveTokens.Add(newToken.Id, newToken);
             newToken.Acquire();
         }
 
-        if (NegativeTokens.ContainsKey(newToken.Id))
-        {
-            NegativeTokens[newToken.Id].LevelUp();
-        }
-        else
+        PositiveTokens[newToken.Id].LevelUp();
+
+        if (!NegativeTokens.ContainsKey(newToken.Id))
         {
             NegativeTokens.Add(newToken.Id, newToken);
             newToken.Acquire();
         }
+
+        NegativeTokens[newToken.Id].LevelUp();
     }
 
 

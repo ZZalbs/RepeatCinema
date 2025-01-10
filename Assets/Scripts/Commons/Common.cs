@@ -20,3 +20,10 @@ public enum Rarity
     Epic,
     Legendary
 }
+public enum StageEventType
+{
+    Awake,
+    Start,
+    Clear,
+    Over,
+}

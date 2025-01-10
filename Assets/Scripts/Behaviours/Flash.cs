@@ -20,7 +20,9 @@ public class Flash : IBehaviour
         if (token.IsAble)
         {
             token.CountFlash();
-            controller.transform.Translate(Vector2.right);
+
+            Vector2 flashVector = controller.isLookingRight ? Vector2.right : Vector2.left;
+            controller.transform.Translate(flashVector);
         }
     }
 

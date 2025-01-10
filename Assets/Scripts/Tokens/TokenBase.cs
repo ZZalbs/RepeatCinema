@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public abstract class TokenBase
 {
     public int Id;
@@ -6,6 +8,7 @@ public abstract class TokenBase
     public Rarity Rarity;
     public bool IsPositive;
     public int MaxLevel;
+    public Sprite SourceImage;
     public abstract float Timer { get; }
 
     public int CurLevel;
@@ -15,7 +18,6 @@ public abstract class TokenBase
     public TokenBase(TokenController controller, string name, string description, Rarity rarity, bool isPositive, int maxLevel)
     {
         this.controller = controller;
-        CurLevel = 1;
         Name = name;
         Description = description;
         Rarity = rarity;
@@ -40,5 +42,9 @@ public abstract class TokenBase
     public virtual void OnDestroy()
     {
 
+    }
+
+    public virtual void OnStartStage()
+    {
     }
 }

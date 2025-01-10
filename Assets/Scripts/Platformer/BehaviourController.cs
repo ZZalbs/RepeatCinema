@@ -8,8 +8,9 @@ public class BehaviourController : MonoBehaviour
     public float Speed;
     public int CurJumpCount;
     public int MaxJumpCount;
-    public Vector2 moveDir;
+    public Vector2 MoveDir;
     public float JumpForce;
+    public bool isLookingRight;
 
     public List<IBehaviour> Behaviours;
 
@@ -22,11 +23,20 @@ public class BehaviourController : MonoBehaviour
         Behaviours.Add(new RightMove(this));
         Behaviours.Add(new LeftMove(this));
         Behaviours.Add(new Jump(this));
+
+        StageController stageController = GetComponent<StageController>();
+        stageController.AddStageEventListener(StageEventType.Awake, Init);
+    }
+
+    public void Init()
+    {
+        CurJumpCount = 0;
+        MoveDir = Vector2.zero;
     }
 
     private void FixedUpdate()
     {
-        Body.velocity = new Vector2(moveDir.x * Speed * Time.deltaTime, Body.velocity.y);
+        Body.velocity = new Vector2(MoveDir.x * Speed * Time.deltaTime, Body.velocity.y);
     }
 
     private void OnCollisionStay2D(Collision2D collision)

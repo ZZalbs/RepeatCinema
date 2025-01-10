@@ -1,10 +1,9 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(BehaviourController))]
-public class InputHandler : MonoBehaviour
+public class InputController : MonoBehaviour
 {
     private PlayerInputActions actions;
     private PlayerInputActions.PlayerActions playerActions;
