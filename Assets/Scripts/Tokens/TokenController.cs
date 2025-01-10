@@ -9,7 +9,8 @@ public class TokenController : MonoBehaviour
     public LifeController LifeController;
     public InputHandler InputController;
 
-    private Dictionary<int, TokenBase> tokens;
+    private Dictionary<int, TokenBase> PositiveTokens;
+    private Dictionary<int, TokenBase> NegativeTokens;
 
     private void Awake()
     {
@@ -17,12 +18,17 @@ public class TokenController : MonoBehaviour
         LifeController = GetComponent<LifeController>();
         InputController = GetComponent<InputHandler>();
 
-        tokens = new();
+        PositiveTokens = new();
+        NegativeTokens = new();
     }
 
     private void Update()
     {
-        foreach(var token in tokens.Values)
+        foreach(var token in PositiveTokens.Values)
+        {
+            token.Update();
+        }
+        foreach (var token in NegativeTokens.Values)
         {
             token.Update();
         }
@@ -30,14 +36,48 @@ public class TokenController : MonoBehaviour
 
     public void SelectToken(TokenBase newToken)
     {
-        if(tokens.ContainsKey(newToken.Id))
+        if(PositiveTokens.ContainsKey(newToken.Id))
         {
-            tokens[newToken.Id].LevelUp();
+            PositiveTokens[newToken.Id].LevelUp();
         }
         else
         {
-            tokens.Add(newToken.Id, newToken);
+            PositiveTokens.Add(newToken.Id, newToken);
             newToken.Acquire();
         }
+
+        if (NegativeTokens.ContainsKey(newToken.Id))
+        {
+            NegativeTokens[newToken.Id].LevelUp();
+        }
+        else
+        {
+            NegativeTokens.Add(newToken.Id, newToken);
+            newToken.Acquire();
+        }
+    }
+
+
+    public void DestroyOnePositiveToken()
+    {
+        int randomIndex = Random.Range(0, PositiveTokens.Keys.Count);
+
+        PositiveTokens.Remove(randomIndex);
+    }
+    public void DestroyOneNegativeToken()
+    {
+        int randomIndex = Random.Range(0, NegativeTokens.Keys.Count);
+
+        NegativeTokens.Remove(randomIndex);
+    }
+
+    public void DestroyAllPositiveToken()
+    {
+        PositiveTokens.Clear();
+    }
+
+    public void DestroyAllNegativeToken()
+    {
+        NegativeTokens.Clear();
     }
 }

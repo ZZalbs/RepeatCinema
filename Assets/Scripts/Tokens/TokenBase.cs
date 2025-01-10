@@ -34,6 +34,11 @@ public abstract class TokenBase
 
     public virtual void Update()
     {
+        
+    }
+
+    public virtual void OnDestroy()
+    {
 
     }
 }
