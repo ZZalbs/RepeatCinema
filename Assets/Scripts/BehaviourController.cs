@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class BehaviourController : MonoBehaviour
