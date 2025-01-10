@@ -1,4 +1,4 @@
-public class TokenBase
+public abstract class TokenBase
 {
     public string Name;
     public string Description;
