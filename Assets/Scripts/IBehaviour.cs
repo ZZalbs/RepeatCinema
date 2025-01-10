@@ -1,8 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+public enum BehaviourType
+{
+    LMove,
+    RMove,
+    Jump,
+}
 public interface IBehaviour
 {
-    void Perform();
+    public BehaviourType Type { get; }
+    public void Perform();
 }
