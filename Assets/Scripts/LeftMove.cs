@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class LeftMove : MonoBehaviour, IBehaviour
+public class LeftMove : IBehaviour
 {
     [SerializeField] CharacterController controller;
     private Vector2 moveDir;
