@@ -53,6 +53,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Flash"",
+                    ""type"": ""Button"",
+                    ""id"": ""80b42cfc-2b63-4cd1-965d-648bc2e6e67b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -110,6 +119,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f8dcf4c0-f278-48bd-9f89-e8a41a9d685c"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Flash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -149,6 +169,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_LMove = m_Player.FindAction("LMove", throwIfNotFound: true);
         m_Player_RMove = m_Player.FindAction("RMove", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        m_Player_Flash = m_Player.FindAction("Flash", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_ESC = m_UI.FindAction("ESC", throwIfNotFound: true);
@@ -216,6 +237,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_LMove;
     private readonly InputAction m_Player_RMove;
     private readonly InputAction m_Player_Jump;
+    private readonly InputAction m_Player_Flash;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -223,6 +245,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @LMove => m_Wrapper.m_Player_LMove;
         public InputAction @RMove => m_Wrapper.m_Player_RMove;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
+        public InputAction @Flash => m_Wrapper.m_Player_Flash;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -241,6 +264,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @Flash.started += instance.OnFlash;
+            @Flash.performed += instance.OnFlash;
+            @Flash.canceled += instance.OnFlash;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -254,6 +280,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @Flash.started -= instance.OnFlash;
+            @Flash.performed -= instance.OnFlash;
+            @Flash.canceled -= instance.OnFlash;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -322,6 +351,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnLMove(InputAction.CallbackContext context);
         void OnRMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnFlash(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

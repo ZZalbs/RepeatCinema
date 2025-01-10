@@ -10,6 +10,7 @@ public enum BehaviourType
     LMove,
     RMove,
     Jump,
+    Flash,
 }
 
 public enum Rarity

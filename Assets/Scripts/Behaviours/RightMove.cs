@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(BehaviourController))]
 public class RightMove : IBehaviour
 {
-    BehaviourController controller;
+    private BehaviourController controller;
 
     public BehaviourType Type => BehaviourType.RMove;
 

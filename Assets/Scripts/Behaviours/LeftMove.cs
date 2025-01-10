@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(BehaviourController))]
 public class LeftMove : IBehaviour
 {
-    [SerializeField] BehaviourController controller;
+    private BehaviourController controller;
 
     public BehaviourType Type => BehaviourType.LMove;
 

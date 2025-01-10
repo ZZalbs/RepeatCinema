@@ -27,6 +27,7 @@ public class InputHandler : MonoBehaviour
         playerEntries[BehaviourType.LMove] = playerActions.LMove;
         playerEntries[BehaviourType.RMove] = playerActions.RMove;
         playerEntries[BehaviourType.Jump] = playerActions.Jump;
+        playerEntries[BehaviourType.Flash] = playerActions.Flash;
 
         uiActions = actions.UI;
 
@@ -35,12 +36,11 @@ public class InputHandler : MonoBehaviour
         // register callback
         foreach(var behaviour in characterController.Behaviours)
         {
-            Debug.Log(behaviour);
             AddPlayerBehaviour(behaviour);
         }
     }
 
-    private void AddPlayerBehaviour(IBehaviour callbackBehaviour)
+    public void AddPlayerBehaviour(IBehaviour callbackBehaviour)
     {
         if (!playerEntries.TryGetValue(callbackBehaviour.Type, out InputAction action)) return;
 
@@ -48,7 +48,6 @@ public class InputHandler : MonoBehaviour
         action.performed += ctx =>
         {
             callbackBehaviour.OnPressed();
-            Debug.Log("behaviour");
         };
         action.canceled += ctx => callbackBehaviour.OnReleased();
     }

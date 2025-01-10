@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
 
 public class Jump : IBehaviour
 {
-    [SerializeField] BehaviourController controller;
-
+    private BehaviourController controller;
     public BehaviourType Type => BehaviourType.Jump;
 
     public Jump(BehaviourController controller)
