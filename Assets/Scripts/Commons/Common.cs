@@ -11,3 +11,11 @@ public enum BehaviourType
     RMove,
     Jump,
 }
+
+public enum Rarity
+{
+    Common,
+    Rare,
+    Epic,
+    Legendary
+}
