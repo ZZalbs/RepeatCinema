@@ -32,7 +32,8 @@ public abstract class TokenBase
 
     public void LoadImage(string str)
     {
-        SourceImage = Resources.Load<Sprite>(str);
+        string address = "Sprites/" + str;
+        SourceImage = Resources.Load<Sprite>(address);
     }
 
     public void LevelUp()

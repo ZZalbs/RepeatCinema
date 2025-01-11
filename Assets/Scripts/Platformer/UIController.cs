@@ -24,7 +24,6 @@ public class UIController : MonoBehaviour
 
     public void SetIconHolder(Sprite posIcon,Sprite negIcon)
     {
-        Debug.Log(posIcon, negIcon);
         hud.UpdatePositiveTokens(posIcon);
         hud.UpdateNegativeTokens(negIcon);
     }

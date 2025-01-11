@@ -55,7 +55,6 @@ public class TokenUI : MonoBehaviour
 
     public void SendIconImage()
     {
-        Debug.Log("sendintokenUI");
         controller.SendImage(p_Icon.sprite,n_Icon.sprite);
     }
 

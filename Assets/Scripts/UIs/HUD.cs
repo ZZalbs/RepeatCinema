@@ -62,7 +62,6 @@ public class HUD : MonoBehaviour
     }
     public void UpdatePositiveTokens(Sprite p)
     {
-        Debug.Log(curPosIndex);
         if (curPosIndex > posIcons.Length)
             return;
         posIcons[curPosIndex].sprite = p;
@@ -75,7 +74,6 @@ public class HUD : MonoBehaviour
     }
     public void UpdateNegativeTokens(Sprite n)
     {
-        Debug.Log(curNegIndex);
         if (curNegIndex > negIcons.Length)
             return;
         negIcons[curNegIndex].sprite = n;

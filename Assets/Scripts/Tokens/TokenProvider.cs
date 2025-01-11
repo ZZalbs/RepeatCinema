@@ -45,10 +45,12 @@ public class TokenProvider : MonoBehaviour
         foreach (var token in positiveTokenPool)
         {
             token.Value.setID(token.Key);
+            token.Value.LoadImage(token.Key.ToString());
         }
         foreach (var token in negativeTokenPool)
         {
             token.Value.setID(token.Key);
+            token.Value.LoadImage(token.Key.ToString());
         }
     }
 
