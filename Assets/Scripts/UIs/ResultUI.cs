@@ -21,8 +21,6 @@ public class ResultUI : MonoBehaviour
         {
             token.Init(tokenController);
         }
-
-        
     }
 
     private void Start()
@@ -46,5 +44,15 @@ public class ResultUI : MonoBehaviour
     {
         gameObject.SetActive(false);
         stageController.InitStage(true);
+    }
+
+    private void OnEnable()
+    {
+        Time.timeScale = 0f;
+    }
+
+    private void OnDisable()
+    {
+        Time.timeScale = 1f;
     }
 }
