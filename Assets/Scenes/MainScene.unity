@@ -4397,7 +4397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b08bdaa9272904bb9857d045277d67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tokenController: {fileID: 0}
+  tokenController: {fileID: 1951863396}
 --- !u!4 &1783718797
 Transform:
   m_ObjectHideFlags: 0
@@ -5982,6 +5982,7 @@ GameObject:
   - component: {fileID: 1951863387}
   - component: {fileID: 1951863386}
   - component: {fileID: 1951863385}
+  - component: {fileID: 1951863396}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -6234,6 +6235,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1951863396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951863384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db227a4b2de531b4fad9f6e2f98fe9a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerBehaviourController: {fileID: 0}
+  LifeController: {fileID: 0}
+  InputController: {fileID: 0}
+  StageController: {fileID: 0}
 --- !u!1 &1957165011
 GameObject:
   m_ObjectHideFlags: 0
