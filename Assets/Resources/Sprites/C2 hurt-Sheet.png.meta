@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ec8e60e1be4d98a43bc29db67db92c03
+guid: a0e11867e4b5b4d1993a2cc938d4ae6d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -70,7 +70,7 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
+    resizeAlgorithm: 1
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
@@ -93,24 +93,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: M1 -Sheet_0
+      name: C2 hurt-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,17 +111,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9407feb8d71904e29bc2aacd31f47384
-      internalID: -141476274
+      spriteID: 775ac7223eec04c839080b6ea73045cd
+      internalID: -1604391707
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M1 -Sheet_1
+      name: C2 hurt-Sheet_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 65
         y: 0
         width: 64
         height: 64
@@ -145,17 +132,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 494982c5554414fa8bc1ca080f539fc5
-      internalID: 93350161
+      spriteID: e1449ab32e8dd440bbfcff4a3e6505f2
+      internalID: -169640064
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M1 -Sheet_2
+      name: C2 hurt-Sheet_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 130
         y: 0
         width: 64
         height: 64
@@ -166,8 +153,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f46003ceed3394228b84472d11927c27
-      internalID: 51907100
+      spriteID: ecf4d9afdaeb04281b8e98d275557f22
+      internalID: -104626431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: C2 hurt-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1461ab149f3614a3a9b0be18cbb41bb6
+      internalID: -572238438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: C2 hurt-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ef3bf4a37f744ac48931cd320364283
+      internalID: -259785922
       vertices: []
       indices: 
       edges: []
@@ -183,9 +212,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      M1 -Sheet_0: -141476274
-      M1 -Sheet_1: 93350161
-      M1 -Sheet_2: 51907100
+      C2 hurt-Sheet_0: -1604391707
+      C2 hurt-Sheet_1: -169640064
+      C2 hurt-Sheet_2: -104626431
+      C2 hurt-Sheet_3: -572238438
+      C2 hurt-Sheet_4: -259785922
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

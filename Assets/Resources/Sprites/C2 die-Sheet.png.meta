@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ec8e60e1be4d98a43bc29db67db92c03
+guid: 28a265b77e3304d549db97f2589a1f9c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -70,7 +70,7 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
+    resizeAlgorithm: 1
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
@@ -93,24 +93,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: M1 -Sheet_0
+      name: C2 die-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,17 +111,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9407feb8d71904e29bc2aacd31f47384
-      internalID: -141476274
+      spriteID: e92b11c375a384cbca7c529e90226ff9
+      internalID: 756650740
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M1 -Sheet_1
+      name: C2 die-Sheet_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 65
         y: 0
         width: 64
         height: 64
@@ -145,17 +132,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 494982c5554414fa8bc1ca080f539fc5
-      internalID: 93350161
+      spriteID: e3c41116b753246dca167cc3c40fa270
+      internalID: 364153693
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M1 -Sheet_2
+      name: C2 die-Sheet_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 130
         y: 0
         width: 64
         height: 64
@@ -166,8 +153,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f46003ceed3394228b84472d11927c27
-      internalID: 51907100
+      spriteID: f0dcf9f5d96a4414fb2b749da0954b5d
+      internalID: 223166255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: C2 die-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8881f7bc59b04af48905f689efe97c0
+      internalID: 1148186238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: C2 die-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2518964a67a5468ca037115904d5fc2
+      internalID: 995246653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: C2 die-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dc04f63c37de45468c122aa4cd5faf2
+      internalID: 1704899761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: C2 die-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f0bd00dc1bea434bb4ac92f91c1801d
+      internalID: 1325444564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: C2 die-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fda07ec92ea324fcdb54d15ecb8164e1
+      internalID: -1711069956
       vertices: []
       indices: 
       edges: []
@@ -183,9 +275,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      M1 -Sheet_0: -141476274
-      M1 -Sheet_1: 93350161
-      M1 -Sheet_2: 51907100
+      C2 die-Sheet_0: 756650740
+      C2 die-Sheet_1: 364153693
+      C2 die-Sheet_2: 223166255
+      C2 die-Sheet_3: 1148186238
+      C2 die-Sheet_4: 995246653
+      C2 die-Sheet_5: 1704899761
+      C2 die-Sheet_6: 1325444564
+      C2 die-Sheet_7: -1711069956
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

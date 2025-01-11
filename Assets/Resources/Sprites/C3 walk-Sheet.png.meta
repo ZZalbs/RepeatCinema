@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ec8e60e1be4d98a43bc29db67db92c03
+guid: d73ae87a0151e4e20a12efb60cb0866f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -70,7 +70,7 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
+    resizeAlgorithm: 1
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
@@ -93,24 +93,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: M1 -Sheet_0
+      name: C3 walk-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,17 +111,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9407feb8d71904e29bc2aacd31f47384
-      internalID: -141476274
+      spriteID: a9f080e58fb754a5e9e72e9b6e5e4e8b
+      internalID: -100394646
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M1 -Sheet_1
+      name: C3 walk-Sheet_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 65
         y: 0
         width: 64
         height: 64
@@ -145,17 +132,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 494982c5554414fa8bc1ca080f539fc5
-      internalID: 93350161
+      spriteID: 76d869292eba144079f2786f6b482a81
+      internalID: -1023931172
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M1 -Sheet_2
+      name: C3 walk-Sheet_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 130
         y: 0
         width: 64
         height: 64
@@ -166,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f46003ceed3394228b84472d11927c27
-      internalID: 51907100
+      spriteID: ba4fe4d6b0d224392bbd8729a1cbd92b
+      internalID: 532211252
       vertices: []
       indices: 
       edges: []
@@ -183,9 +170,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      M1 -Sheet_0: -141476274
-      M1 -Sheet_1: 93350161
-      M1 -Sheet_2: 51907100
+      C3 walk-Sheet_0: -100394646
+      C3 walk-Sheet_1: -1023931172
+      C3 walk-Sheet_2: 532211252
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

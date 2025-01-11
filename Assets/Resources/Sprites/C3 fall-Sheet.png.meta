@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ec8e60e1be4d98a43bc29db67db92c03
+guid: 09d64593388684858a00eaf226309e89
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -70,7 +70,7 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
+    resizeAlgorithm: 1
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
@@ -93,24 +93,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: M1 -Sheet_0
+      name: C3 fall-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,17 +111,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9407feb8d71904e29bc2aacd31f47384
-      internalID: -141476274
+      spriteID: a17100f65dc1b4380a9a327ce315d19b
+      internalID: 1886916353
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M1 -Sheet_1
+      name: C3 fall-Sheet_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 65
         y: 0
         width: 64
         height: 64
@@ -145,17 +132,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 494982c5554414fa8bc1ca080f539fc5
-      internalID: 93350161
+      spriteID: ae5dce3d8d11549ab93c9d43e8bc556f
+      internalID: 565883227
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M1 -Sheet_2
+      name: C3 fall-Sheet_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 130
         y: 0
         width: 64
         height: 64
@@ -166,8 +153,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f46003ceed3394228b84472d11927c27
-      internalID: 51907100
+      spriteID: 76a9b5975bfd443d2a55a035cb2ab9e7
+      internalID: -868456520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: C3 fall-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14d55c356fffc4e1cb94d896e3f145d1
+      internalID: -980646567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: C3 fall-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a987d09bca9bc4a83ac1a62f452b8430
+      internalID: 708223445
       vertices: []
       indices: 
       edges: []
@@ -183,9 +212,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      M1 -Sheet_0: -141476274
-      M1 -Sheet_1: 93350161
-      M1 -Sheet_2: 51907100
+      C3 fall-Sheet_0: 1886916353
+      C3 fall-Sheet_1: 565883227
+      C3 fall-Sheet_2: -868456520
+      C3 fall-Sheet_3: -980646567
+      C3 fall-Sheet_4: 708223445
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
