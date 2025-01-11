@@ -9,7 +9,7 @@ public class TestTokenProvider : MonoBehaviour
     
     private void Start()
     {
-        tokenController.SelectToken(new SpeedToken(tokenController, "", "", Rarity.Common, false, 1));
+        tokenController.SelectToken(new PlaceSpikeToken(tokenController, "", "", Rarity.Common, false, 1));
         stageController.StartStage();
     }
 }

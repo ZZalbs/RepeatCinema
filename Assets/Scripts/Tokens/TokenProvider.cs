@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TokenProvider : MonoBehaviour
 {
-    private TokenController tokenController;
+    [SerializeField] private TokenController tokenController;
 
     private Dictionary<int, TokenBase> positiveTokenPool;
     private Dictionary<int, TokenBase> negativeTokenPool;
@@ -14,6 +14,17 @@ public class TokenProvider : MonoBehaviour
     private void Awake()
     {
         random = new();
+    }
+
+
+    private void Start()
+    {
+        positiveTokenPool.Add(0, new FlashToken(tokenController, "점멸", "Shift 키를 눌러 바라보는 방향으로 최대 <Level>회 연속으로 짧은 거리를 점멸합니다.\r\n점멸 횟수를 모두 사용하면 착지 후 3 - 0.67 * (<Level> - 1) 초만큼의 쿨타임 필요합니다.", Rarity.Common, true, 3));
+        positiveTokenPool.Add(1, new BonusJumpToken(tokenController, "점멸", "Shift 키를 눌러 바라보는 방향으로 최대 <Level>회 연속으로 짧은 거리를 점멸합니다.\r\n점멸 횟수를 모두 사용하면 착지 후 3 - 0.67 * (<Level> - 1) 초만큼의 쿨타임 필요합니다.", Rarity.Common, true, 3));
+        positiveTokenPool.Add(2, new MaxLifePlusToken(tokenController, "점멸", "Shift 키를 눌러 바라보는 방향으로 최대 <Level>회 연속으로 짧은 거리를 점멸합니다.\r\n점멸 횟수를 모두 사용하면 착지 후 3 - 0.67 * (<Level> - 1) 초만큼의 쿨타임 필요합니다.", Rarity.Common, true, 3));
+
+        positiveTokenPool.Add(3, new SpeedDownToken(tokenController, "점멸", "Shift 키를 눌러 바라보는 방향으로 최대 <Level>회 연속으로 짧은 거리를 점멸합니다.\r\n점멸 횟수를 모두 사용하면 착지 후 3 - 0.67 * (<Level> - 1) 초만큼의 쿨타임 필요합니다.", Rarity.Common, true, 3));
+        positiveTokenPool.Add(4, new RemovePosToken(tokenController, "점멸", "Shift 키를 눌러 바라보는 방향으로 최대 <Level>회 연속으로 짧은 거리를 점멸합니다.\r\n점멸 횟수를 모두 사용하면 착지 후 3 - 0.67 * (<Level> - 1) 초만큼의 쿨타임 필요합니다.", Rarity.Common, false, 3));
     }
 
     private Rarity GetRandomRarity()
@@ -47,11 +58,10 @@ public class TokenProvider : MonoBehaviour
             poppedPositiveTokens.Add(positive.Key, positive.Value);
             poppedNegativeTokens.Add(negative.Key, negative.Value);
 
-
             TokenPair pair = new TokenPair
             {
-                PositiveToken = positive.Value,
-                NegativeToken = negative.Value
+                PositiveToken = tokenController.PositiveTokens.ContainsKey(positive.Key) ? tokenController.PositiveTokens[positive.Key] : positive.Value,
+                NegativeToken = tokenController.NegativeTokens.ContainsKey(negative.Key) ? tokenController.NegativeTokens[positive.Key] : negative.Value
             };
             tokens.Add(pair);
         }

@@ -1,23 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    [SerializeField]private TokenController tc;
-    [SerializeField]private HUD Hud;
+    [SerializeField] private ResultUI result;
 
-    private void Awake()
+    public void Awake()
     {
-        tc = GetComponent<TokenController>();
-        StageStart();
-        StageController stageController = GetComponent<StageController>();
-        stageController.AddStageEventListener(StageEventType.Start, StageStart);
-        
-    }
+        StageController sc = GetComponent<StageController>();
+        TokenController tc = GetComponent<TokenController>();
+        TokenProvider tp = GetComponent<TokenProvider>();
 
-    public void StageStart()
-    {
-        Hud.Init(tc);
+        result.Init(sc, tc, tp);
     }
 }

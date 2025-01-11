@@ -17,20 +17,18 @@ public class BehaviourController : MonoBehaviour
 
     public void Init()
     {
+        // 바꾸지마세요
         Body = GetComponent<Rigidbody2D>();
-
         Behaviours = new();
 
         Behaviours.Add(BehaviourType.RMove, new RightMove(this));
         Behaviours.Add(BehaviourType.LMove, new LeftMove(this));
         Behaviours.Add(BehaviourType.Jump, new Jump(this));
 
-        StageController stageController = GetComponent<StageController>();
-        stageController.AddStageEventListener(StageEventType.Awake, StageAwake);
         anim = GetComponent<AnimationController>();
     }
 
-    private void StageAwake()
+    public void StageAwake()
     {
         CurJumpCount = 0;
         MoveDir = Vector2.zero;
