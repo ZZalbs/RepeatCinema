@@ -50,4 +50,17 @@ public class InputController : MonoBehaviour
         };
         action.canceled += ctx => callbackBehaviour.OnReleased();
     }
+    
+    public void AddAllPlayerBehaviour(IBehaviour callbackBehaviour)
+    {
+        foreach(var behaviour in characterController.Behaviours)
+        {
+            AddPlayerBehaviour(behaviour);
+        }
+    }
+    
+    public void RemoveAllPlayerBehaviour()
+    {
+        playerEntries.Clear();
+    }
 }

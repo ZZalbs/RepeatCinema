@@ -7,6 +7,7 @@ public class TokenController : MonoBehaviour
     public BehaviourController PlayerBehaviourController;
     public LifeController LifeController;
     public InputController InputController;
+    public StageController StageController;
 
     private Dictionary<int, TokenBase> PositiveTokens;
     private Dictionary<int, TokenBase> NegativeTokens;
@@ -16,6 +17,7 @@ public class TokenController : MonoBehaviour
         PlayerBehaviourController = GetComponent<BehaviourController>();
         LifeController = GetComponent<LifeController>();
         InputController = GetComponent<InputController>();
+        StageController = GetComponent<StageController>();
 
         PositiveTokens = new();
         NegativeTokens = new();
