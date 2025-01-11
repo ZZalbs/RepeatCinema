@@ -18,6 +18,11 @@ public class ThemeSwitchableObject : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+
+        Theme theme = StageManager.Instance.CurTheme;
+
+        if(isAnimated)ChangeAnimator(theme);
+        else ChangeSprite(theme);
     }
 
     private void Start()

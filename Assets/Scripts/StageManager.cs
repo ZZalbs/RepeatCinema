@@ -13,6 +13,8 @@ public class StageManager : MonoBehaviour
     
     public static StageManager Instance { get; private set; }
     public event Action<Theme> ThemeSwitched;
+
+    public Theme CurTheme { get; private set; }
     private void Awake()
     {
         if (Instance == null)
@@ -65,6 +67,7 @@ public class StageManager : MonoBehaviour
     {
         Theme theme = (Theme)UnityEngine.Random.Range(0, 3);
 
+        CurTheme = theme;
         ThemeSwitched.Invoke(theme);
     }
 }

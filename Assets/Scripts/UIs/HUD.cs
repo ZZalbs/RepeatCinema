@@ -40,12 +40,15 @@ public class HUD : MonoBehaviour
 
     public void UpdateLife()
     {
-        for(curHeartIndex=0; curHeartIndex<controller.LifeController.MaxLife+controller.LifeController.MaxShield;curHeartIndex++)
+        int hpGhostSum = controller.LifeController.MaxLife + controller.GetGhostLevel();
+        for (curHeartIndex=0; curHeartIndex<hpGhostSum;curHeartIndex++)
         {
-            if (curHeartIndex > hearts.Length)
+            if (curHeartIndex >= hearts.Length)
                 continue;
             if (curHeartIndex < controller.LifeController.CurLife)
                 hearts[curHeartIndex].sprite = fullHeart;
+            else if (curHeartIndex < hpGhostSum)
+                hearts[curHeartIndex].sprite = ghostHeart;
             else
                 hearts[curHeartIndex].sprite = emptyHeart;
             hearts[curHeartIndex].gameObject.SetActive(true);
