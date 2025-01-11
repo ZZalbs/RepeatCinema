@@ -27,7 +27,7 @@ public class LifeController : MonoBehaviour
     public int MaxShield;
     public int CurShield;
 
-    private bool isImmune;
+    [SerializeField] private bool isImmune;
     private float remainingImmuneTimer;
     private MotionHandle immuneMotion;
 

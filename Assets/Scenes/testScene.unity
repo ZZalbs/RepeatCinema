@@ -364,6 +364,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &202183673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 202183675}
+  - component: {fileID: 202183674}
+  m_Layer: 0
+  m_Name: TestTokenProvider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &202183674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202183673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e52642c307124626b71132176ff87cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tokenController: {fileID: 2036871880}
+  stageController: {fileID: 2036871878}
+--- !u!4 &202183675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202183673}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.10987, y: -0.082387865, z: 0.037689403}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &368271924
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,6 +1038,7 @@ GameObject:
   - component: {fileID: 2036871878}
   - component: {fileID: 2036871879}
   - component: {fileID: 2036871877}
+  - component: {fileID: 2036871880}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1033,7 +1080,7 @@ MonoBehaviour:
   MaxLife: 0
   MaxShield: 0
   CurShield: 0
-  IsImmune: 0
+  isImmune: 0
 --- !u!50 &2036871872
 Rigidbody2D:
   serializedVersion: 4
@@ -1231,6 +1278,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 2036871877}
+--- !u!114 &2036871880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036871869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db227a4b2de531b4fad9f6e2f98fe9a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerBehaviourController: {fileID: 0}
+  LifeController: {fileID: 0}
+  InputController: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1240,3 +1302,4 @@ SceneRoots:
   - {fileID: 103758161}
   - {fileID: 180548044}
   - {fileID: 1587327861}
+  - {fileID: 202183675}

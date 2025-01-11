@@ -8,41 +8,43 @@ public class StageController : MonoBehaviour
 
     private Dictionary<StageEventType, Action> entries = new();
 
-    private void Awake()
-    {
-        entries.Add(StageEventType.Awake, new Action(() => { }));
-        entries.Add(StageEventType.Start, new Action(() => { }));
-        entries.Add(StageEventType.Clear, new Action(() => { }));
-        entries.Add(StageEventType.Over, new Action(() => { }));
-    }
+    // private void Awake()
+    // {
+    //     entries.TryAdd(StageEventType.Awake, new Action(() => { }));
+    //     entries.TryAdd(StageEventType.Start, new Action(() => { }));
+    //     entries.TryAdd(StageEventType.Clear, new Action(() => { }));
+    //     entries.TryAdd(StageEventType.Over, new Action(() => { }));
+    // }
 
     public void AddStageEventListener(StageEventType type, Action action)
     {
         if(!entries.TryGetValue(type, out Action entry))
         {
             entry = new Action(() => { });
+            entries.Add(type, entry);
         }
 
         entry += action;
+        entries[type] = entry;
     }
 
     public void AwakeStage()
     {
-        // Ä¿Æ° ´ÝÀ½
+        // Ä¿Æ° ï¿½ï¿½ï¿½ï¿½
 
         entries[StageEventType.Awake]?.Invoke();
     }
 
     public void StartStage()
     {
-        // Ä¿Æ° ¿®
+        // Ä¿Æ° ï¿½ï¿½
 
         entries[StageEventType.Start]?.Invoke();
     }
 
     public void ClearStage()
     {
-        // ÅäÅ« ¼±ÅÃ
+        // ï¿½ï¿½Å« ï¿½ï¿½ï¿½ï¿½
 
         entries[StageEventType.Clear]?.Invoke();
     }
