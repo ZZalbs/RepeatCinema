@@ -6,11 +6,14 @@ public class StageController : MonoBehaviour
 {
     private Vector3 playerPosition;
 
-    private Dictionary<StageEventType, Action> entries;
+    private Dictionary<StageEventType, Action> entries = new();
 
     private void Awake()
     {
-        entries = new();
+        entries.Add(StageEventType.Awake, new Action(() => { }));
+        entries.Add(StageEventType.Start, new Action(() => { }));
+        entries.Add(StageEventType.Clear, new Action(() => { }));
+        entries.Add(StageEventType.Over, new Action(() => { }));
     }
 
     public void AddStageEventListener(StageEventType type, Action action)
