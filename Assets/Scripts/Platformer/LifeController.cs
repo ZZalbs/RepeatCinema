@@ -1,4 +1,7 @@
+using System;
+using LitMotion;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LifeController : MonoBehaviour
 {
@@ -17,7 +20,7 @@ public class LifeController : MonoBehaviour
             else if (curLife <= 0)
             {
                 curLife = 0;
-                OnDead();
+                Die();
             }
         }
     }
@@ -26,7 +29,12 @@ public class LifeController : MonoBehaviour
     public int MaxShield;
     public int CurShield;
 
-    public bool IsImmune;
+    [SerializeField] private bool isImmune;
+    private float remainingImmuneTimer;
+    private MotionHandle immuneMotion;
+    public event UnityAction onHit;
+    public event UnityAction onHitUI;
+    public event UnityAction onDead;
 
     private void Awake()
     {
@@ -38,7 +46,7 @@ public class LifeController : MonoBehaviour
     {
         CurLife = MaxLife;
         CurShield = MaxShield;
-        IsImmune = false;
+        isImmune = false;
     }
 
     public void OnDamaged(DamageType damageType)
@@ -46,49 +54,63 @@ public class LifeController : MonoBehaviour
         switch(damageType)
         {
             case DamageType.Normal:
-                if(!IsImmune)
+                if(!isImmune)
                 {
                     curLife--;
-                    Addimmunity(2f);
+                    onHit?.Invoke();
+                    onHitUI?.Invoke();
+                    if (curLife <= 0) Die();
+                    else SetImmuneForTime(2f);
                 }
                 break;
             case DamageType.Critical:
-                if(!IsImmune)
+                if(!isImmune)
                 {
                     if(CurShield > 0)
                     {
-                        curLife--;
                         CurShield--;
-                        Addimmunity(2f);
+                        OnDamaged(DamageType.Normal);
                     }
                     else
                     {
                         curLife = 0;
+                        Die();
                     }
                 }
                 break;
             case DamageType.Death:
                 curLife = 0;
+                Die();
                 break;
         }
     }
 
-    public void OnDead()
+    public void Die()
     {
-
+        onDead?.Invoke();
+        Debug.Log("Player Died!");
     }
 
-    public void Addimmunity(float time)
+    public void SetImmune(bool value)
     {
-        CancelInvoke(nameof(RemoveImmunity));
-
-        IsImmune = true;
-
-        Invoke(nameof(RemoveImmunity), time);
+        isImmune = value;
     }
 
-    public void RemoveImmunity()
+    public void SetImmuneForTime(float time)
     {
-        IsImmune = false;
+        if (isImmune)
+        {
+            if (time > remainingImmuneTimer)
+            {
+                immuneMotion.Cancel();
+            }
+            else
+            {
+                return;
+            }
+        }
+        isImmune = true;
+        immuneMotion = LMotion.Create(time, 0f, time).WithOnComplete(() => isImmune = false)
+            .Bind(t => remainingImmuneTimer = t);
     }
 }

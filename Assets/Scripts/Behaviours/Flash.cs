@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Flash : IBehaviour
 {
@@ -15,7 +16,7 @@ public class Flash : IBehaviour
     }
 
 
-    public void OnPressed()
+    public void OnPressed(InputAction.CallbackContext ctx)
     {
         if (token.IsAble)
         {
@@ -26,7 +27,7 @@ public class Flash : IBehaviour
         }
     }
 
-    public void OnReleased()
+    public void OnReleased(InputAction.CallbackContext ctx)
     {
 
     }

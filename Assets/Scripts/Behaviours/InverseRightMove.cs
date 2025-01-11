@@ -1,27 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(BehaviourController))]
-public class RightMove : IBehaviour
+public class InverseRightMove : IBehaviour
 {
     private BehaviourController controller;
-
+    
     public BehaviourType Type => BehaviourType.RMove;
-
-    public RightMove(BehaviourController controller)
+    
+    public InverseRightMove(BehaviourController controller)
     {
         this.controller = controller;
     }
-
     public void OnPressed(InputAction.CallbackContext ctx)
     {
-        controller.FlipAnim(false);
-        controller.MoveDir += Vector2.right;
+        controller.MoveDir += Vector2.left;
         controller.isLookingRight = true;
     }
 
     public void OnReleased(InputAction.CallbackContext ctx)
     {
-        controller.MoveDir -= Vector2.right;
+        controller.MoveDir -= Vector2.left;
     }
 }
