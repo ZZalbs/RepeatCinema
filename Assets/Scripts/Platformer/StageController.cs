@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class StageController : MonoBehaviour
 {
+    private int currentStage = 0;
+    
     private Vector3 playerPosition;
 
     private Dictionary<StageEventType, Action> entries = new();
+    
+    public int CurrentStage => currentStage;
+    
 
     // private void Awake()
     // {
@@ -38,7 +43,7 @@ public class StageController : MonoBehaviour
     public void StartStage()
     {
         // Ŀư ��
-
+        currentStage++;
         entries[StageEventType.Start]?.Invoke();
     }
 
@@ -51,8 +56,6 @@ public class StageController : MonoBehaviour
 
     public void StageOver()
     {
-
-
         entries[StageEventType.Over]?.Invoke();
     }
 

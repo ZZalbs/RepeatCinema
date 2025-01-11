@@ -7,6 +7,7 @@ public class TokenController : MonoBehaviour
     public BehaviourController PlayerBehaviourController;
     public LifeController LifeController;
     public InputController InputController;
+    public StageController StageController;
 
     public Dictionary<int, TokenBase> PositiveTokens;
     public Dictionary<int, TokenBase> NegativeTokens;
@@ -16,6 +17,7 @@ public class TokenController : MonoBehaviour
         PlayerBehaviourController = GetComponent<BehaviourController>();
         LifeController = GetComponent<LifeController>();
         InputController = GetComponent<InputController>();
+        StageController = GetComponent<StageController>();
 
         PositiveTokens = new();
         NegativeTokens = new();
@@ -71,23 +73,47 @@ public class TokenController : MonoBehaviour
     public void DestroyOnePositiveToken()
     {
         int randomIndex = Random.Range(0, PositiveTokens.Keys.Count);
-
+        
+        PositiveTokens[randomIndex].OnDestroy();
         PositiveTokens.Remove(randomIndex);
     }
     public void DestroyOneNegativeToken()
     {
         int randomIndex = Random.Range(0, NegativeTokens.Keys.Count);
 
+        NegativeTokens[randomIndex].OnDestroy();
         NegativeTokens.Remove(randomIndex);
+    }
+
+    public void DestroyToken(TokenBase token)
+    {
+        if (token.IsPositive)
+        {
+            PositiveTokens[token.Id].OnDestroy();
+            PositiveTokens.Remove(token.Id);
+        }
+        else
+        {
+            NegativeTokens[token.Id].OnDestroy();
+            NegativeTokens.Remove(token.Id);
+        }
     }
 
     public void DestroyAllPositiveToken()
     {
+        foreach (var token in PositiveTokens.Values)
+        {
+            token.OnDestroy();
+        }
         PositiveTokens.Clear();
     }
 
     public void DestroyAllNegativeToken()
     {
+        foreach (var token in PositiveTokens.Values)
+        {
+            token.OnDestroy();
+        }
         NegativeTokens.Clear();
     }
 }

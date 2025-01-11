@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Jump : IBehaviour
 {
@@ -10,17 +11,18 @@ public class Jump : IBehaviour
         this.controller = controller;
     }
 
-    public void OnPressed()
+    public void OnPressed(InputAction.CallbackContext ctx)
     {
         if (controller.CurJumpCount < controller.MaxJumpCount)
         {
+            controller.JumpAnim();
             controller.CurJumpCount++;
             controller.Body.velocity = new Vector2(controller.Body.velocity.x, 0);
             controller.Body.AddForce(Vector2.up * controller.JumpForce, ForceMode2D.Impulse);
         }
     }
 
-    public void OnReleased()
+    public void OnReleased(InputAction.CallbackContext ctx)
     {
         
     }

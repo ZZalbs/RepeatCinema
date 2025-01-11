@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(BehaviourController))]
 public class RightMove : IBehaviour
@@ -12,13 +13,13 @@ public class RightMove : IBehaviour
         this.controller = controller;
     }
 
-    public void OnPressed()
+    public void OnPressed(InputAction.CallbackContext ctx)
     {
         controller.MoveDir += Vector2.right;
         controller.isLookingRight = true;
     }
 
-    public void OnReleased()
+    public void OnReleased(InputAction.CallbackContext ctx)
     {
         controller.MoveDir -= Vector2.right;
     }

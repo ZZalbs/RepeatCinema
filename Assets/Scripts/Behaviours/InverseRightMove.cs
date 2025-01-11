@@ -3,23 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(BehaviourController))]
-public class LeftMove : IBehaviour
+public class InverseRightMove : IBehaviour
 {
     private BehaviourController controller;
-
-    public BehaviourType Type => BehaviourType.LMove;
-
-    public LeftMove(BehaviourController controller)
+    
+    public BehaviourType Type => BehaviourType.RMove;
+    
+    public InverseRightMove(BehaviourController controller)
     {
         this.controller = controller;
     }
-
     public void OnPressed(InputAction.CallbackContext ctx)
     {
-        Debug.Log("LeftMove OnPressed");
         controller.MoveDir += Vector2.left;
-        controller.isLookingRight = false;
+        controller.isLookingRight = true;
     }
 
     public void OnReleased(InputAction.CallbackContext ctx)
