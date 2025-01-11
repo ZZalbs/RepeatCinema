@@ -23,7 +23,7 @@ public class GenerateWalkerToken : TokenBase
         walkers = StageManager.Instance.SpawnOnRandomTile(walkerPrefab, CurLevel);
     }
 
-    public override void OnDestroy()
+    public override void OnEndStage()
     {
         foreach (var spike in walkers)
         {
