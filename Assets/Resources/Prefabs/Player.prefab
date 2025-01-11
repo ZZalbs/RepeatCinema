@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 4450631965986190668}
   - component: {fileID: 320331825387723267}
   - component: {fileID: 3822941077281993695}
-  - component: {fileID: 4081018371867330883}
-  - component: {fileID: 1381936666764645154}
+  - component: {fileID: 7376815630455654956}
   - component: {fileID: 3536212083762349463}
   - component: {fileID: 8163409153744133463}
   - component: {fileID: 404607962144685077}
@@ -37,7 +36,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8, y: -0.17, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -142,8 +141,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &4081018371867330883
-BoxCollider2D:
+--- !u!70 &7376815630455654956
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -174,31 +173,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &1381936666764645154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2453229869580710607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b109e72271418b54c95edf3a039ba52f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Offset: {x: 0.02145052, y: -0.21889114}
+  m_Size: {x: 1.1304045, y: 1.5081339}
+  m_Direction: 0
 --- !u!114 &3536212083762349463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,12 +188,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c632d30635b23047bc3740b4752037f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStartPosition: {x: -30, y: -6}
+  Animator: {fileID: 0}
   Body: {fileID: 0}
   Speed: 3
   CurJumpCount: 0
   MaxJumpCount: 1
   MoveDir: {x: 0, y: 0}
-  JumpForce: 15
+  JumpForce: 11.5
   isLookingRight: 0
 --- !u!114 &8163409153744133463
 MonoBehaviour:
@@ -272,6 +251,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   result: {fileID: 1579475907766524654, guid: 44a1c0c77353d1a43ac05f280b2426ad, type: 3}
   curtain: {fileID: 5091770500921930861, guid: b7b84ada193f0284592ec2657b91819f, type: 3}
+  hud: {fileID: 0}
+  tp: {fileID: 0}
 --- !u!114 &2801582082165973071
 MonoBehaviour:
   m_ObjectHideFlags: 0

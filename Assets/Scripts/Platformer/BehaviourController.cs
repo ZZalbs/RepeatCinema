@@ -5,28 +5,36 @@ using UnityEngine;
 public class BehaviourController : MonoBehaviour
 {
     [SerializeField] Vector2 playerStartPosition;
+    public Animator Animator;
+    public SpriteRenderer SpriteRenderer;
     public Rigidbody2D Body;
     public float Speed;
     public int CurJumpCount;
     public int MaxJumpCount;
     public Vector2 MoveDir;
     public float JumpForce;
-    public bool isLookingRight;
 
     public Dictionary<BehaviourType, IBehaviour> Behaviours;
-    private AnimationController anim;
 
     public void Init()
     {
         // 바꾸지마세요
         Body = GetComponent<Rigidbody2D>();
+        Animator = GetComponent<Animator>();
+        SpriteRenderer = GetComponent<SpriteRenderer>();
         Behaviours = new();
 
         Behaviours.Add(BehaviourType.RMove, new RightMove(this));
         Behaviours.Add(BehaviourType.LMove, new LeftMove(this));
         Behaviours.Add(BehaviourType.Jump, new Jump(this));
+    }
 
-        anim = GetComponent<AnimationController>();
+    private void Update()
+    {
+        foreach (var behaviour in Behaviours)
+        {
+            behaviour.Value.OnUpdate();
+        }
     }
 
     public void StageAwake()
@@ -45,9 +53,16 @@ public class BehaviourController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Ground")
             && CurJumpCount > 0
-            && Body.velocity.y <= -0.01f)
+            && Body.velocity.y < 0.01f)
         {
-            CurJumpCount = 0;
+            foreach(var contact in collision.contacts)
+            {
+                if(contact.point.y < Body.position.y - 0.74f)
+                {
+                    CurJumpCount = 0;
+                    break;
+                }
+            }
         }
     }
 }

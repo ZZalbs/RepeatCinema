@@ -16,11 +16,19 @@ public class LeftMove : IBehaviour
     public void OnPressed(InputAction.CallbackContext ctx)
     {
         controller.MoveDir += Vector2.left;
-        controller.isLookingRight = false;
+        controller.Animator.SetFloat("VelocityX", -controller.MoveDir.x);
+        controller.SpriteRenderer.flipX = true;
     }
 
     public void OnReleased(InputAction.CallbackContext ctx)
     {
         controller.MoveDir -= Vector2.left;
+        controller.Animator.SetFloat("VelocityX", controller.MoveDir.x);
+        controller.SpriteRenderer.flipX = false;
+    }
+
+    public void OnUpdate()
+    {
+
     }
 }
