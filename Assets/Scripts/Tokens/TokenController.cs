@@ -9,8 +9,8 @@ public class TokenController : MonoBehaviour
     public InputController InputController;
     public StageController StageController;
 
-    private Dictionary<int, TokenBase> PositiveTokens;
-    private Dictionary<int, TokenBase> NegativeTokens;
+    public Dictionary<int, TokenBase> PositiveTokens;
+    public Dictionary<int, TokenBase> NegativeTokens;
 
     private void Awake()
     {
