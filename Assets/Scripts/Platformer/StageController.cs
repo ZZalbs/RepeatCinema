@@ -28,7 +28,6 @@ public class StageController : MonoBehaviour
             entry = new Action(() => { });
             entries.Add(type, entry);
         }
-
         entry += action;
         entries[type] = entry;
     }
