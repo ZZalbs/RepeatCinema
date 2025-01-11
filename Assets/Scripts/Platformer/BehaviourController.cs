@@ -45,7 +45,7 @@ public class BehaviourController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Ground")
             && CurJumpCount > 0
-            && Body.velocity.y <= 0)
+            && Body.velocity.y <= -0.01f)
         {
             CurJumpCount = 0;
         }
