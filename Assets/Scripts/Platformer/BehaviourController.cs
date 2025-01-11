@@ -16,9 +16,11 @@ public class BehaviourController : MonoBehaviour
 
     public Dictionary<BehaviourType, IBehaviour> Behaviours;
 
+    private bool movable = false;
+
     public void Init()
     {
-        // ¹Ù²ÙÁö¸¶¼¼¿ä
+        // ï¿½Ù²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         Body = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
@@ -31,10 +33,16 @@ public class BehaviourController : MonoBehaviour
 
     private void Update()
     {
+        if (!movable) return;
         foreach (var behaviour in Behaviours)
         {
             behaviour.Value.OnUpdate();
         }
+    }
+
+    public void SetMovable(bool movable)
+    {
+        this.movable = movable;
     }
 
     public void StageAwake()

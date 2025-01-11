@@ -14,6 +14,8 @@ public class TokenController : MonoBehaviour
     public Dictionary<int, TokenBase> PositiveTokens;
     public Dictionary<int, TokenBase> NegativeTokens;
 
+    private bool isStageActive = false;
+
     private void Awake()
     {
         PlayerBehaviourController = GetComponent<BehaviourController>();
@@ -34,6 +36,7 @@ public class TokenController : MonoBehaviour
 
     private void Update()
     {
+        if (!isStageActive) return;
         foreach(var token in PositiveTokens.Values)
         {
             token.Update();
@@ -46,6 +49,7 @@ public class TokenController : MonoBehaviour
 
     private void OnStartStage()
     {
+        isStageActive = true;
         foreach (var token in PositiveTokens.Values)
         {
             token.OnStartStage();
@@ -58,6 +62,7 @@ public class TokenController : MonoBehaviour
 
     private void OnEndStage()
     {
+        isStageActive = false;
         foreach (var token in PositiveTokens.Values)
         {
             token.OnEndStage();
