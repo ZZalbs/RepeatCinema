@@ -9,7 +9,7 @@ public class TestTokenProvider : MonoBehaviour
     
     private void Start()
     {
-        tokenController.SelectToken(new ReverseInputToken(tokenController, "", "", Rarity.Common, false, 1));
+        //tokenController.SelectToken(new ReverseInputToken(tokenController, "", "", Rarity.Common, false, 1));
         stageController.StartStage();
     }
 }

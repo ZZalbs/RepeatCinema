@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TokenProvider : MonoBehaviour
 {
-    private TokenController tokenController;
+    [SerializeField] private TokenController tokenController;
 
     private Dictionary<int, TokenBase> positiveTokenPool;
     private Dictionary<int, TokenBase> negativeTokenPool;

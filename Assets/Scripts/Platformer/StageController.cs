@@ -5,21 +5,18 @@ using UnityEngine;
 public class StageController : MonoBehaviour
 {
     private int currentStage = 0;
-    
+
+    private BehaviourController player;
     private Vector3 playerPosition;
 
     private Dictionary<StageEventType, Action> entries = new();
     
     public int CurrentStage => currentStage;
-    
 
-    // private void Awake()
-    // {
-    //     entries.TryAdd(StageEventType.Awake, new Action(() => { }));
-    //     entries.TryAdd(StageEventType.Start, new Action(() => { }));
-    //     entries.TryAdd(StageEventType.Clear, new Action(() => { }));
-    //     entries.TryAdd(StageEventType.Over, new Action(() => { }));
-    // }
+    private void Awake()
+    {
+        player = GetComponent<BehaviourController>();
+    }
 
     public void AddStageEventListener(StageEventType type, Action action)
     {
@@ -36,7 +33,7 @@ public class StageController : MonoBehaviour
     public void AwakeStage()
     {
         // Ŀư ����
-
+        player.StageAwake();
         entries[StageEventType.Awake]?.Invoke();
     }
 

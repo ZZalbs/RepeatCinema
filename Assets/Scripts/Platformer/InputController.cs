@@ -16,6 +16,8 @@ public class InputController : MonoBehaviour
 
     private void Awake()
     {
+        
+
         playerEntries = new();
         uiEntries = new();
 
