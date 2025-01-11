@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class StageController : MonoBehaviour
 {
-    private int currentStage = 0;
+    [SerializeField] private CurtainUI curtainUI;
+    
+    private int currentStage = 1;
 
     private BehaviourController player;
     private Vector3 playerPosition;
@@ -37,7 +39,6 @@ public class StageController : MonoBehaviour
 
     public void InitStage(bool isClear)
     {
-
         if (isClear) currentStage++;
         AwakeStage();
     }
@@ -45,15 +46,17 @@ public class StageController : MonoBehaviour
     public void AwakeStage()
     {
         player.StageAwake();
+        if (currentStage > 1) curtainUI.Close();
 
         entries[StageEventType.Awake]?.Invoke();
 
-        LMotion.Create(0f, 1f, 2f).WithOnComplete(StartStage).RunWithoutBinding();
+        LMotion.Create(0f, 1f, 1f).WithOnComplete(StartStage).RunWithoutBinding();
     }
 
     public void StartStage()
     {
         entries[StageEventType.Start]?.Invoke();
+        curtainUI.Open(); 
     }
 
     public void ClearStage()
@@ -63,11 +66,13 @@ public class StageController : MonoBehaviour
 
     public void Revive()
     {
+        curtainUI.Show(1f);
         entries[StageEventType.Revive]?.Invoke();
     }
 
     public void StageOver()
     {
+        curtainUI.Close();
         entries[StageEventType.Over]?.Invoke();
     }
 

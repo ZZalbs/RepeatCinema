@@ -24,8 +24,9 @@ public class ReverseInputToken : TokenBase
     // Update is called once per frame
     public override float Timer => 0;
 
-    public override void Acquire()
+    public override void OnStartStage()
     {
+        if (stageController.CurrentStage % (6 - CurLevel) != 0) return;
         base.Acquire();
         inputController.RemoveAllPlayerBehaviour();
         playerBehaviourController.Behaviours.Remove(BehaviourType.LMove);
@@ -35,8 +36,9 @@ public class ReverseInputToken : TokenBase
         inputController.AddAllPlayerBehaviour();
     }
     
-    public override void OnDestroy()
+    public override void OnEndStage()
     {
+        if (stageController.CurrentStage % (6 - CurLevel) != 0) return;
         inputController.RemoveAllPlayerBehaviour();
         playerBehaviourController.Behaviours.Remove(BehaviourType.LMove);
         playerBehaviourController.Behaviours.Remove(BehaviourType.RMove);
