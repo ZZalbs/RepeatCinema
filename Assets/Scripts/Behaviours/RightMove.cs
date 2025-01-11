@@ -16,11 +16,19 @@ public class RightMove : IBehaviour
     public void OnPressed(InputAction.CallbackContext ctx)
     {
         controller.MoveDir += Vector2.right;
-        controller.isLookingRight = true;
+        controller.Animator.SetFloat("VelocityX", controller.MoveDir.x);
+        controller.SpriteRenderer.flipX = false;
     }
 
     public void OnReleased(InputAction.CallbackContext ctx)
     {
         controller.MoveDir -= Vector2.right;
+        controller.Animator.SetFloat("VelocityX", -controller.MoveDir.x);
+        controller.SpriteRenderer.flipX = true;
+    }
+
+    public void OnUpdate()
+    {
+
     }
 }

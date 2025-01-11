@@ -15,6 +15,7 @@ public class Jump : IBehaviour
     {
         if (controller.CurJumpCount < controller.MaxJumpCount)
         {
+            controller.Animator.SetTrigger("Jump");
             controller.CurJumpCount++;
             controller.Body.velocity = new Vector2(controller.Body.velocity.x, 0);
             controller.Body.AddForce(Vector2.up * controller.JumpForce, ForceMode2D.Impulse);
@@ -24,5 +25,10 @@ public class Jump : IBehaviour
     public void OnReleased(InputAction.CallbackContext ctx)
     {
         
+    }
+
+    public void OnUpdate()
+    {
+        controller.Animator.SetFloat("VelocityY", controller.Body.velocity.y);
     }
 }
