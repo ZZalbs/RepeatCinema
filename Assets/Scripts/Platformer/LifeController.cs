@@ -60,6 +60,7 @@ public class LifeController : MonoBehaviour
                     onHit?.Invoke();
                     onHitUI?.Invoke();
                     if (curLife <= 0) Die();
+                    else SetImmuneForTime(2f);
                 }
                 break;
             case DamageType.Critical:
@@ -67,10 +68,8 @@ public class LifeController : MonoBehaviour
                 {
                     if(CurShield > 0)
                     {
-                        curLife--;
                         CurShield--;
-                        if (curLife <= 0) Die();
-                        else SetImmuneForTime(2f);
+                        OnDamaged(DamageType.Normal);
                     }
                     else
                     {
@@ -81,6 +80,7 @@ public class LifeController : MonoBehaviour
                 break;
             case DamageType.Death:
                 curLife = 0;
+                Die();
                 break;
         }
     }
@@ -88,6 +88,7 @@ public class LifeController : MonoBehaviour
     public void Die()
     {
         onDead?.Invoke();
+        Debug.Log("Player Died!");
     }
 
     public void SetImmune(bool value)
