@@ -4,11 +4,12 @@ using UnityEngine;
 public class ResultUI : MonoBehaviour
 {
     [SerializeField] private List<TokenUI> tokenUIs;
-
+    private StageController stageController;
     private TokenProvider tokenProvider;
 
     public void Init(StageController stageController, TokenController tokenController, TokenProvider tokenProvider)
     {
+        this.stageController = stageController;
         stageController.AddStageEventListener(StageEventType.Clear, Show);
 
         this.tokenProvider = tokenProvider;
@@ -17,6 +18,8 @@ public class ResultUI : MonoBehaviour
         {
             token.Init(tokenController);
         }
+
+        Hide();
     }
 
     public void Show()

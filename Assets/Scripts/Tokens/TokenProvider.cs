@@ -14,6 +14,8 @@ public class TokenProvider : MonoBehaviour
     private void Awake()
     {
         random = new();
+        positiveTokenPool = new();
+        negativeTokenPool = new();
     }
 
 
@@ -22,9 +24,20 @@ public class TokenProvider : MonoBehaviour
         positiveTokenPool.Add(0, new FlashToken(tokenController, "점멸", "Shift 키를 눌러 바라보는 방향으로 최대 <Level>회 연속으로 짧은 거리를 점멸합니다.\r\n점멸 횟수를 모두 사용하면 착지 후 3 - 0.67 * (<Level> - 1) 초만큼의 쿨타임 필요합니다.", Rarity.Common, true, 3));
         positiveTokenPool.Add(1, new BonusJumpToken(tokenController, "점멸", "Shift 키를 눌러 바라보는 방향으로 최대 <Level>회 연속으로 짧은 거리를 점멸합니다.\r\n점멸 횟수를 모두 사용하면 착지 후 3 - 0.67 * (<Level> - 1) 초만큼의 쿨타임 필요합니다.", Rarity.Common, true, 3));
         positiveTokenPool.Add(2, new MaxLifePlusToken(tokenController, "점멸", "Shift 키를 눌러 바라보는 방향으로 최대 <Level>회 연속으로 짧은 거리를 점멸합니다.\r\n점멸 횟수를 모두 사용하면 착지 후 3 - 0.67 * (<Level> - 1) 초만큼의 쿨타임 필요합니다.", Rarity.Common, true, 3));
-
-        positiveTokenPool.Add(3, new SpeedDownToken(tokenController, "점멸", "Shift 키를 눌러 바라보는 방향으로 최대 <Level>회 연속으로 짧은 거리를 점멸합니다.\r\n점멸 횟수를 모두 사용하면 착지 후 3 - 0.67 * (<Level> - 1) 초만큼의 쿨타임 필요합니다.", Rarity.Common, true, 3));
-        positiveTokenPool.Add(4, new RemovePosToken(tokenController, "점멸", "Shift 키를 눌러 바라보는 방향으로 최대 <Level>회 연속으로 짧은 거리를 점멸합니다.\r\n점멸 횟수를 모두 사용하면 착지 후 3 - 0.67 * (<Level> - 1) 초만큼의 쿨타임 필요합니다.", Rarity.Common, false, 3));
+        negativeTokenPool.Add(0, new SpeedDownToken(tokenController, "점멸", "Shift 키를 눌러 바라보는 방향으로 최대 <Level>회 연속으로 짧은 거리를 점멸합니다.\r\n점멸 횟수를 모두 사용하면 착지 후 3 - 0.67 * (<Level> - 1) 초만큼의 쿨타임 필요합니다.", Rarity.Common, false, 3));
+        negativeTokenPool.Add(1, new RemovePosToken(tokenController, "점멸", "Shift 키를 눌러 바라보는 방향으로 최대 <Level>회 연속으로 짧은 거리를 점멸합니다.\r\n점멸 횟수를 모두 사용하면 착지 후 3 - 0.67 * (<Level> - 1) 초만큼의 쿨타임 필요합니다.", Rarity.Common, false, 3));
+        negativeTokenPool.Add(2, new AlwaysCriticalToken(tokenController, "점멸", "Shift 키를 눌러 바라보는 방향으로 최대 <Level>회 연속으로 짧은 거리를 점멸합니다.\r\n점멸 횟수를 모두 사용하면 착지 후 3 - 0.67 * (<Level> - 1) 초만큼의 쿨타임 필요합니다.", Rarity.Common, false, 3));
+        negativeTokenPool.Add(3, new PlaceSpikeToken(tokenController, "점멸", "Shift 키를 눌러 바라보는 방향으로 최대 <Level>회 연속으로 짧은 거리를 점멸합니다.\r\n점멸 횟수를 모두 사용하면 착지 후 3 - 0.67 * (<Level> - 1) 초만큼의 쿨타임 필요합니다.", Rarity.Common, false, 3));
+        
+        for(int i=0;i<positiveTokenPool.Count;i++)
+        {
+            positiveTokenPool[i].setID(i);
+            Debug.Log(i);
+        }
+        for (int i = 0; i < negativeTokenPool.Count; i++)
+        {
+            negativeTokenPool[i].setID(i);
+        }
     }
 
     private Rarity GetRandomRarity()
@@ -33,7 +46,7 @@ public class TokenProvider : MonoBehaviour
 
         Rarity rarity = prob switch
         {
-            < 60 => Rarity.Common,
+            < 60 => Rarity.Common, // 확률조작용. 60 90 99 100
             < 90 => Rarity.Rare,
             < 99 => Rarity.Epic,
             < 100 => Rarity.Legendary,

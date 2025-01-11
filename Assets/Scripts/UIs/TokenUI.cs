@@ -24,6 +24,7 @@ public class TokenUI : MonoBehaviour
 
     public void Updated(TokenPair tokens)
     {
+        token = tokens;
         p_Icon.sprite = tokens.PositiveToken.SourceImage;
         p_Name.text = tokens.PositiveToken.Name;
         p_Level.text = $"Lv. {tokens.PositiveToken.CurLevel + 1}";
@@ -48,7 +49,7 @@ public class TokenUI : MonoBehaviour
 
     public void Hide()
     {
-        gameObject.SetActive(true);
+        gameObject.SetActive(false);
     }
 
     public void TransitionWithCurtain()
