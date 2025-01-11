@@ -116,6 +116,15 @@ public class TokenController : MonoBehaviour
         uiController.SetNegToken(token);
     }
 
+    public int GetGhostLevel()
+    {
+        if (PositiveTokens.ContainsKey(2))
+        {
+            return PositiveTokens[2].CurLevel;
+        }
+        else return 0;
+    }
+
     public void DestroyOnePositiveToken()
     {
         int randomIndex = PositiveTokens.Keys.ToList()[Random.Range(0, PositiveTokens.Count)];
