@@ -8,8 +8,8 @@ public class TokenController : MonoBehaviour
     public LifeController LifeController;
     public InputController InputController;
 
-    private Dictionary<int, TokenBase> PositiveTokens;
-    private Dictionary<int, TokenBase> NegativeTokens;
+    public Dictionary<int, TokenBase> PositiveTokens;
+    public Dictionary<int, TokenBase> NegativeTokens;
 
     private void Awake()
     {
@@ -48,23 +48,23 @@ public class TokenController : MonoBehaviour
         }
     }
 
-    public void SelectToken(TokenBase newToken)
+    public void SelectToken(TokenPair newTokens)
     {
-        if(!PositiveTokens.ContainsKey(newToken.Id))
+        if(!PositiveTokens.ContainsKey(newTokens.PositiveToken.Id))
         {
-            PositiveTokens.Add(newToken.Id, newToken);
-            newToken.Acquire();
+            PositiveTokens.Add(newTokens.PositiveToken.Id, newTokens.PositiveToken);
+            newTokens.PositiveToken.Acquire();
         }
 
-        PositiveTokens[newToken.Id].LevelUp();
+        PositiveTokens[newTokens.PositiveToken.Id].LevelUp();
 
-        if (!NegativeTokens.ContainsKey(newToken.Id))
+        if (!NegativeTokens.ContainsKey(newTokens.NegativeToken.Id))
         {
-            NegativeTokens.Add(newToken.Id, newToken);
-            newToken.Acquire();
+            NegativeTokens.Add(newTokens.NegativeToken.Id, newTokens.NegativeToken);
+            newTokens.NegativeToken.Acquire();
         }
 
-        NegativeTokens[newToken.Id].LevelUp();
+        NegativeTokens[newTokens.NegativeToken.Id].LevelUp();
     }
 
 
