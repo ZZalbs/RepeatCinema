@@ -1,5 +1,6 @@
 using LitMotion;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LifeController : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class LifeController : MonoBehaviour
             else if (curLife <= 0)
             {
                 curLife = 0;
-                OnDead();
+                Die();
             }
         }
     }
@@ -30,6 +31,9 @@ public class LifeController : MonoBehaviour
     [SerializeField] private bool isImmune;
     private float remainingImmuneTimer;
     private MotionHandle immuneMotion;
+    
+    public event UnityAction onHit;
+    public event UnityAction onDead;
 
     private void Awake()
     {
@@ -52,7 +56,8 @@ public class LifeController : MonoBehaviour
                 if(!isImmune)
                 {
                     curLife--;
-                    SetImmuneForTime(2f);
+                    onHit?.Invoke();
+                    if (curLife <= 0) Die();
                 }
                 break;
             case DamageType.Critical:
@@ -62,11 +67,13 @@ public class LifeController : MonoBehaviour
                     {
                         curLife--;
                         CurShield--;
-                        SetImmuneForTime(2f);
+                        if (curLife <= 0) Die();
+                        else SetImmuneForTime(2f);
                     }
                     else
                     {
                         curLife = 0;
+                        Die();
                     }
                 }
                 break;
@@ -76,9 +83,9 @@ public class LifeController : MonoBehaviour
         }
     }
 
-    public void OnDead()
+    public void Die()
     {
-
+        onDead?.Invoke();
     }
 
     public void SetImmune(bool value)
