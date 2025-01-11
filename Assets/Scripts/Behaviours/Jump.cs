@@ -13,6 +13,7 @@ public class Jump : IBehaviour
 
     public void OnPressed(InputAction.CallbackContext ctx)
     {
+        if (!controller.IsMovable) return;
         if (controller.CurJumpCount < controller.MaxJumpCount)
         {
             controller.Animator.SetTrigger("Jump");

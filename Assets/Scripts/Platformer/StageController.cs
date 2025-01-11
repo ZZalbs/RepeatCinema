@@ -65,7 +65,7 @@ public class StageController : MonoBehaviour
     public void ClearStage()
     {
         entries[StageEventType.Clear]?.Invoke();
-        player.SetMovable(true);
+        player.SetMovable(false);
     }
 
     public void Revive()

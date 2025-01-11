@@ -18,6 +18,8 @@ public class BehaviourController : MonoBehaviour
 
     private bool movable = false;
 
+    public bool IsMovable => movable;
+
     public void Init()
     {
         // �ٲ���������
@@ -33,7 +35,6 @@ public class BehaviourController : MonoBehaviour
 
     private void Update()
     {
-        if (!movable) return;
         foreach (var behaviour in Behaviours)
         {
             behaviour.Value.OnUpdate();
@@ -43,6 +44,7 @@ public class BehaviourController : MonoBehaviour
     public void SetMovable(bool movable)
     {
         this.movable = movable;
+        if (!movable) MoveDir = Vector2.zero;
     }
 
     public void StageAwake()
