@@ -47,4 +47,8 @@ public abstract class TokenBase
     public virtual void OnStartStage()
     {
     }
+    
+    public virtual void OnEndStage()
+    {
+    }
 }

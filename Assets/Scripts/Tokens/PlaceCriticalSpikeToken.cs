@@ -25,7 +25,7 @@ public class PlaceCriticalSpikeToken : TokenBase
         spikes = StageManager.Instance.SpawnOnRandomTile(spikePrefab, CurLevel);
     }
     
-    public override void OnDestroy()
+    public override void OnEndStage()
     {
         foreach (var spike in spikes)
         {
