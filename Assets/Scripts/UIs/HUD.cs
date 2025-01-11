@@ -22,8 +22,6 @@ public class HUD : MonoBehaviour
     public void Init(TokenController controller)
     {
         this.controller = controller;
-        UpdateHUD();
-        Debug.Log("init");
     }
 
     public void UpdateHUD()
@@ -46,7 +44,6 @@ public class HUD : MonoBehaviour
                 hearts[curindex].sprite = emptyHeart;
             hearts[curindex].gameObject.SetActive(true);
         }
-        Debug.Log(controller.LifeController.MaxLife);
         for(;curindex<hearts.Length;curindex++)
         {
             hearts[curindex].gameObject.SetActive(false);

@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class BehaviourController : MonoBehaviour
 {
+    [SerializeField] Vector2 playerStartPosition;
     public Rigidbody2D Body;
     public float Speed;
     public int CurJumpCount;
@@ -32,6 +33,7 @@ public class BehaviourController : MonoBehaviour
     {
         CurJumpCount = 0;
         MoveDir = Vector2.zero;
+        Body.position = playerStartPosition;
     }
 
     private void FixedUpdate()
@@ -43,7 +45,7 @@ public class BehaviourController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Ground")
             && CurJumpCount > 0
-            && Body.velocity.y <= 0)
+            && Body.velocity.y <= -0.01f)
         {
             CurJumpCount = 0;
         }

@@ -25,6 +25,11 @@ public abstract class TokenBase
         MaxLevel = maxLevel;
     }
 
+    public void setID(int id)
+    {
+        Id = id;
+    }
+
     public void LevelUp()
     {
         CurLevel++;

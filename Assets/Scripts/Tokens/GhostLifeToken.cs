@@ -11,6 +11,8 @@ public class GhostLifeToken : TokenBase
     {
     }
 
+
+
     public override float Timer => 0;
     
     public override void Acquire()
