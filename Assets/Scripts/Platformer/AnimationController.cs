@@ -11,6 +11,11 @@ public class AnimationController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    public void SetFlip(bool IsLeft)
+    {
+        spriteRenderer.flipX = IsLeft;
+    }    
+
     public void SetVelocityVector(Vector2 vel)
     {
         anim.SetFloat("VelocityX", vel.x);

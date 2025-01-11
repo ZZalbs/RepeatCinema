@@ -14,6 +14,7 @@ public class RightMove : IBehaviour
 
     public void OnPressed()
     {
+        controller.FlipAnim(false);
         controller.MoveDir += Vector2.right;
         controller.isLookingRight = true;
     }

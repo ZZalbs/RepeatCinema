@@ -46,6 +46,11 @@ public class BehaviourController : MonoBehaviour
     {
         anim.SetJumpTrigger();
     }
+    
+    public void FlipAnim(bool IsFlip)
+    {
+        anim.SetFlip(IsFlip);
+    }
 
     private void OnCollisionStay2D(Collision2D collision)
     {

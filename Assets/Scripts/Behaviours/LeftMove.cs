@@ -16,6 +16,7 @@ public class LeftMove : IBehaviour
 
     public void OnPressed()
     {
+        controller.FlipAnim(true);
         controller.MoveDir += Vector2.left;
         controller.isLookingRight = false;
     }
