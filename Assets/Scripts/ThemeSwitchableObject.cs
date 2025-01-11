@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -23,11 +24,33 @@ public class ThemeSwitchableObject : MonoBehaviour
     {
         if (!isAnimated)
         {
-            StageManager.Instance.ThemeSwitched += theme => spriteRenderer.sprite = sprites[(int)theme];
+            StageManager.Instance.ThemeSwitched += ChangeSprite;
         }
         else
         {
-            StageManager.Instance.ThemeSwitched += theme => animator.runtimeAnimatorController = anims[(int)theme];
+            StageManager.Instance.ThemeSwitched += ChangeAnimator;
         }
+    }
+
+    private void OnDestroy()
+    {
+        if (!isAnimated)
+        {
+            StageManager.Instance.ThemeSwitched -= ChangeSprite;
+        }
+        else
+        {
+            StageManager.Instance.ThemeSwitched -= ChangeAnimator;
+        }
+    }
+
+    private void ChangeSprite(Theme theme)
+    {
+        spriteRenderer.sprite = sprites[(int)theme];
+    }
+    
+    private void ChangeAnimator(Theme theme)
+    {
+        animator.runtimeAnimatorController = anims[(int)theme];
     }
 }

@@ -13,6 +13,7 @@ public class InverseRightMove : IBehaviour
     }
     public void OnPressed(InputAction.CallbackContext ctx)
     {
+        if (!controller.IsMovable) return;
         controller.MoveDir += Vector2.left;
         controller.Animator.SetFloat("VelocityX", -controller.MoveDir.x);
         controller.SpriteRenderer.flipX = false;
@@ -20,6 +21,7 @@ public class InverseRightMove : IBehaviour
 
     public void OnReleased(InputAction.CallbackContext ctx)
     {
+        if (!controller.IsMovable) return;
         controller.MoveDir -= Vector2.left;
         controller.Animator.SetFloat("VelocityX", controller.MoveDir.x);
         controller.SpriteRenderer.flipX = false;

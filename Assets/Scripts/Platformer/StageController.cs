@@ -59,23 +59,27 @@ public class StageController : MonoBehaviour
     {
         entries[StageEventType.Start]?.Invoke();
         curtainUI.Open(); 
+        player.SetMovable(true);
     }
 
     public void ClearStage()
     {
         entries[StageEventType.Clear]?.Invoke();
+        player.SetMovable(false);
     }
 
     public void Revive()
     {
         curtainUI.Show(1f);
         entries[StageEventType.Revive]?.Invoke();
+        player.SetMovable(true);
     }
 
     public void StageOver()
     {
         curtainUI.Close();
         entries[StageEventType.Over]?.Invoke();
+        player.SetMovable(false);
     }
 
     public void ResetGame()

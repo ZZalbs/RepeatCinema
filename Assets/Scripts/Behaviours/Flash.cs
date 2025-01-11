@@ -18,6 +18,7 @@ public class Flash : IBehaviour
 
     public void OnPressed(InputAction.CallbackContext ctx)
     {
+        if (!controller.IsMovable) return;
         if (token.IsAble)
         {
             token.CountFlash();

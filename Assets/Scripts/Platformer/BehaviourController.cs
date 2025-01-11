@@ -16,9 +16,13 @@ public class BehaviourController : MonoBehaviour
 
     public Dictionary<BehaviourType, IBehaviour> Behaviours;
 
+    private bool movable = false;
+
+    public bool IsMovable => movable;
+
     public void Init()
     {
-        // ¹Ù²ÙÁö¸¶¼¼¿ä
+        // ï¿½Ù²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         Body = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
@@ -35,6 +39,12 @@ public class BehaviourController : MonoBehaviour
         {
             behaviour.Value.OnUpdate();
         }
+    }
+
+    public void SetMovable(bool movable)
+    {
+        this.movable = movable;
+        if (!movable) MoveDir = Vector2.zero;
     }
 
     public void StageAwake()
