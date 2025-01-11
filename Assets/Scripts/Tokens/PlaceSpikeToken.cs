@@ -27,9 +27,11 @@ public class PlaceSpikeToken : TokenBase
     
     public override void OnEndStage()
     {
-        for (int i = 0; i < spikes.Count; i++)
+        for (int i = spikes.Count - 1; i >= 0 ; i--)
         {
-            GameObject.Destroy(spikes[i].gameObject);   
+            var toDestroy = spikes[i].gameObject;
+            spikes.RemoveAt(i);
+            GameObject.Destroy(toDestroy);   
         }
     }
 }

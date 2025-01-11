@@ -92,11 +92,29 @@ public class TokenController : MonoBehaviour
         }
     }
 
-
-    public void SendImage(Sprite posIcon, Sprite negIcon)
+    public bool HasToken(TokenBase newToken)
     {
-        uiController.SetIconHolder(posIcon, negIcon);
-    }    
+        if (newToken.IsPositive)
+        {
+            if (PositiveTokens.ContainsKey(newToken.Id))
+                return true;
+        }
+        else
+        {
+            if (NegativeTokens.ContainsKey(newToken.Id))
+                return true;
+        }
+        return false;
+    }
+
+    public void SendPosImage(Sprite posIcon)
+    {
+        uiController.SetPosIcon(posIcon);
+    }
+    public void SendNegImage(Sprite negIcon)
+    {
+        uiController.SetNegIcon(negIcon);
+    }
 
     public void DestroyOnePositiveToken()
     {

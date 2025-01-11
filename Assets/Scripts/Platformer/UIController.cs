@@ -22,9 +22,12 @@ public class UIController : MonoBehaviour
         sc.AddStageEventListener(StageEventType.Start, curtain.Open);
     }
 
-    public void SetIconHolder(Sprite posIcon,Sprite negIcon)
+    public void SetPosIcon(Sprite posIcon)
     {
         hud.UpdatePositiveTokens(posIcon);
+    }
+    public void SetNegIcon(Sprite negIcon)
+    {
         hud.UpdateNegativeTokens(negIcon);
     }
 

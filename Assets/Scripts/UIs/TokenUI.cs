@@ -38,7 +38,11 @@ public class TokenUI : MonoBehaviour
 
     public void Select()
     {
-        SendIconImage();
+        if (!controller.HasToken(token.PositiveToken))
+            controller.SendPosImage(p_Icon.sprite);
+        if (!controller.HasToken(token.NegativeToken))
+            controller.SendNegImage(n_Icon.sprite);
+
         controller.SelectToken(token.PositiveToken);
         controller.SelectToken(token.NegativeToken);
     }
@@ -53,10 +57,6 @@ public class TokenUI : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void SendIconImage()
-    {
-        controller.SendImage(p_Icon.sprite,n_Icon.sprite);
-    }
 
     
 } 
