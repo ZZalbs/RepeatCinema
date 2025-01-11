@@ -22,13 +22,13 @@ public class UIController : MonoBehaviour
         sc.AddStageEventListener(StageEventType.Start, curtain.Open);
     }
 
-    public void SetPosIcon(Sprite posIcon)
+    public void SetPosToken(TokenBase token)
     {
-        hud.UpdatePositiveTokens(posIcon);
+        hud.UpdatePositiveTokens(token);
     }
-    public void SetNegIcon(Sprite negIcon)
+    public void SetNegToken(TokenBase token)
     {
-        hud.UpdateNegativeTokens(negIcon);
+        hud.UpdateNegativeTokens(token);
     }
 
     public void ShowCurtain()
