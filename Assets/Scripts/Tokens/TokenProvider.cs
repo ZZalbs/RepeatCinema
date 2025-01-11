@@ -46,10 +46,10 @@ public class TokenProvider : MonoBehaviour
 
         Rarity rarity = prob switch
         {
-            < 60 => Rarity.Common, // 확률조작용. 60 90 99 100
-            < 90 => Rarity.Rare,
-            < 99 => Rarity.Epic,
-            < 100 => Rarity.Legendary,
+            < 160 => Rarity.Common, // 확률조작용. 60 90 99 100
+            < 190 => Rarity.Rare,
+            < 199 => Rarity.Epic,
+            < 1100 => Rarity.Legendary,
             _ => Rarity.Common
         };
 
