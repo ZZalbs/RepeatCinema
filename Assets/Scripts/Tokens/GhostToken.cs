@@ -22,14 +22,14 @@ public class GhostToken : TokenBase
 
     public override float Timer => 0;
     
-    public override void Acquire()
+    public override void OnStartStage()
     {
         base.OnStartStage();
         ghost = Object.Instantiate(ghostMovementPrefab, ghostPosition, Quaternion.identity);
         ghost.SetTarget(target);
     }
     
-    public override void OnDestroy()
+    public override void OnEndStage()
     {
         Object.Destroy(ghost.gameObject);
     }
