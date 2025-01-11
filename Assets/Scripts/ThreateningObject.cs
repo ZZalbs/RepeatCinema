@@ -5,12 +5,12 @@ public class ThreateningObject : MonoBehaviour
     [SerializeField] private DamageType damageType;
     private LifeController playerLife;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if(collider.CompareTag("Player"))
         {
             if(!playerLife)
-                playerLife = collision.gameObject.GetComponent<LifeController>();
+                playerLife = collider.GetComponent<LifeController>();
 
             playerLife.OnDamaged(damageType);
         }

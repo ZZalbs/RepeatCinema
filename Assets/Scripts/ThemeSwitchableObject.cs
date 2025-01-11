@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class ThemeSwitchableObject : MonoBehaviour
@@ -7,8 +8,10 @@ public class ThemeSwitchableObject : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
-    private Dictionary<Theme, Sprite> sprites;
-    private Dictionary<Theme, RuntimeAnimatorController> anims;
+    [SerializeField] private List<Sprite> sprites;
+    [SerializeField] private List<RuntimeAnimatorController> anims;
+
+    [SerializeField] private bool isAnimated;
 
     private void Awake()
     {
@@ -16,16 +19,15 @@ public class ThemeSwitchableObject : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void Init()
+    private void Start()
     {
-        if (spriteRenderer && sprites != null)
+        if (!isAnimated)
         {
-            StageManager.Instance.ThemeSwitched += theme => spriteRenderer.sprite = sprites[theme];
+            StageManager.Instance.ThemeSwitched += theme => spriteRenderer.sprite = sprites[(int)theme];
         }
-
-        if (animator && anims != null)
+        else
         {
-            StageManager.Instance.ThemeSwitched += theme => animator.runtimeAnimatorController = anims[theme];
+            StageManager.Instance.ThemeSwitched += theme => animator.runtimeAnimatorController = anims[(int)theme];
         }
     }
 }

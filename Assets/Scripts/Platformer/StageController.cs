@@ -44,6 +44,8 @@ public class StageController : MonoBehaviour
 
     public void AwakeStage()
     {
+        StageManager.Instance.RollTheme();
+
         player.StageAwake();
 
         entries[StageEventType.Awake]?.Invoke();
