@@ -37,8 +37,6 @@ public class StageController : MonoBehaviour
 
     public void InitStage(bool isClear)
     {
-        // 
-        // 토큰 발동은 awake에서
 
         if (isClear) currentStage++;
         AwakeStage();

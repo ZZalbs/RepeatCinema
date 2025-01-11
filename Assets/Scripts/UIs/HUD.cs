@@ -5,10 +5,10 @@ using System.Collections.Generic;
 
 public class HUD : MonoBehaviour
 {
-    [SerializeField] private Transform lifeTransform;
+    //[SerializeField] private Transform lifeTransform;
     [SerializeField] private TextMeshProUGUI stageLevel;
-    [SerializeField] private Transform p_TokenTransform;
-    [SerializeField] private Transform n_TokenTransform;
+    //[SerializeField] private Transform p_TokenTransform;
+    //[SerializeField] private Transform n_TokenTransform;
     [SerializeField] private Image[] hearts;
     [SerializeField] private int curHeartIndex;
     [SerializeField] private Sprite fullHeart;
@@ -40,7 +40,7 @@ public class HUD : MonoBehaviour
 
     public void UpdateLife()
     {
-        for(curHeartIndex=0; curHeartIndex<controller.LifeController.MaxLife;curHeartIndex++)
+        for(curHeartIndex=0; curHeartIndex<controller.LifeController.MaxLife+controller.LifeController.MaxShield;curHeartIndex++)
         {
             if (curHeartIndex > hearts.Length)
                 continue;

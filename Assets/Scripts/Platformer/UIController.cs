@@ -15,7 +15,7 @@ public class UIController : MonoBehaviour
         result.Init(sc, tc, tp);
         hud.Init(tc);
 
-        result = Instantiate(result);
+        //result = Instantiate(result);
         //curtain = Instantiate(curtain);
 
         sc.AddStageEventListener(StageEventType.Awake, curtain.Close);
