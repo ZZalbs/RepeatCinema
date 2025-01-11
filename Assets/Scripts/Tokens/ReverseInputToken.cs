@@ -8,13 +8,17 @@ public class ReverseInputToken : TokenBase
     private InputController inputController;
     private BehaviourController playerBehaviourController;
 
-    private RightMove rightMove;
-    private LeftMove leftMove;
+    private InverseRightMove inverseRightMove;
+    private InverseLeftMove inverseLeftMove;
     
     public ReverseInputToken(TokenController controller, string name, string description, Rarity rarity, bool isPositive, int maxLevel) : base(controller, name, description, rarity, isPositive, maxLevel)
     {
         stageController = controller.StageController;
         inputController = controller.InputController;
+        playerBehaviourController = controller.PlayerBehaviourController;
+
+        inverseRightMove = new InverseRightMove(playerBehaviourController);
+        inverseLeftMove = new InverseLeftMove(playerBehaviourController);
     }
 
     // Update is called once per frame
@@ -22,7 +26,23 @@ public class ReverseInputToken : TokenBase
 
     public override void Acquire()
     {
+        base.Acquire();
         inputController.RemoveAllPlayerBehaviour();
+        playerBehaviourController.Behaviours.Remove(BehaviourType.LMove);
+        playerBehaviourController.Behaviours.Remove(BehaviourType.RMove);
+        playerBehaviourController.Behaviours.Add(BehaviourType.LMove, inverseLeftMove);
+        playerBehaviourController.Behaviours.Add(BehaviourType.RMove, inverseRightMove);
+        inputController.AddAllPlayerBehaviour();
+    }
+    
+    public override void OnDestroy()
+    {
+        inputController.RemoveAllPlayerBehaviour();
+        playerBehaviourController.Behaviours.Remove(BehaviourType.LMove);
+        playerBehaviourController.Behaviours.Remove(BehaviourType.RMove);
+        playerBehaviourController.Behaviours.Add(BehaviourType.LMove, new LeftMove(playerBehaviourController));
+        playerBehaviourController.Behaviours.Add(BehaviourType.RMove, new RightMove(playerBehaviourController));
+        inputController.AddAllPlayerBehaviour();
     }
 
 }

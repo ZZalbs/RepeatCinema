@@ -12,25 +12,25 @@ public class BehaviourController : MonoBehaviour
     public float JumpForce;
     public bool isLookingRight;
 
-    public List<IBehaviour> Behaviours;
+    public Dictionary<BehaviourType, IBehaviour> Behaviours;
     private AnimationController anim;
 
-    private void Awake()
+    public void Init()
     {
         Body = GetComponent<Rigidbody2D>();
 
         Behaviours = new();
 
-        Behaviours.Add(new RightMove(this));
-        Behaviours.Add(new LeftMove(this));
-        Behaviours.Add(new Jump(this));
+        Behaviours.Add(BehaviourType.RMove, new RightMove(this));
+        Behaviours.Add(BehaviourType.LMove, new LeftMove(this));
+        Behaviours.Add(BehaviourType.Jump, new Jump(this));
 
         StageController stageController = GetComponent<StageController>();
-        stageController.AddStageEventListener(StageEventType.Awake, Init);
+        stageController.AddStageEventListener(StageEventType.Awake, StageAwake);
         anim = GetComponent<AnimationController>();
     }
 
-    public void Init()
+    private void StageAwake()
     {
         CurJumpCount = 0;
         MoveDir = Vector2.zero;

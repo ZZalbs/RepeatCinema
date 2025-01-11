@@ -52,21 +52,26 @@ public class TokenController : MonoBehaviour
 
     public void SelectToken(TokenBase newToken)
     {
-        if(!PositiveTokens.ContainsKey(newToken.Id))
+        if (newToken.IsPositive)
         {
-            PositiveTokens.Add(newToken.Id, newToken);
-            newToken.Acquire();
+            if (!PositiveTokens.ContainsKey(newToken.Id))
+            {
+                PositiveTokens.Add(newToken.Id, newToken);
+                newToken.Acquire();
+            }
+
+            PositiveTokens[newToken.Id].LevelUp();
         }
-
-        PositiveTokens[newToken.Id].LevelUp();
-
-        if (!NegativeTokens.ContainsKey(newToken.Id))
+        else
         {
-            NegativeTokens.Add(newToken.Id, newToken);
-            newToken.Acquire();
-        }
+            if (!NegativeTokens.ContainsKey(newToken.Id))
+            {
+                NegativeTokens.Add(newToken.Id, newToken);
+                newToken.Acquire();
+            }
 
-        NegativeTokens[newToken.Id].LevelUp();
+            NegativeTokens[newToken.Id].LevelUp();
+        }
     }
 
 

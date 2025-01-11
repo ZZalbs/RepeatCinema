@@ -14,7 +14,7 @@ public class InputController : MonoBehaviour
 
     private BehaviourController characterController;
 
-    private void Start()
+    private void Awake()
     {
         playerEntries = new();
         uiEntries = new();
@@ -31,36 +31,35 @@ public class InputController : MonoBehaviour
         uiActions = actions.UI;
 
         characterController = GetComponent<BehaviourController>();
+        characterController.Init();
 
         // register callback
-        foreach(var behaviour in characterController.Behaviours)
-        {
-            AddPlayerBehaviour(behaviour);
-        }
+        AddAllPlayerBehaviour();
     }
 
     public void AddPlayerBehaviour(IBehaviour callbackBehaviour)
     {
-        if (!playerEntries.TryGetValue(callbackBehaviour.Type, out InputAction action)) return;
 
-
-        action.performed += ctx =>
-        {
-            callbackBehaviour.OnPressed();
-        };
-        action.canceled += ctx => callbackBehaviour.OnReleased();
-    }
-    
-    public void AddAllPlayerBehaviour(IBehaviour callbackBehaviour)
-    {
-        foreach(var behaviour in characterController.Behaviours)
-        {
-            AddPlayerBehaviour(behaviour);
-        }
+        playerEntries[callbackBehaviour.Type].performed += callbackBehaviour.OnPressed;
+        playerEntries[callbackBehaviour.Type].canceled += callbackBehaviour.OnReleased;
     }
     
     public void RemoveAllPlayerBehaviour()
     {
-        playerEntries.Clear();
+        foreach(var behaviour in characterController.Behaviours)
+        {
+            playerEntries[behaviour.Value.Type].performed -= behaviour.Value.OnPressed;
+            playerEntries[behaviour.Value.Type].canceled -= behaviour.Value.OnReleased;
+        }
     }
+    
+    public void AddAllPlayerBehaviour()
+    {
+        
+        foreach(var behaviour in characterController.Behaviours)
+        {
+            AddPlayerBehaviour(behaviour.Value);
+        }
+    }
+    
 }

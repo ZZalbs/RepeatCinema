@@ -388,7 +388,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 202183673}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e52642c307124626b71132176ff87cf, type: 3}
   m_Name: 
@@ -1059,7 +1059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Body: {fileID: 0}
-  Speed: 100
+  Speed: 1
   CurJumpCount: 0
   MaxJumpCount: 2
   MoveDir: {x: 0, y: 0}
@@ -1293,6 +1293,7 @@ MonoBehaviour:
   PlayerBehaviourController: {fileID: 0}
   LifeController: {fileID: 0}
   InputController: {fileID: 0}
+  StageController: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

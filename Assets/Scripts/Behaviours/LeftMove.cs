@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(BehaviourController))]
 public class LeftMove : IBehaviour
@@ -14,13 +15,14 @@ public class LeftMove : IBehaviour
         this.controller = controller;
     }
 
-    public void OnPressed()
+    public void OnPressed(InputAction.CallbackContext ctx)
     {
+        Debug.Log("LeftMove OnPressed");
         controller.MoveDir += Vector2.left;
         controller.isLookingRight = false;
     }
 
-    public void OnReleased()
+    public void OnReleased(InputAction.CallbackContext ctx)
     {
         controller.MoveDir -= Vector2.left;
     }

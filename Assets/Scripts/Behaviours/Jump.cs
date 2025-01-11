@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Jump : IBehaviour
 {
@@ -10,7 +11,7 @@ public class Jump : IBehaviour
         this.controller = controller;
     }
 
-    public void OnPressed()
+    public void OnPressed(InputAction.CallbackContext ctx)
     {
         if (controller.CurJumpCount < controller.MaxJumpCount)
         {
@@ -21,7 +22,7 @@ public class Jump : IBehaviour
         }
     }
 
-    public void OnReleased()
+    public void OnReleased(InputAction.CallbackContext ctx)
     {
         
     }
