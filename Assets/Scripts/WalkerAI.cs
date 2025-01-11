@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-[RequireComponent(typeof(BehaviourController), typeof(ThreateningObject))]
+[RequireComponent(typeof(BehaviourController), typeof(ThreateningObject), typeof(Spawnable))]
 public class WalkerAI : MonoBehaviour
 {
     private BehaviourController behaviourController;
@@ -9,6 +9,7 @@ public class WalkerAI : MonoBehaviour
     private void Awake()
     {
         behaviourController = GetComponent<BehaviourController>();
+        behaviourController.Init();
         behaviourController.MoveDir = Vector2.right;
     }
 
