@@ -17,7 +17,10 @@ public class StageController : MonoBehaviour
     private void Awake()
     {
         player = GetComponent<BehaviourController>();
+    }
 
+    private void Start()
+    {
         InitStage(false);
     }
 

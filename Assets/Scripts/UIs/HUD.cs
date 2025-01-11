@@ -10,11 +10,15 @@ public class HUD : MonoBehaviour
     [SerializeField] private Transform p_TokenTransform;
     [SerializeField] private Transform n_TokenTransform;
     [SerializeField] private Image[] hearts;
-    [SerializeField] private int curindex;
+    [SerializeField] private int curHeartIndex;
     [SerializeField] private Sprite fullHeart;
     [SerializeField] private Sprite emptyHeart;
     [SerializeField] private Sprite ghostHeart;
     [SerializeField] private Text stage;
+    [SerializeField] private Image[] posIcons;
+    [SerializeField] private int curPosIndex;
+    [SerializeField] private Image[] negIcons;
+    [SerializeField] private int curNegIndex;
 
     private TokenController controller;
 
@@ -22,31 +26,33 @@ public class HUD : MonoBehaviour
     public void Init(TokenController controller)
     {
         this.controller = controller;
+        curPosIndex = 0;
+        curNegIndex = 0;
     }
 
     public void UpdateHUD()
     {
         UpdateLife();
         UpdateLevel();
-        UpdatePositiveTokens();
-        UpdateNegativeTokens();
     }
 
 
 
     public void UpdateLife()
     {
-        for(curindex=0; curindex<controller.LifeController.MaxLife;curindex++)
+        for(curHeartIndex=0; curHeartIndex<controller.LifeController.MaxLife;curHeartIndex++)
         {
-            if (curindex < controller.LifeController.CurLife)
-                hearts[curindex].sprite = fullHeart;
+            if (curHeartIndex > hearts.Length)
+                continue;
+            if (curHeartIndex < controller.LifeController.CurLife)
+                hearts[curHeartIndex].sprite = fullHeart;
             else
-                hearts[curindex].sprite = emptyHeart;
-            hearts[curindex].gameObject.SetActive(true);
+                hearts[curHeartIndex].sprite = emptyHeart;
+            hearts[curHeartIndex].gameObject.SetActive(true);
         }
-        for(;curindex<hearts.Length;curindex++)
+        for(;curHeartIndex<hearts.Length;curHeartIndex++)
         {
-            hearts[curindex].gameObject.SetActive(false);
+            hearts[curHeartIndex].gameObject.SetActive(false);
         }
         
     }
@@ -54,12 +60,28 @@ public class HUD : MonoBehaviour
     {
         
     }
-    public void UpdatePositiveTokens()
+    public void UpdatePositiveTokens(Sprite p)
     {
-
+        if (curPosIndex > posIcons.Length)
+            return;
+        posIcons[curPosIndex].sprite = p;
+        posIcons[curPosIndex].gameObject.SetActive(true);
+        curPosIndex++;
+        for (int i=curPosIndex; i < posIcons.Length; i++)
+        {
+            hearts[curPosIndex].gameObject.SetActive(false);
+        }
     }
-    public void UpdateNegativeTokens()
+    public void UpdateNegativeTokens(Sprite n)
     {
-
+        if (curNegIndex > negIcons.Length)
+            return;
+        negIcons[curNegIndex].sprite = n;
+        negIcons[curNegIndex].gameObject.SetActive(true);
+        curNegIndex++;
+        for (int i = curNegIndex; i < negIcons.Length; i++)
+        {
+            hearts[curNegIndex].gameObject.SetActive(false);
+        }
     }
 }

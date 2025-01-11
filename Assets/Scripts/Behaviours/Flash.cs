@@ -22,12 +22,17 @@ public class Flash : IBehaviour
         {
             token.CountFlash();
 
-            Vector2 flashVector = controller.isLookingRight ? Vector2.right : Vector2.left;
+            Vector2 flashVector = !controller.SpriteRenderer.flipX ? Vector2.right : Vector2.left;
             controller.transform.Translate(flashVector);
         }
     }
 
     public void OnReleased(InputAction.CallbackContext ctx)
+    {
+
+    }
+
+    public void OnUpdate()
     {
 
     }
