@@ -1,3 +1,4 @@
+using LitMotion;
 using UnityEngine;
 
 public class LifeController : MonoBehaviour
@@ -26,7 +27,9 @@ public class LifeController : MonoBehaviour
     public int MaxShield;
     public int CurShield;
 
-    public bool IsImmune;
+    [SerializeField] private bool isImmune;
+    private float remainingImmuneTimer;
+    private MotionHandle immuneMotion;
 
     private void Awake()
     {
@@ -38,7 +41,7 @@ public class LifeController : MonoBehaviour
     {
         CurLife = MaxLife;
         CurShield = MaxShield;
-        IsImmune = false;
+        isImmune = false;
     }
 
     public void OnDamaged(DamageType damageType)
@@ -46,20 +49,20 @@ public class LifeController : MonoBehaviour
         switch(damageType)
         {
             case DamageType.Normal:
-                if(!IsImmune)
+                if(!isImmune)
                 {
                     curLife--;
-                    Addimmunity(2f);
+                    SetImmuneForTime(2f);
                 }
                 break;
             case DamageType.Critical:
-                if(!IsImmune)
+                if(!isImmune)
                 {
                     if(CurShield > 0)
                     {
                         curLife--;
                         CurShield--;
-                        Addimmunity(2f);
+                        SetImmuneForTime(2f);
                     }
                     else
                     {
@@ -78,17 +81,26 @@ public class LifeController : MonoBehaviour
 
     }
 
-    public void Addimmunity(float time)
+    public void SetImmune(bool value)
     {
-        CancelInvoke(nameof(RemoveImmunity));
-
-        IsImmune = true;
-
-        Invoke(nameof(RemoveImmunity), time);
+        isImmune = value;
     }
 
-    public void RemoveImmunity()
+    public void SetImmuneForTime(float time)
     {
-        IsImmune = false;
+        if (isImmune)
+        {
+            if (time > remainingImmuneTimer)
+            {
+                immuneMotion.Cancel();
+            }
+            else
+            {
+                return;
+            }
+        }
+        isImmune = true;
+        immuneMotion = LMotion.Create(time, 0f, time).WithOnComplete(() => isImmune = false)
+            .Bind(t => remainingImmuneTimer = t);
     }
 }
