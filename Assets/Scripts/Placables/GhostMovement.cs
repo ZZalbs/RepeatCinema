@@ -9,12 +9,14 @@ public class GhostMovement : MonoBehaviour
     private bool isMoving = false;
     [SerializeField] private Transform target;
 
+    private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
     [SerializeField] private float speed = 1f;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
     
     public void SetMoving(bool move)
@@ -35,5 +37,6 @@ public class GhostMovement : MonoBehaviour
         var cos = Vector2.Dot(rb.velocity.normalized, direction.normalized);
         var force = direction * (speed * (1.5f - cos / 2) * direction.magnitude);
         rb.AddForce(force, ForceMode2D.Force);
+        spriteRenderer.flipX = rb.velocity.x < 0;
     }
 }
