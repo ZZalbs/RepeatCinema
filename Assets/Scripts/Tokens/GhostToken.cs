@@ -7,6 +7,7 @@ public class GhostToken : TokenBase
     private static GhostMovement ghostMovementPrefab;
     private static Vector2 ghostPosition;
     private GhostMovement ghost;
+    private Transform target;
 
     static GhostToken()
     {
@@ -16,6 +17,7 @@ public class GhostToken : TokenBase
     
     public GhostToken(TokenController controller, string name, string description, Rarity rarity, bool isPositive, int maxLevel) : base(controller, name, description, rarity, isPositive, maxLevel)
     {
+        target = controller.transform;
     }
 
     public override float Timer => 0;
@@ -24,6 +26,7 @@ public class GhostToken : TokenBase
     {
         base.OnStartStage();
         ghost = Object.Instantiate(ghostMovementPrefab, ghostPosition, Quaternion.identity);
+        ghost.SetTarget(target);
     }
     
     public override void OnDestroy()

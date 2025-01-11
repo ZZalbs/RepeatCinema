@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class GhostMovement : MonoBehaviour
 {
-    private bool isMoving = true;
+    private bool isMoving = false;
     [SerializeField] private Transform target;
 
     private Rigidbody2D rb;
@@ -20,6 +20,12 @@ public class GhostMovement : MonoBehaviour
     public void SetMoving(bool move)
     {
         isMoving = move;
+    }
+    
+    public void SetTarget(Transform newTarget)
+    {
+        target = newTarget;
+        isMoving = true;
     }
 
     private void FixedUpdate()
