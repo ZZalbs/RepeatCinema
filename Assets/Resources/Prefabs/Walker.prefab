@@ -174,13 +174,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c632d30635b23047bc3740b4752037f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStartPosition: {x: 0, y: 0}
+  Animator: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
   Body: {fileID: 0}
   Speed: 1
   CurJumpCount: 0
   MaxJumpCount: 0
   MoveDir: {x: 0, y: 0}
   JumpForce: 0
-  isLookingRight: 0
 --- !u!114 &4752109375620157507
 MonoBehaviour:
   m_ObjectHideFlags: 0

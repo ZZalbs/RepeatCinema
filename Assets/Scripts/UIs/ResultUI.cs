@@ -6,9 +6,12 @@ public class ResultUI : MonoBehaviour
     [SerializeField] private List<TokenUI> tokenUIs;
     private StageController stageController;
     private TokenProvider tokenProvider;
+    private Canvas canvas;
 
     public void Init(StageController stageController, TokenController tokenController, TokenProvider tokenProvider)
     {
+        canvas = GetComponent<Canvas>();
+
         this.stageController = stageController;
         stageController.AddStageEventListener(StageEventType.Clear, Show);
 
@@ -19,7 +22,12 @@ public class ResultUI : MonoBehaviour
             token.Init(tokenController);
         }
 
-        Hide();
+        
+    }
+
+    private void Start()
+    {
+        gameObject.SetActive(false);
     }
 
     public void Show()
@@ -37,6 +45,6 @@ public class ResultUI : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
-        stageController.ResetGame();
+        stageController.InitStage(true);
     }
 }
