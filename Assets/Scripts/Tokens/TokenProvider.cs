@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class TokenProvider : MonoBehaviour
 {
-    struct TokenPair
-    {
-        public int PositiveId;
-        public int NegativeId;
-    }
-
     private TokenController tokenController;
-
-    private List<TokenPair> tokenPairs;
 
     private Dictionary<int, TokenBase> positiveTokenPool;
     private Dictionary<int, TokenBase> negativeTokenPool;
@@ -24,30 +16,46 @@ public class TokenProvider : MonoBehaviour
         random = new();
     }
 
-    public List<TokenBase> GetRandomTokens()
+    private Rarity GetRandomRarity()
     {
-        List<TokenBase> result = positiveTokenPool.Values.Where(x => {
-            int prob = Random.Range(0, 100);
+        int prob = Random.Range(0, 100);
 
-            Rarity rarity = prob switch
+        Rarity rarity = prob switch
+        {
+            < 60 => Rarity.Common,
+            < 90 => Rarity.Rare,
+            < 99 => Rarity.Epic,
+            < 100 => Rarity.Legendary,
+            _ => Rarity.Common
+        };
+
+        return rarity;
+    }
+
+    public List<TokenPair> GetRandomTokens()
+    {
+        Dictionary<int, TokenBase> poppedPositiveTokens = new(3);
+        Dictionary<int, TokenBase> poppedNegativeTokens = new(3);
+        List<TokenPair> tokens = new(3);
+
+        for (int i = 0; i < 3; i++)
+        {
+            var rarity = GetRandomRarity();
+            var positive = positiveTokenPool.Where(x => !(poppedPositiveTokens.ContainsKey(x.Key)) && rarity == x.Value.Rarity).OrderBy(_ => random.Next()).First();
+            var negative = negativeTokenPool.Where(x => !(poppedNegativeTokens.ContainsKey(x.Key)) && rarity == x.Value.Rarity).OrderBy(_ => random.Next()).First();
+
+            poppedPositiveTokens.Add(positive.Key, positive.Value);
+            poppedNegativeTokens.Add(negative.Key, negative.Value);
+
+
+            TokenPair pair = new TokenPair
             {
-                < 60 => Rarity.Common,
-                < 90 => Rarity.Rare,
-                < 99 => Rarity.Epic,
-                < 100 => Rarity.Legendary,
-                _ => Rarity.Common
+                PositiveToken = positive.Value,
+                NegativeToken = negative.Value
             };
-
-            return x.Rarity == rarity;
-        }).OrderBy(x => random.Next()).Take(3).ToList();
-
-        foreach (var token in result) {
-            for(int i = 0; i < 3; i++)
-            {
-                if(token.Id == result[i].Id) result[i] = token;
-            }
+            tokens.Add(pair);
         }
-
-        return result;
+ 
+        return tokens;
     }
 }

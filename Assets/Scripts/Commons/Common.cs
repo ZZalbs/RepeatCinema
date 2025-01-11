@@ -27,3 +27,9 @@ public enum StageEventType
     Clear,
     Over,
 }
+
+public struct TokenPair
+{
+    public TokenBase PositiveToken;
+    public TokenBase NegativeToken;
+}

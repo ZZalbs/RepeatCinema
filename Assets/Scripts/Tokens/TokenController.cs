@@ -11,8 +11,6 @@ public class TokenController : MonoBehaviour
     private Dictionary<int, TokenBase> PositiveTokens;
     private Dictionary<int, TokenBase> NegativeTokens;
 
-
-
     private void Awake()
     {
         PlayerBehaviourController = GetComponent<BehaviourController>();
