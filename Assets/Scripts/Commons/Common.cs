@@ -25,6 +25,7 @@ public enum StageEventType
     Awake,
     Start,
     Clear,
+    Revive,
     Over,
 }
 

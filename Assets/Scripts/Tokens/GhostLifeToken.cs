@@ -8,7 +8,7 @@ public class GhostLifeToken : TokenBase
     private UnityAction onHit;
     
     public GhostLifeToken(TokenController controller, string name, string description, Rarity rarity, bool isPositive, int maxLevel) : base(controller, name, description, rarity, isPositive, maxLevel)
-    {                
+    {
     }
 
 

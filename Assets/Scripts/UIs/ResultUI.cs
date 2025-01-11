@@ -37,6 +37,6 @@ public class ResultUI : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
-        stageController.AwakeStage();
+        stageController.ResetGame();
     }
 }

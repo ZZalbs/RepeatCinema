@@ -52,7 +52,6 @@ public class StageController : MonoBehaviour
 
     public void StartStage()
     {
-        currentStage++;
         entries[StageEventType.Start]?.Invoke();
     }
 
@@ -61,9 +60,20 @@ public class StageController : MonoBehaviour
         entries[StageEventType.Clear]?.Invoke();
     }
 
+    public void Revive()
+    {
+        entries[StageEventType.Revive]?.Invoke();
+    }
+
     public void StageOver()
     {
         entries[StageEventType.Over]?.Invoke();
+    }
+
+    public void ResetGame()
+    {
+        Revive();
+        InitStage(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

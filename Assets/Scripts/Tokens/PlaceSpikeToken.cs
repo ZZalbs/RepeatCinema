@@ -14,7 +14,7 @@ public class PlaceSpikeToken : TokenBase
     
     public PlaceSpikeToken(TokenController controller, string name, string description, Rarity rarity, bool isPositive, int maxLevel) : base(controller, name, description, rarity, isPositive, maxLevel)
     {
-        
+        spikes = new();   
     }
 
     public override float Timer => 0;
@@ -27,9 +27,9 @@ public class PlaceSpikeToken : TokenBase
     
     public override void OnEndStage()
     {
-        foreach (var spike in spikes)
+        for (int i = 0; i < spikes.Count; i++)
         {
-            Object.Destroy(spike.gameObject);
+            GameObject.Destroy(spikes[i].gameObject);   
         }
     }
 }

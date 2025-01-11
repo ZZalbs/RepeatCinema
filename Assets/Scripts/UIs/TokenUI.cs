@@ -52,9 +52,9 @@ public class TokenUI : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void TransitionWithCurtain()
+    public void SendIconImage()
     {
-        
+        //controller.SendImage(p_Icon.sprite,n_Icon.sprite);
     }
 
     
