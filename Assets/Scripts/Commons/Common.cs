@@ -29,6 +29,13 @@ public enum StageEventType
     Over,
 }
 
+public enum Theme
+{
+    Country,
+    Cosmic,
+    Apocalypse,
+}
+
 public struct TokenPair
 {
     public TokenBase PositiveToken;

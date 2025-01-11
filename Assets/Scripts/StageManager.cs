@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+
 public class StageManager : MonoBehaviour
 {
     private Dictionary<Vector3Int, SpawnablePlatform> tiles = new();
@@ -11,7 +12,7 @@ public class StageManager : MonoBehaviour
     [SerializeField] private Transform spawnablesParent;
     
     public static StageManager Instance { get; private set; }
-
+    public event Action<Theme> ThemeSwitched;
     private void Awake()
     {
         if (Instance == null)
