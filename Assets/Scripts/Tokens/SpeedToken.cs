@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpeedToken : TokenBase
 {
-    private float FullTimer => 4.5f - CurLevel * 0.5f;
+    private float FullTimer => 3.5f - CurLevel * 0.5f;
     private float currentTimer;
     private BehaviourController playerBehaviour;
     
