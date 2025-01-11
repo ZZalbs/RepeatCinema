@@ -23,7 +23,8 @@ public class TokenController : MonoBehaviour
         NegativeTokens = new();
 
         StageController stageController = GetComponent<StageController>();
-        stageController.AddStageEventListener(StageEventType.Start, Init);
+        stageController.AddStageEventListener(StageEventType.Start, OnStartStage);
+        stageController.AddStageEventListener(StageEventType.Clear, OnEndStage);
     }
 
     private void Update()
@@ -38,7 +39,7 @@ public class TokenController : MonoBehaviour
         }
     }
 
-    public void Init()
+    private void OnStartStage()
     {
         foreach (var token in PositiveTokens.Values)
         {
@@ -47,6 +48,18 @@ public class TokenController : MonoBehaviour
         foreach (var token in NegativeTokens.Values)
         {
             token.OnStartStage();
+        }
+    }
+
+    private void OnEndStage()
+    {
+        foreach (var token in PositiveTokens.Values)
+        {
+            token.OnEndStage();
+        }
+        foreach (var token in NegativeTokens.Values)
+        {
+            token.OnEndStage();
         }
     }
 
