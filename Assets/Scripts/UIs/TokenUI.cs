@@ -48,4 +48,11 @@ public class TokenUI : MonoBehaviour
     {
         gameObject.SetActive(true);
     }
+
+    public void TransitionWithCurtain()
+    {
+        
+    }
+
+    
 } 
