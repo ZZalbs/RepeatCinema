@@ -9,6 +9,7 @@ public class TokenController : MonoBehaviour
     public LifeController LifeController;
     public InputController InputController;
     public StageController StageController;
+    private UIController uiController;
 
     public Dictionary<int, TokenBase> PositiveTokens;
     public Dictionary<int, TokenBase> NegativeTokens;
@@ -19,6 +20,7 @@ public class TokenController : MonoBehaviour
         LifeController = GetComponent<LifeController>();
         InputController = GetComponent<InputController>();
         StageController = GetComponent<StageController>();
+        uiController = GetComponent<UIController>();
 
         PositiveTokens = new();
         NegativeTokens = new();
@@ -90,8 +92,29 @@ public class TokenController : MonoBehaviour
         }
     }
 
+    public bool HasToken(TokenBase newToken)
+    {
+        if (newToken.IsPositive)
+        {
+            if (PositiveTokens.ContainsKey(newToken.Id))
+                return true;
+        }
+        else
+        {
+            if (NegativeTokens.ContainsKey(newToken.Id))
+                return true;
+        }
+        return false;
+    }
 
-
+    public void SendPosImage(Sprite posIcon)
+    {
+        uiController.SetPosIcon(posIcon);
+    }
+    public void SendNegImage(Sprite negIcon)
+    {
+        uiController.SetNegIcon(negIcon);
+    }
 
     public void DestroyOnePositiveToken()
     {

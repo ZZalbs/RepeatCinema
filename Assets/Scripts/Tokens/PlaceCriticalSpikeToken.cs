@@ -14,7 +14,7 @@ public class PlaceCriticalSpikeToken : TokenBase
     
     public PlaceCriticalSpikeToken(TokenController controller, string name, string description, Rarity rarity, bool isPositive, int maxLevel) : base(controller, name, description, rarity, isPositive, maxLevel)
     {
-        
+        spikes = new();
     }
 
     public override float Timer => 0;
@@ -27,9 +27,11 @@ public class PlaceCriticalSpikeToken : TokenBase
     
     public override void OnEndStage()
     {
-        foreach (var spike in spikes)
+        for (int i = spikes.Count - 1; i >= 0; i--)
         {
-            Object.Destroy(spike.gameObject);
+            var toDestroy = spikes[i].gameObject;
+            spikes.RemoveAt(i);
+            GameObject.Destroy(toDestroy);
         }
     }
 }

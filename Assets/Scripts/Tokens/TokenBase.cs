@@ -30,6 +30,12 @@ public abstract class TokenBase
         Id = id;
     }
 
+    public void LoadImage(string str)
+    {
+        string address = "Sprites/" + str;
+        SourceImage = Resources.Load<Sprite>(address);
+    }
+
     public void LevelUp()
     {
         CurLevel++;
