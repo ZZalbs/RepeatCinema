@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -21,21 +21,34 @@ public class TokenProvider : MonoBehaviour
 
     private void Start()
     {
-        positiveTokenPool.Add(0, new FlashToken(tokenController, "Á¡¸ê", "Shift Å°¸¦ ´­·¯ ¹Ù¶óº¸´Â ¹æÇâÀ¸·Î ÃÖ´ë <Level>È¸ ¿¬¼ÓÀ¸·Î ÂªÀº °Å¸®¸¦ Á¡¸êÇÕ´Ï´Ù.\r\nÁ¡¸ê È½¼ö¸¦ ¸ğµÎ »ç¿ëÇÏ¸é ÂøÁö ÈÄ 3 - 0.67 * (<Level> - 1) ÃÊ¸¸Å­ÀÇ ÄğÅ¸ÀÓ ÇÊ¿äÇÕ´Ï´Ù.", Rarity.Common, true, 3));
-        positiveTokenPool.Add(1, new BonusJumpToken(tokenController, "Á¡¸ê", "Shift Å°¸¦ ´­·¯ ¹Ù¶óº¸´Â ¹æÇâÀ¸·Î ÃÖ´ë <Level>È¸ ¿¬¼ÓÀ¸·Î ÂªÀº °Å¸®¸¦ Á¡¸êÇÕ´Ï´Ù.\r\nÁ¡¸ê È½¼ö¸¦ ¸ğµÎ »ç¿ëÇÏ¸é ÂøÁö ÈÄ 3 - 0.67 * (<Level> - 1) ÃÊ¸¸Å­ÀÇ ÄğÅ¸ÀÓ ÇÊ¿äÇÕ´Ï´Ù.", Rarity.Common, true, 3));
-        positiveTokenPool.Add(2, new MaxLifePlusToken(tokenController, "Á¡¸ê", "Shift Å°¸¦ ´­·¯ ¹Ù¶óº¸´Â ¹æÇâÀ¸·Î ÃÖ´ë <Level>È¸ ¿¬¼ÓÀ¸·Î ÂªÀº °Å¸®¸¦ Á¡¸êÇÕ´Ï´Ù.\r\nÁ¡¸ê È½¼ö¸¦ ¸ğµÎ »ç¿ëÇÏ¸é ÂøÁö ÈÄ 3 - 0.67 * (<Level> - 1) ÃÊ¸¸Å­ÀÇ ÄğÅ¸ÀÓ ÇÊ¿äÇÕ´Ï´Ù.", Rarity.Common, true, 3));
-        negativeTokenPool.Add(0, new SpeedDownToken(tokenController, "Á¡¸ê", "Shift Å°¸¦ ´­·¯ ¹Ù¶óº¸´Â ¹æÇâÀ¸·Î ÃÖ´ë <Level>È¸ ¿¬¼ÓÀ¸·Î ÂªÀº °Å¸®¸¦ Á¡¸êÇÕ´Ï´Ù.\r\nÁ¡¸ê È½¼ö¸¦ ¸ğµÎ »ç¿ëÇÏ¸é ÂøÁö ÈÄ 3 - 0.67 * (<Level> - 1) ÃÊ¸¸Å­ÀÇ ÄğÅ¸ÀÓ ÇÊ¿äÇÕ´Ï´Ù.", Rarity.Common, false, 3));
-        negativeTokenPool.Add(1, new RemovePosToken(tokenController, "Á¡¸ê", "Shift Å°¸¦ ´­·¯ ¹Ù¶óº¸´Â ¹æÇâÀ¸·Î ÃÖ´ë <Level>È¸ ¿¬¼ÓÀ¸·Î ÂªÀº °Å¸®¸¦ Á¡¸êÇÕ´Ï´Ù.\r\nÁ¡¸ê È½¼ö¸¦ ¸ğµÎ »ç¿ëÇÏ¸é ÂøÁö ÈÄ 3 - 0.67 * (<Level> - 1) ÃÊ¸¸Å­ÀÇ ÄğÅ¸ÀÓ ÇÊ¿äÇÕ´Ï´Ù.", Rarity.Common, false, 3));
-        negativeTokenPool.Add(2, new AlwaysCriticalToken(tokenController, "Á¡¸ê", "Shift Å°¸¦ ´­·¯ ¹Ù¶óº¸´Â ¹æÇâÀ¸·Î ÃÖ´ë <Level>È¸ ¿¬¼ÓÀ¸·Î ÂªÀº °Å¸®¸¦ Á¡¸êÇÕ´Ï´Ù.\r\nÁ¡¸ê È½¼ö¸¦ ¸ğµÎ »ç¿ëÇÏ¸é ÂøÁö ÈÄ 3 - 0.67 * (<Level> - 1) ÃÊ¸¸Å­ÀÇ ÄğÅ¸ÀÓ ÇÊ¿äÇÕ´Ï´Ù.", Rarity.Common, false, 3));
-        negativeTokenPool.Add(3, new PlaceSpikeToken(tokenController, "Á¡¸ê", "Shift Å°¸¦ ´­·¯ ¹Ù¶óº¸´Â ¹æÇâÀ¸·Î ÃÖ´ë <Level>È¸ ¿¬¼ÓÀ¸·Î ÂªÀº °Å¸®¸¦ Á¡¸êÇÕ´Ï´Ù.\r\nÁ¡¸ê È½¼ö¸¦ ¸ğµÎ »ç¿ëÇÏ¸é ÂøÁö ÈÄ 3 - 0.67 * (<Level> - 1) ÃÊ¸¸Å­ÀÇ ÄğÅ¸ÀÓ ÇÊ¿äÇÕ´Ï´Ù.", Rarity.Common, false, 3));
-        
-        for(int i=0;i<positiveTokenPool.Count;i++)
+        positiveTokenPool.Add(0, new FlashToken(tokenController, "ì ë©¸", "Shift í‚¤ë¥¼ ëˆŒëŸ¬ ë°”ë¼ë³´ëŠ” ë°©í–¥ìœ¼ë¡œ ì§§ì€ ê±°ë¦¬ë¥¼ ì ë©¸í•©ë‹ˆë‹¤. ì ë©¸ íšŸìˆ˜ë¥¼ ëª¨ë‘ ì‚¬ìš©í•˜ë©´ ì°©ì§€ í›„ ì¿¨íƒ€ì„ì´ í•„ìš”í•©ë‹ˆë‹¤.", Rarity.Common, true, 3));
+        positiveTokenPool.Add(1, new BonusJumpToken(tokenController, "ì í”„ ë¶€ìŠ¤í„°", "ê³µì¤‘ì—ì„œ ì í”„í•©ë‹ˆë‹¤. ì í”„ íšŸìˆ˜ë¥¼ ëª¨ë‘ ì‚¬ìš©í•˜ë©´ ì°©ì§€í•´ì•¼ ë‹¤ì‹œ ì í”„í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.", Rarity.Common, true, 3));
+        positiveTokenPool.Add(2, new GhostLifeToken(tokenController, "ì˜í˜¼ ì²´ë ¥ ì¶”ê°€", "ì˜í˜¼ ì²´ë ¥ì„ 1 ì¶”ê°€í•©ë‹ˆë‹¤. í”¼ê²© ì‹œ ì¼ë°˜ ì²´ë ¥ë³´ë‹¤ ë¨¼ì € ê°ì†Œí•˜ê³ , í† í° ë ˆë²¨ì´ 1 ê°ì†Œí•©ë‹ˆë‹¤. í† í° ë ˆë²¨ì´ 1ì´ì—ˆìœ¼ë©´ íŒŒê´´ë©ë‹ˆë‹¤.", Rarity.Common, true, -1));
+        positiveTokenPool.Add(3, new MaxLifePlusToken(tokenController, "ì²´ë ¥ ì¶”ê°€", "ìµœëŒ€ ì²´ë ¥ì„ 1 ì¶”ê°€í•©ë‹ˆë‹¤. ë§¤ ìŠ¤í…Œì´ì§€ë§ˆë‹¤ í”Œë ˆì´ì–´ê°€ ìµœëŒ€ ì²´ë ¥ë§Œí¼ì˜ ì²´ë ¥ì„ ê°€ì§„ ì±„ë¡œ ì‹œì‘í•©ë‹ˆë‹¤.", Rarity.Rare, true, -1));
+        positiveTokenPool.Add(4, new InvincibleToken(tokenController, "ë¬´ì ", "ìŠ¤í…Œì´ì§€ ì‹œì‘ í›„ ì ê¹ë™ì•ˆ í”¼ê²© ë©´ì—­ ìƒíƒœë¥¼ ìœ ì§€í•©ë‹ˆë‹¤. ì¦‰ì‚¬ë¥¼ ì œì™¸í•œ ëª¨ë“  í”¼í•´ì— ë©´ì—­ì…ë‹ˆë‹¤.", Rarity.Rare, true, 5));
+        //positiveTokenPool.Add(5, new (tokenController, "ë§ˆì§€ë§‰ ìë¹„", "ì‚¬ë§ì‹œ ëª¨ë“  ëŠ¥ë ¥ í† í°ì„ íŒŒê´´í•˜ê³  1íšŒ ë¶€í™œí•©ë‹ˆë‹¤.\r\në¶€í™œ ì‹œ ìŠ¤í…Œì´ì§€ë¥¼ ì¬ì‹œì‘í•˜ë©°, ìŠ¤í…Œì´ì§€ í´ë¦¬ì–´ë¡œ ì·¨ê¸‰ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤.", Rarity.Epic, true, 1));
+        positiveTokenPool.Add(6, new HighShieldToken(tokenController, "í•˜ì´ ì‹¤ë“œ", "ì¹˜ëª…ì  í”¼ê²©ì„ ì¼ë°˜ í”¼ê²©ìœ¼ë¡œ ë°”ê¿”ì£¼ëŠ” í•˜ì´ ì‹¤ë“œë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.", Rarity.Epic, true, 3));
+        //positiveTokenPool.Add(7, new (tokenController, "í•œíŒë§Œ", "ì‚¬ë§ ì‹œ ëª¨ë“  í† í°ì„ íŒŒê´´í•˜ê³  1íšŒ ë¶€í™œí•©ë‹ˆë‹¤.", Rarity.Legendary, true, 1));
+
+        negativeTokenPool.Add(100, new GenerateWalkerToken(tokenController, "ëšœë²…ì´ ìƒì„±", "ëœë¤í•œ í”Œë«í¼ ìœ„ì— ì â€˜ëšœë²…ì´'ê°€ ìƒì„±ë©ë‹ˆë‹¤.", Rarity.Common, false, 10));
+        negativeTokenPool.Add(101, new PlaceSpikeToken(tokenController, "ê°€ì‹œ ìƒì„±", "ëœë¤í•œ í”Œë«í¼ ìœ„ì— ê°€ì‹œê°€ ì¶”ê°€ë©ë‹ˆë‹¤. í”Œë ˆì´ì–´ì—ê²Œ í”¼ê²©ì„ ê°€í•©ë‹ˆë‹¤.", Rarity.Common, false, 10));
+        negativeTokenPool.Add(102, new RemovePosToken(tokenController, "ëŠ¥ë ¥ ì••ìˆ˜", "í•¨ê»˜ íšë“í•œ ëŠ¥ë ¥ í† í°ì„ ì œì™¸í•˜ê³ , ëŠ¥ë ¥ í† í°ì„ ë¬´ì‘ìœ„ë¡œ í•˜ë‚˜ íŒŒê´´í•˜ê³  ê°™ì´ íŒŒê´´ë©ë‹ˆë‹¤.", Rarity.Common, false, 1));
+        negativeTokenPool.Add(103, new SpeedDownToken(tokenController, "í”¼ë¡œ", "í”Œë ˆì´ì–´ì˜ ì†ë„ë¥¼ ëŠë¦¬ê²Œ í•©ë‹ˆë‹¤.", Rarity.Common, false, 10));
+        negativeTokenPool.Add(104, new PlaceCriticalSpikeToken(tokenController, "ì•„í”ˆ ê°€ì‹œ ìƒì„±", "ëœë¤í•œ í”Œë«í¼ ìœ„ì— ì•„í”ˆ ê°€ì‹œê°€ ì¶”ê°€ë©ë‹ˆë‹¤. í”Œë ˆì´ì–´ì—ê²Œ ì¹˜ëª…ì  í”¼ê²©ì„ ê°€í•©ë‹ˆë‹¤.", Rarity.Rare, false, 5));
+        negativeTokenPool.Add(105, new ReverseInputToken(tokenController, "ì¡°ì‘ ë°˜ì „", "ë§¤ <6 - Level>ë²ˆì§¸ ìŠ¤í…Œì´ì§€ë§ˆë‹¤ ì¢Œìš° ì¡°ì‘ì´ ë°˜ì „ë©ë‹ˆë‹¤.", Rarity.Rare, false, 4));
+        negativeTokenPool.Add(106, new ExchangeToken(tokenController, "ë“±ê°€êµí™˜", "ëŠ¥ë ¥ í† í°ì´ ë‚¨ì•„ìˆì„ ê²½ìš°, í”¼ê²© ì‹œ ì²´ë ¥ ëŒ€ì‹  ë¬´ì‘ìœ„ ëŠ¥ë ¥ í† í°ì„ íŒŒê´´í•˜ê³  ê°™ì´ íŒŒê´´ë©ë‹ˆë‹¤.", Rarity.Rare, false, 3));
+        negativeTokenPool.Add(107, new TimeAttackToken(tokenController, "íƒ€ì„ì–´íƒ", "ìŠ¤í…Œì´ì§€ ì‹œì‘ í›„ ì¼ì •ì‹œê°„ì´ ì§€ë‚˜ë©´ ì¦‰ì‚¬í•©ë‹ˆë‹¤.", Rarity.Epic, false, 5));
+        negativeTokenPool.Add(108, new SpeedToken(tokenController, "ìŠ¤í”¼ë“œ", "í”Œë ˆì´ì–´ê°€ ì˜¤ë˜ ì •ì§€í•  ê²½ìš° ì¦‰ì‚¬í•©ë‹ˆë‹¤.", Rarity.Epic, false, 5));
+        negativeTokenPool.Add(109, new AlwaysCriticalToken(tokenController, "ë‚˜ì•½í•œ ìœ¡ì²´", "ëª¨ë“  í”¼ê²©ì´ ì¹˜ëª…ì  í”¼ê²©ì´ ë©ë‹ˆë‹¤.", Rarity.Epic, false, 1));
+        negativeTokenPool.Add(110, new GhostToken(tokenController, "í”¼í•  ìˆ˜ ì—†ëŠ” ìš´ëª…", "ìœ ë ¹ì´ í”Œë ˆì´ì–´ ë’¤ë¥¼ ì„œì„œíˆ ì«“ì•„ì˜µë‹ˆë‹¤. ì¶©ëŒí•˜ë©´ ì¹˜ëª…ì  í”¼ê²©ì„ ê°€í•©ë‹ˆë‹¤.", Rarity.Legendary, false, 1));
+
+        foreach (var token in positiveTokenPool)
         {
-            positiveTokenPool[i].setID(i);
+            token.Value.setID(token.Key);
         }
-        for (int i = 0; i < negativeTokenPool.Count; i++)
+        foreach (var token in negativeTokenPool)
         {
-            negativeTokenPool[i].setID(i);
+            token.Value.setID(token.Key);
         }
     }
 
@@ -45,10 +58,10 @@ public class TokenProvider : MonoBehaviour
 
         Rarity rarity = prob switch
         {
-            < 160 => Rarity.Common, // È®·üÁ¶ÀÛ¿ë. 60 90 99 100
-            < 190 => Rarity.Rare,
-            < 199 => Rarity.Epic,
-            < 1100 => Rarity.Legendary,
+            < 60 => Rarity.Common,
+            < 90 => Rarity.Rare,
+            < 99 => Rarity.Epic,
+            < 100 => Rarity.Legendary,
             _ => Rarity.Common
         };
 
