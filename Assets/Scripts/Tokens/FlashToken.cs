@@ -25,6 +25,12 @@ public class FlashToken : TokenBase
         controller.InputController.AddPlayerBehaviour(flash);
     }
 
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        controller.InputController.RemovePlayerBehaviour(flash);
+    }
+
     public override void Update()
     {
         Debug.Log(timer);

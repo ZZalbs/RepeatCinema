@@ -15,7 +15,6 @@ public class InverseLeftMove : IBehaviour
     }
     public void OnPressed(InputAction.CallbackContext ctx)
     {
-        Debug.Log("Inverse LeftMove OnPressed");
         controller.MoveDir += Vector2.right;
         controller.isLookingRight = true;
     }

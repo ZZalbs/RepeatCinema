@@ -44,6 +44,12 @@ public class InputController : MonoBehaviour
         playerEntries[callbackBehaviour.Type].canceled += callbackBehaviour.OnReleased;
     }
     
+    public void RemovePlayerBehaviour(IBehaviour callbackBehaviour)
+    {
+        playerEntries[callbackBehaviour.Type].performed -= callbackBehaviour.OnPressed;
+        playerEntries[callbackBehaviour.Type].canceled -= callbackBehaviour.OnReleased;
+    }
+    
     public void RemoveAllPlayerBehaviour()
     {
         foreach(var behaviour in characterController.Behaviours)

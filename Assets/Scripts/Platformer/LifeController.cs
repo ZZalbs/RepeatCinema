@@ -1,3 +1,4 @@
+using System;
 using LitMotion;
 using UnityEngine;
 using UnityEngine.Events;
@@ -31,8 +32,8 @@ public class LifeController : MonoBehaviour
     [SerializeField] private bool isImmune;
     private float remainingImmuneTimer;
     private MotionHandle immuneMotion;
-    
     public event UnityAction onHit;
+    public event UnityAction onHitUI;
     public event UnityAction onDead;
 
     private void Awake()
@@ -57,6 +58,7 @@ public class LifeController : MonoBehaviour
                 {
                     curLife--;
                     onHit?.Invoke();
+                    onHitUI?.Invoke();
                     if (curLife <= 0) Die();
                 }
                 break;
