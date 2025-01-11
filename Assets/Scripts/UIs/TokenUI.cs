@@ -4,39 +4,40 @@ using UnityEngine.UI;
 
 public class TokenUI : MonoBehaviour
 {
-    private Image p_Icon;
-    private TextMeshProUGUI p_Name;
-    private TextMeshProUGUI p_Level;
-    private TextMeshProUGUI p_Description;
+    [SerializeField] private Image p_Icon;
+    [SerializeField] private TextMeshProUGUI p_Name;
+    [SerializeField] private TextMeshProUGUI p_Level;
+    [SerializeField] private TextMeshProUGUI p_Description;
 
-    private Image n_Icon;
-    private TextMeshProUGUI n_Name;
-    private TextMeshProUGUI n_Level;
-    private TextMeshProUGUI n_Description;
+    [SerializeField] private Image n_Icon;
+    [SerializeField] private TextMeshProUGUI n_Name;
+    [SerializeField] private TextMeshProUGUI n_Level;
+    [SerializeField] private TextMeshProUGUI n_Description;
 
     private TokenController controller;
+    private TokenPair token;
 
     public void Init(TokenController controller)
     {
         this.controller = controller;
     }
 
-    public void Updated(TokenBase p_token, TokenBase n_token)
+    public void Updated(TokenPair tokens)
     {
-        p_Icon.sprite = p_token.SourceImage;
-        p_Name.text = p_token.Name;
-        p_Level.text = $"Lv. {p_token.CurLevel + 1}";
-        p_Description.text = p_token.Description;
+        p_Icon.sprite = tokens.PositiveToken.SourceImage;
+        p_Name.text = tokens.PositiveToken.Name;
+        p_Level.text = $"Lv. {tokens.PositiveToken.CurLevel + 1}";
+        p_Description.text = tokens.PositiveToken.Description;
 
-        n_Icon.sprite = n_token.SourceImage;
-        n_Name.text = n_token.Name;
-        n_Level.text = $"Lv. {n_token.CurLevel + 1}";
-        n_Description.text = n_token.Description;
+        n_Icon.sprite = tokens.NegativeToken.SourceImage;
+        n_Name.text = tokens.NegativeToken.Name;
+        n_Level.text = $"Lv. {tokens.NegativeToken.CurLevel + 1}";
+        n_Description.text = tokens.NegativeToken.Description;
     }
 
     public void Select()
     {
-        // controller.SelectToken(TokenBase);
+        controller.SelectToken(token);
     }
 
     public void Show()
