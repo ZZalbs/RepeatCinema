@@ -16,7 +16,8 @@ GameObject:
   - component: {fileID: 4752109375620157507}
   - component: {fileID: 8558420130039026893}
   - component: {fileID: 6895335608102715918}
-  - component: {fileID: 697803107134356540}
+  - component: {fileID: 4161257350843321305}
+  - component: {fileID: 4026991768818138944}
   m_Layer: 0
   m_Name: Walker
   m_TagString: Untagged
@@ -221,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c672254793cc2164fa8ccba0fa47284c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &697803107134356540
+--- !u!95 &4161257350843321305
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -231,7 +232,7 @@ Animator:
   m_GameObject: {fileID: 555413909080766522}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7bba0751066e13244963d40e51d300dd, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -242,3 +243,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4026991768818138944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555413909080766522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8338e4f7f5bdd24b91ea5a8834c4868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites: []
+  anims:
+  - {fileID: 9100000, guid: 7bba0751066e13244963d40e51d300dd, type: 2}
+  - {fileID: 22100000, guid: 9a8baa0d4e1431e49bcd27ba10dd16fd, type: 2}
+  - {fileID: 22100000, guid: 2068f7faf55e5014f983c3b2ae837974, type: 2}
+  isAnimated: 1

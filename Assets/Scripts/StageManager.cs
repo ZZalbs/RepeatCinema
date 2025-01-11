@@ -60,4 +60,11 @@ public class StageManager : MonoBehaviour
     {
         return tilemap.GetCellCenterWorld(tilePos);
     }
+
+    public void RollTheme()
+    {
+        Theme theme = (Theme)UnityEngine.Random.Range(0, 3);
+
+        ThemeSwitched.Invoke(theme);
+    }
 }

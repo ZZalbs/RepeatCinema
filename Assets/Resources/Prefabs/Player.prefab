@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 7137728148134971709}
   - component: {fileID: 1887422180855210558}
   - component: {fileID: 2801582082165973071}
+  - component: {fileID: 5972838632192709731}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -190,13 +191,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStartPosition: {x: -30, y: -6}
   Animator: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
   Body: {fileID: 0}
-  Speed: 3
+  Speed: 5
   CurJumpCount: 0
-  MaxJumpCount: 1
+  MaxJumpCount: 30
   MoveDir: {x: 0, y: 0}
   JumpForce: 11.5
-  isLookingRight: 0
 --- !u!114 &8163409153744133463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e71ee54b348fd4cb9f45210a040e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  result: {fileID: 1579475907766524654, guid: 44a1c0c77353d1a43ac05f280b2426ad, type: 3}
+  result: {fileID: 0}
   curtain: {fileID: 5091770500921930861, guid: b7b84ada193f0284592ec2657b91819f, type: 3}
   hud: {fileID: 0}
   tp: {fileID: 0}
@@ -269,3 +270,21 @@ MonoBehaviour:
   LifeController: {fileID: 0}
   InputController: {fileID: 0}
   StageController: {fileID: 0}
+--- !u!114 &5972838632192709731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2453229869580710607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8338e4f7f5bdd24b91ea5a8834c4868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites: []
+  anims:
+  - {fileID: 9100000, guid: d167f30f0f2331e478b1c0bce893dda8, type: 2}
+  - {fileID: 22100000, guid: 163107455c7015b41b1d62cc548c3987, type: 2}
+  - {fileID: 22100000, guid: c6766544089de2743b873de8725aae92, type: 2}
+  isAnimated: 1

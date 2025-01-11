@@ -45,6 +45,8 @@ public class StageController : MonoBehaviour
 
     public void AwakeStage()
     {
+        StageManager.Instance.RollTheme();
+
         player.StageAwake();
         if (currentStage > 1) curtainUI.Close();
 
