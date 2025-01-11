@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,7 +15,6 @@ public class LeftMove : IBehaviour
 
     public void OnPressed(InputAction.CallbackContext ctx)
     {
-        controller.FlipAnim(true);
         controller.MoveDir += Vector2.left;
         controller.isLookingRight = false;
     }

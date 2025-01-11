@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaceSpikeToken : TokenBase
+public class PlaceCriticalSpikeToken : TokenBase
 {
     private static Spawnable spikePrefab;
     private List<Spawnable> spikes;
 
-    static PlaceSpikeToken()
+    static PlaceCriticalSpikeToken()
     {
-        spikePrefab = Resources.Load<Spawnable>("Prefabs/Spike");
+        spikePrefab = Resources.Load<Spawnable>("Prefabs/CriticalSpike");
     }
     
-    public PlaceSpikeToken(TokenController controller, string name, string description, Rarity rarity, bool isPositive, int maxLevel) : base(controller, name, description, rarity, isPositive, maxLevel)
+    public PlaceCriticalSpikeToken(TokenController controller, string name, string description, Rarity rarity, bool isPositive, int maxLevel) : base(controller, name, description, rarity, isPositive, maxLevel)
     {
         
     }

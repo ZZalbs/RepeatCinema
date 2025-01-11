@@ -1,3 +1,4 @@
+using LitMotion;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,8 @@ public class StageController : MonoBehaviour
     private void Awake()
     {
         player = GetComponent<BehaviourController>();
+
+        InitStage(false);
     }
 
     public void AddStageEventListener(StageEventType type, Action action)
@@ -29,24 +32,32 @@ public class StageController : MonoBehaviour
         entries[type] = entry;
     }
 
+    public void InitStage(bool isClear)
+    {
+        // 
+        // 토큰 발동은 awake에서
+
+        if (isClear) currentStage++;
+        AwakeStage();
+    }
+
     public void AwakeStage()
     {
-        // Ŀư ����
         player.StageAwake();
+
         entries[StageEventType.Awake]?.Invoke();
+
+        LMotion.Create(0f, 1f, 2f).WithOnComplete(StartStage).RunWithoutBinding();
     }
 
     public void StartStage()
     {
-        // Ŀư ��
         currentStage++;
         entries[StageEventType.Start]?.Invoke();
     }
 
     public void ClearStage()
     {
-        // ��ū ����
-
         entries[StageEventType.Clear]?.Invoke();
     }
 
