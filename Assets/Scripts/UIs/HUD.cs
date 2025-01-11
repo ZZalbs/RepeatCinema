@@ -58,7 +58,7 @@ public class HUD : MonoBehaviour
     }
     public void UpdateLevel()
     {
-        
+        stageLevel.text = $"Stage: {controller.StageController.CurrentStage}";
     }
     public void UpdatePositiveTokens(TokenBase token)
     {

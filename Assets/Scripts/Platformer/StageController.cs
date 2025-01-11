@@ -10,6 +10,7 @@ public class StageController : MonoBehaviour
     private int currentStage = 1;
 
     private BehaviourController player;
+    private LifeController lifeController;
     private Vector3 playerPosition;
 
     private Dictionary<StageEventType, Action> entries = new();
@@ -19,6 +20,8 @@ public class StageController : MonoBehaviour
     private void Awake()
     {
         player = GetComponent<BehaviourController>();
+        lifeController = GetComponent<LifeController>();
+        lifeController.onDead += StageOver;
     }
 
     private void Start()
