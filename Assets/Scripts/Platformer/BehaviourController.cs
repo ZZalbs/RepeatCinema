@@ -13,6 +13,7 @@ public class BehaviourController : MonoBehaviour
     public bool isLookingRight;
 
     public List<IBehaviour> Behaviours;
+    private AnimationController anim;
 
     private void Awake()
     {
@@ -26,6 +27,7 @@ public class BehaviourController : MonoBehaviour
 
         StageController stageController = GetComponent<StageController>();
         stageController.AddStageEventListener(StageEventType.Awake, Init);
+        anim = GetComponent<AnimationController>();
     }
 
     public void Init()
@@ -36,7 +38,13 @@ public class BehaviourController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Body.velocity = new Vector2(MoveDir.x * Speed * Time.deltaTime, Body.velocity.y);
+        Body.velocity = new Vector2(MoveDir.x * Speed, Body.velocity.y);
+        anim.SetVelocityVector(Body.velocity);
+    }
+
+    public void JumpAnim()
+    {
+        anim.SetJumpTrigger();
     }
 
     private void OnCollisionStay2D(Collision2D collision)
