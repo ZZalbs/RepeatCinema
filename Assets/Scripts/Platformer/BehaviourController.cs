@@ -37,17 +37,6 @@ public class BehaviourController : MonoBehaviour
     private void FixedUpdate()
     {
         Body.velocity = new Vector2(MoveDir.x * Speed, Body.velocity.y);
-        anim.SetVelocityVector(Body.velocity);
-    }
-
-    public void JumpAnim()
-    {
-        anim.SetJumpTrigger();
-    }
-    
-    public void FlipAnim(bool IsFlip)
-    {
-        anim.SetFlip(IsFlip);
     }
 
     private void OnCollisionStay2D(Collision2D collision)

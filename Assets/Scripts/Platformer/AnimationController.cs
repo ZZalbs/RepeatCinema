@@ -1,30 +1,41 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Animator), typeof(BehaviourController))]
 public class AnimationController : MonoBehaviour
 {
-    [SerializeField] private Animator anim;
+    private Animator anim;
     private SpriteRenderer spriteRenderer;
+    private BehaviourController behaviourController;
 
     private void Awake()
     {
+        behaviourController = GetComponent<BehaviourController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
 
-    public void SetFlip(bool IsLeft)
+    private void Update()
     {
-        spriteRenderer.flipX = IsLeft;
-    }    
-
-    public void SetVelocityVector(Vector2 vel)
-    {
-        anim.SetFloat("VelocityX", vel.x);
-        anim.SetFloat("VelocityY", vel.y);
+        SetVelocityVector();
+        SetFilp();
     }
 
     public void SetJumpTrigger()
     {
         anim.SetTrigger("Jump");
+    }
+
+    public void SetVelocityVector()
+    {
+        Vector2 velocity = behaviourController.Body.velocity;
+
+        anim.SetFloat("VelocityX", Mathf.Abs(velocity.x));
+        anim.SetFloat("VelocityY", velocity.y);
+    }
+
+    public void SetFilp()
+    {
+        spriteRenderer.flipX = !behaviourController.isLookingRight;
     }
 
 }
