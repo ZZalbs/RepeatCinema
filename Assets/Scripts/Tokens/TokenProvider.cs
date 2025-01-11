@@ -32,7 +32,6 @@ public class TokenProvider : MonoBehaviour
         for(int i=0;i<positiveTokenPool.Count;i++)
         {
             positiveTokenPool[i].setID(i);
-            Debug.Log(i);
         }
         for (int i = 0; i < negativeTokenPool.Count; i++)
         {

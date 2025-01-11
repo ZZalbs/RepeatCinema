@@ -11,13 +11,12 @@ public class UIController : MonoBehaviour
     {
         StageController sc = GetComponent<StageController>();
         TokenController tc = GetComponent<TokenController>();
-        TokenProvider tp = GetComponent<TokenProvider>();
 
         result.Init(sc, tc, tp);
         hud.Init(tc);
 
         result = Instantiate(result);
-        curtain = Instantiate(curtain);
+        //curtain = Instantiate(curtain);
 
         sc.AddStageEventListener(StageEventType.Awake, curtain.Close);
         sc.AddStageEventListener(StageEventType.Start, curtain.Open);

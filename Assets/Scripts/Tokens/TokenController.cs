@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 [RequireComponent(typeof(BehaviourController), typeof(LifeController), typeof(InputController))]
 public class TokenController : MonoBehaviour
@@ -25,6 +26,8 @@ public class TokenController : MonoBehaviour
         StageController stageController = GetComponent<StageController>();
         stageController.AddStageEventListener(StageEventType.Start, OnStartStage);
         stageController.AddStageEventListener(StageEventType.Clear, OnEndStage);
+        stageController.AddStageEventListener(StageEventType.Revive, OnEndStage);
+        stageController.AddStageEventListener(StageEventType.Over, OnEndStage);
     }
 
     private void Update()
@@ -88,16 +91,18 @@ public class TokenController : MonoBehaviour
     }
 
 
+
+
     public void DestroyOnePositiveToken()
     {
-        int randomIndex = Random.Range(0, PositiveTokens.Keys.Count);
+        int randomIndex = PositiveTokens.Keys.ToList()[Random.Range(0, PositiveTokens.Count)];
         
         PositiveTokens[randomIndex].OnDestroy();
         PositiveTokens.Remove(randomIndex);
     }
     public void DestroyOneNegativeToken()
     {
-        int randomIndex = Random.Range(0, NegativeTokens.Keys.Count);
+        int randomIndex = NegativeTokens.Keys.ToList()[Random.Range(0, NegativeTokens.Count)];
 
         NegativeTokens[randomIndex].OnDestroy();
         NegativeTokens.Remove(randomIndex);
