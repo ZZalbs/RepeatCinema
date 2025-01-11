@@ -107,13 +107,13 @@ public class TokenController : MonoBehaviour
         return false;
     }
 
-    public void SendPosImage(Sprite posIcon)
+    public void SendPosToken(TokenBase token)
     {
-        uiController.SetPosIcon(posIcon);
+        uiController.SetPosToken(token);
     }
-    public void SendNegImage(Sprite negIcon)
+    public void SendNegToken(TokenBase token)
     {
-        uiController.SetNegIcon(negIcon);
+        uiController.SetNegToken(token);
     }
 
     public void DestroyOnePositiveToken()
