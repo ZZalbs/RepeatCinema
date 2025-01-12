@@ -73,7 +73,7 @@ public class TokenProvider : MonoBehaviour
     public List<TokenPair> GetRandomTokens()
     {
         var remainPositiveTokens = positiveTokenPool.Where(x => x.Value.MaxLevel == -1 || (x.Value.CurLevel < x.Value.MaxLevel));
-        var remainNegativeTokens = positiveTokenPool.Where(x => x.Value.MaxLevel == -1 || (x.Value.CurLevel < x.Value.MaxLevel));
+        var remainNegativeTokens = negativeTokenPool.Where(x => x.Value.MaxLevel == -1 || (x.Value.CurLevel < x.Value.MaxLevel));
         
         int returnSize = Mathf.Min(remainPositiveTokens.Count(), remainNegativeTokens.Count());
 
