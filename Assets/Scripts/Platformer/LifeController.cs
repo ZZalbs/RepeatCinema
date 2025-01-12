@@ -1,4 +1,3 @@
-using System;
 using LitMotion;
 using UnityEngine;
 using UnityEngine.Events;

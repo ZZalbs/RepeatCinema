@@ -9,12 +9,12 @@ public class StageManager : MonoBehaviour
 {
     private Dictionary<Vector3Int, SpawnablePlatform> tiles = new();
     public Tilemap tilemap;
-    [SerializeField] private Transform spawnablesParent;
     
     public static StageManager Instance { get; private set; }
     public event Action<Theme> ThemeSwitched;
 
     public Theme CurTheme { get; private set; }
+
     private void Awake()
     {
         if (Instance == null)
@@ -30,7 +30,7 @@ public class StageManager : MonoBehaviour
 
     private void Init()
     {
-        foreach (Transform child in spawnablesParent)
+        foreach (Transform child in tilemap.transform)
         {
             if (child.TryGetComponent<SpawnablePlatform>(out var spawnable))
             {
