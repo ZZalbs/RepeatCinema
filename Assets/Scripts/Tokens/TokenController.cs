@@ -124,6 +124,7 @@ public class TokenController : MonoBehaviour
 
     public void DestroyOnePositiveToken()
     {
+        if (PositiveTokens.Count == 0) return;
         int randomIndex = PositiveTokens.Keys.ToList()[Random.Range(0, PositiveTokens.Count)];
         
         PositiveTokens[randomIndex].OnDestroy();
