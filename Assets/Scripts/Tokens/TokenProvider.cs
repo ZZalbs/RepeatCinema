@@ -78,10 +78,30 @@ public class TokenProvider : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
+            KeyValuePair<int, TokenBase> positive, negative;
             var rarity = GetRandomRarity();
-            var positive = positiveTokenPool.Where(x => !(poppedPositiveTokens.ContainsKey(x.Key)) && rarity == x.Value.Rarity).OrderBy(_ => random.Next()).First();
-            var negative = negativeTokenPool.Where(x => !(poppedNegativeTokens.ContainsKey(x.Key)) && rarity == x.Value.Rarity).OrderBy(_ => random.Next()).First();
+            while (true)
+            {
+                var rarity1 = rarity;
+                var positiveQuery = positiveTokenPool
+                    .Where(x =>
+                        !(poppedPositiveTokens.TryGetValue(x.Key, out var token) && token.MaxLevel == token.CurLevel) &&
+                        rarity1 == x.Value.Rarity).OrderBy(_ => random.Next()).ToList();
+                var negativeQuery = negativeTokenPool
+                    .Where(x => 
+                        !(poppedNegativeTokens.TryGetValue(x.Key, out var token) && token.MaxLevel == token.CurLevel) && 
+                        rarity1 == x.Value.Rarity).OrderBy(_ => random.Next()).ToList();
+                if (positiveQuery.Any() && negativeQuery.Any())
+                {
+                    positive = positiveQuery.First();
+                    negative = negativeQuery.First();
+                    break;
+                }
 
+                if (rarity == Rarity.Common) return null;
+                rarity = (Rarity)((int)rarity - 1);
+            }
+            
             poppedPositiveTokens.Add(positive.Key, positive.Value);
             poppedNegativeTokens.Add(negative.Key, negative.Value);
 
