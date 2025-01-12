@@ -35,6 +35,7 @@ public class HUD : MonoBehaviour
         UpdateLife();
         UpdateLevel();
         UpdatePositiveTokens();
+        UpdateNegativeTokens();
     }
 
 
@@ -78,7 +79,7 @@ public class HUD : MonoBehaviour
             posIcons[curPosIndex].gameObject.SetActive(false);
         }
     }
-    public void UpdateNegativeTokens(TokenBase token)
+    public void UpdateNegativeTokens()
     {
         curNegIndex = 0;
         foreach (var tk in controller.NegativeTokens.Values)

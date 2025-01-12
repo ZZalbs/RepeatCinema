@@ -1229,7 +1229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -4964,7 +4964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -15717,6 +15717,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3536212083762349463, guid: 22c759ef56e90bc4a8632947036cabf9, type: 3}
+      propertyPath: playerStartPosition.x
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5309869669057440462, guid: 22c759ef56e90bc4a8632947036cabf9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -30
@@ -20726,6 +20730,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3744478228601197133}
     m_Modifications:
+    - target: {fileID: 152234638616146360, guid: f225f228fb1aa614ea32775790b808e1, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 152234638616146360, guid: f225f228fb1aa614ea32775790b808e1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 

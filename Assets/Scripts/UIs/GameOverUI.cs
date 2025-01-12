@@ -16,6 +16,7 @@ public class GameOverUI : MonoBehaviour
     {
         canvasGroup = GetComponentInChildren<CanvasGroup>();
         stageController.AddStageEventListener(StageEventType.Over, Show);
+        stageController.AddStageEventListener(StageEventType.Revive, Hide);
     }
 
     // Start is called before the first frame update
@@ -31,6 +32,11 @@ public class GameOverUI : MonoBehaviour
         LMotion.Create(0, 1f, 1f)
             .Bind(a => canvasGroup.alpha = a);
         scoreText.text = $"도달 스테이지: <b>{stageController.CurrentStage}!</b>";
+    }
+
+    private void Hide()
+    {
+        gameObject.SetActive(false);
     }
 
     public void Restart()

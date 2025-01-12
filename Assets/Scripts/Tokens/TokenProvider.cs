@@ -32,7 +32,7 @@ public class TokenProvider : MonoBehaviour
 
         negativeTokenPool.Add(100, new GenerateWalkerToken(tokenController, "뚜벅이 생성", "랜덤한 플랫폼 위에 적‘뚜벅이'가 생성됩니다.", Rarity.Common, false, 10));
         negativeTokenPool.Add(101, new PlaceSpikeToken(tokenController, "가시 생성", "랜덤한 플랫폼 위에 가시가 추가됩니다. 플레이어에게 피격을 가합니다.", Rarity.Common, false, 15));
-        negativeTokenPool.Add(102, new RemovePosToken(tokenController, "능력 압수", "함께 획득한 능력 토큰을 제외하고, 능력 토큰을 무작위로 하나 파괴하고 같이 파괴됩니다.", Rarity.Common, false, 1));
+        negativeTokenPool.Add(102, new RemovePosToken(tokenController, "능력 압수", "능력 토큰을 무작위로 하나 파괴하고 같이 파괴됩니다.", Rarity.Common, false, 1));
         negativeTokenPool.Add(103, new SpeedDownToken(tokenController, "피로", "플레이어의 속도를 느리게 합니다.", Rarity.Common, false, 10));
         negativeTokenPool.Add(104, new PlaceCriticalSpikeToken(tokenController, "아픈 가시 생성", "랜덤한 플랫폼 위에 아픈 가시가 추가됩니다. 플레이어에게 치명적 피격을 가합니다.", Rarity.Rare, false, 7));
         negativeTokenPool.Add(105, new ReverseInputToken(tokenController, "조작 반전", "매 <6 - Level>번째 스테이지마다 좌우 조작이 반전됩니다.", Rarity.Rare, false, 4));

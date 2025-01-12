@@ -75,7 +75,9 @@ public class StageController : MonoBehaviour
     {
         curtainUI.Show(1f);
         entries[StageEventType.Revive]?.Invoke();
+        player.StageAwake();
         player.SetMovable(true);
+        lifeController.Init();
     }
 
     public void StageOver()
