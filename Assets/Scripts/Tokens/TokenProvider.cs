@@ -34,13 +34,13 @@ public class TokenProvider : MonoBehaviour
         negativeTokenPool.Add(101, new PlaceSpikeToken(tokenController, "가시 생성", "랜덤한 플랫폼 위에 가시가 추가됩니다. 플레이어에게 피격을 가합니다.", Rarity.Common, false, 15));
         negativeTokenPool.Add(102, new RemovePosToken(tokenController, "능력 압수", "능력 토큰을 무작위로 하나 파괴하고 같이 파괴됩니다.", Rarity.Common, false, 1));
         negativeTokenPool.Add(103, new SpeedDownToken(tokenController, "피로", "플레이어의 속도를 느리게 합니다.", Rarity.Common, false, 10));
-        negativeTokenPool.Add(104, new PlaceCriticalSpikeToken(tokenController, "아픈 가시 생성", "랜덤한 플랫폼 위에 아픈 가시가 추가됩니다. 플레이어에게 치명적 피격을 가합니다.", Rarity.Rare, false, 7));
+        negativeTokenPool.Add(104, new PlaceCriticalSpikeToken(tokenController, "아픈 가시", "랜덤한 플랫폼 위에 아픈 가시가 추가됩니다. 플레이어에게 치명적 피격을 가합니다.", Rarity.Rare, false, 7));
         negativeTokenPool.Add(105, new ReverseInputToken(tokenController, "조작 반전", "매 <6 - Level>번째 스테이지마다 좌우 조작이 반전됩니다.", Rarity.Rare, false, 4));
         negativeTokenPool.Add(106, new ExchangeToken(tokenController, "등가교환", "능력 토큰이 남아있을 경우, 피격 시 체력 대신 무작위 능력 토큰을 파괴하고 같이 파괴됩니다.", Rarity.Rare, false, 3));
         negativeTokenPool.Add(107, new TimeAttackToken(tokenController, "타임어택", "스테이지 시작 후 일정시간이 지나면 즉사합니다.", Rarity.Epic, false, 5));
         negativeTokenPool.Add(108, new SpeedToken(tokenController, "스피드", "플레이어가 오래 정지할 경우 즉사합니다.", Rarity.Epic, false, 5));
         negativeTokenPool.Add(109, new AlwaysCriticalToken(tokenController, "나약한 육체", "모든 피격이 치명적 피격이 됩니다.", Rarity.Epic, false, 1));
-        negativeTokenPool.Add(110, new GhostToken(tokenController, "피할 수 없는 운명", "유령이 플레이어 뒤를 서서히 쫓아옵니다. 충돌하면 치명적 피격을 가합니다.", Rarity.Legendary, false, 1));
+        negativeTokenPool.Add(110, new GhostToken(tokenController, "필연", "유령이 플레이어 뒤를 서서히 쫓아옵니다. 충돌하면 치명적 피격을 가합니다.", Rarity.Legendary, false, 1));
 
         foreach (var token in positiveTokenPool)
         {
