@@ -72,11 +72,13 @@ public class TokenProvider : MonoBehaviour
 
     public List<TokenPair> GetRandomTokens()
     {
-        Dictionary<int, TokenBase> poppedPositiveTokens = new(3);
-        Dictionary<int, TokenBase> poppedNegativeTokens = new(3);
-        List<TokenPair> tokens = new(3);
+        int returnSize = positiveTokenPool.Where(x => x.Value.CurLevel < x.Value.MaxLevel).Count();
 
-        for (int i = 0; i < 3; i++)
+        Dictionary<int, TokenBase> poppedPositiveTokens = new(returnSize);
+        Dictionary<int, TokenBase> poppedNegativeTokens = new(returnSize);
+        List<TokenPair> tokens = new(returnSize);
+
+        for (int i = 0; i < returnSize; i++)
         {
             KeyValuePair<int, TokenBase> positive, negative;
             while (true)

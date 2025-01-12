@@ -31,15 +31,25 @@ public class ResultUI : MonoBehaviour
     public void Show()
     {
         var tokens = tokenProvider.GetRandomTokens();
-        if (tokens == null)
+
+        if(tokens.Count == 0)
         {
-            //stageController.InitStage(true);
+            stageController.InitStage(true);
+
             return;
         }
 
         for(int i = 0 ; i < 3; i ++)
         {
-            tokenUIs[i].Updated(tokens[i]);
+            if(i < tokens.Count)
+            {
+                tokenUIs[i].Updated(tokens[i]);
+                tokenUIs[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                tokenUIs[i].gameObject.SetActive(false);
+            }
         }
 
         gameObject.SetActive(true);
