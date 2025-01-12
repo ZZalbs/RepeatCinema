@@ -21,11 +21,11 @@ public class UIController : MonoBehaviour
         sc.AddStageEventListener(StageEventType.Awake, curtain.Close);
         sc.AddStageEventListener(StageEventType.Start, curtain.Open);
     }
-
+    /*
     public void SetPosToken(TokenBase token)
     {
         hud.UpdatePositiveTokens(token);
-    }
+    }*/
     public void SetNegToken(TokenBase token)
     {
         hud.UpdateNegativeTokens(token);

@@ -111,15 +111,7 @@ public class TokenController : MonoBehaviour
         }
         return false;
     }
-
-    public void SendPosToken(TokenBase token)
-    {
-        uiController.SetPosToken(token);
-    }
-    public void SendNegToken(TokenBase token)
-    {
-        uiController.SetNegToken(token);
-    }
+   
 
     public int GetGhostLevel()
     {

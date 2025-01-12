@@ -34,6 +34,7 @@ public class HUD : MonoBehaviour
     {
         UpdateLife();
         UpdateLevel();
+        UpdatePositiveTokens();
     }
 
 
@@ -63,13 +64,15 @@ public class HUD : MonoBehaviour
     {
         stageLevel.text = $"Stage: {controller.StageController.CurrentStage}";
     }
-    public void UpdatePositiveTokens(TokenBase token)
+    public void UpdatePositiveTokens()
     {
-        if (curPosIndex > posIcons.Length)
-            return;
-        posIcons[curPosIndex].Init(token);
-        posIcons[curPosIndex].gameObject.SetActive(true);
-        curPosIndex++;
+        curPosIndex = 0;
+        foreach (var tk in controller.PositiveTokens.Values)
+        {
+            posIcons[curPosIndex].Init(tk);
+            posIcons[curPosIndex].gameObject.SetActive(true);
+            curPosIndex++;
+        }
         for (int i=curPosIndex; i < posIcons.Length; i++)
         {
             posIcons[curPosIndex].gameObject.SetActive(false);
@@ -77,11 +80,13 @@ public class HUD : MonoBehaviour
     }
     public void UpdateNegativeTokens(TokenBase token)
     {
-        if (curNegIndex > negIcons.Length)
-            return;
-        negIcons[curNegIndex].Init(token);
-        negIcons[curNegIndex].gameObject.SetActive(true);
-        curNegIndex++;
+        curNegIndex = 0;
+        foreach (var tk in controller.NegativeTokens.Values)
+        {
+            negIcons[curNegIndex].Init(tk);
+            negIcons[curNegIndex].gameObject.SetActive(true);
+            curNegIndex++;
+        }
         for (int i = curNegIndex; i < negIcons.Length; i++)
         {
             negIcons[curNegIndex].gameObject.SetActive(false);

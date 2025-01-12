@@ -79,10 +79,6 @@ public class TokenUI : MonoBehaviour
 
     public void Select()
     {
-        if (!controller.HasToken(token.PositiveToken))
-            controller.SendPosToken(token.PositiveToken);
-        if (!controller.HasToken(token.NegativeToken))
-            controller.SendNegToken(token.NegativeToken);
 
         controller.SelectToken(token.PositiveToken);
         controller.SelectToken(token.NegativeToken);
