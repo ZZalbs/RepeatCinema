@@ -28,17 +28,21 @@ public class LifeController : MonoBehaviour
     public int MaxShield;
     public int CurShield;
 
-    [SerializeField] private bool isImmune;
+    private bool isImmune;
     private float remainingImmuneTimer;
     private MotionHandle immuneMotion;
     public event UnityAction onHit;
     public event UnityAction onHitUI;
     public event UnityAction onDead;
 
+    private SpriteRenderer spriteRenderer;
+
     private void Awake()
     {
         StageController stageController = GetComponent<StageController>();
         stageController.AddStageEventListener(StageEventType.Awake, Init);
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void Init()
@@ -109,7 +113,11 @@ public class LifeController : MonoBehaviour
             }
         }
         isImmune = true;
-        immuneMotion = LMotion.Create(time, 0f, time).WithOnComplete(() => isImmune = false)
+        spriteRenderer.color = new Color(1f, 1f, 1f, 0.5f);
+        immuneMotion = LMotion.Create(time, 0f, time).WithOnComplete(() => {
+            isImmune = false;
+            spriteRenderer.color = Color.white;
+            })
             .Bind(t => remainingImmuneTimer = t);
     }
 }
