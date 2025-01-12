@@ -19,12 +19,14 @@ public class InvincibleToken : TokenBase
     
     public override void OnStartStage()
     {
+        base.OnStartStage();
         timeCounter = 0f;
         playerLife.SetImmuneForTime(invincibleTime);
     }
 
     public override void Update()
     {
+        base .Update();
         if (timeCounter < invincibleTime)
         {
             timeCounter += Time.deltaTime;

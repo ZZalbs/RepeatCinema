@@ -18,11 +18,13 @@ public class SpeedToken : TokenBase
 
     public override void OnStartStage()
     {
+        base.OnStartStage();
         currentTimer = 0f;
     }
 
     public override void Update()
     {
+        base.Update();
         if (playerBehaviour.MoveDir.SqrMagnitude() < 0.01f)
         {
             currentTimer += Time.deltaTime;

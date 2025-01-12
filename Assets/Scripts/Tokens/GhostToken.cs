@@ -29,6 +29,7 @@ public class GhostToken : TokenBase
     
     public override void OnEndStage()
     {
+        base.OnEndStage();
         Object.Destroy(ghost.gameObject);
     }
 }

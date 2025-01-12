@@ -25,6 +25,7 @@ public class GenerateWalkerToken : TokenBase
 
     public override void OnEndStage()
     {
+        base.OnEndStage();
         foreach (var spike in walkers)
         {
             Object.Destroy(spike.gameObject);

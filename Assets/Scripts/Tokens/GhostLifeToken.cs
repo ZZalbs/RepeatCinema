@@ -31,6 +31,7 @@ public class GhostLifeToken : TokenBase
     
     public override void OnDestroy()
     {
+        base.OnDestroy();
         controller.LifeController.onHit -= onHit;
     }
 }

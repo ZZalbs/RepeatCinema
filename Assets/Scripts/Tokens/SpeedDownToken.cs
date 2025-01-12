@@ -12,10 +12,13 @@ public class SpeedDownToken : TokenBase
 
     public override void Acquire()
     {
+        base.Acquire();
         //controller.PlayerBehaviourController.Speed;
     }
+
     public override void OnDestroy()
     {
+        base.OnDestroy();
         controller.LifeController.MaxLife--;
     }
 }

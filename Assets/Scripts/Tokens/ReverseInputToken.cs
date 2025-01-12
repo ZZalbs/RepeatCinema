@@ -26,6 +26,7 @@ public class ReverseInputToken : TokenBase
 
     public override void OnStartStage()
     {
+        base.OnStartStage();
         if (stageController.CurrentStage % (6 - CurLevel) != 0) return;
         base.Acquire();
         inputController.RemoveAllPlayerBehaviour();
@@ -38,6 +39,7 @@ public class ReverseInputToken : TokenBase
     
     public override void OnEndStage()
     {
+        base.OnEndStage();
         if (stageController.CurrentStage % (6 - CurLevel) != 0) return;
         inputController.RemoveAllPlayerBehaviour();
         playerBehaviourController.Behaviours.Remove(BehaviourType.LMove);
