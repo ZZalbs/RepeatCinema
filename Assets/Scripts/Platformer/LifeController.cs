@@ -37,12 +37,15 @@ public class LifeController : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    BehaviourController behaviourController;
+
     private void Awake()
     {
         StageController stageController = GetComponent<StageController>();
         stageController.AddStageEventListener(StageEventType.Awake, Init);
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+        behaviourController = GetComponent<BehaviourController>();
     }
 
     public void Init()
@@ -50,11 +53,14 @@ public class LifeController : MonoBehaviour
         CurLife = MaxLife;
         CurShield = MaxShield;
         isImmune = false;
+        behaviourController.Animator.SetBool("IsDaed", false);
     }
 
     public void OnDamaged(DamageType damageType)
     {
-        switch(damageType)
+        if(!isImmune) behaviourController.Animator.SetTrigger("Hit");
+
+        switch (damageType)
         {
             case DamageType.Normal:
                 if(!isImmune)
@@ -90,6 +96,7 @@ public class LifeController : MonoBehaviour
 
     public void Die()
     {
+        behaviourController.Animator.SetBool("IsDaed", true);
         onDead?.Invoke();
         Debug.Log("Player Died!");
     }
