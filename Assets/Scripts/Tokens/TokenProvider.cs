@@ -72,10 +72,19 @@ public class TokenProvider : MonoBehaviour
 
     public List<TokenPair> GetRandomTokens()
     {
-        var remainPositiveTokens = positiveTokenPool.Where(x => x.Value.MaxLevel == -1 || (x.Value.CurLevel < x.Value.MaxLevel));
-        var remainNegativeTokens = negativeTokenPool.Where(x => x.Value.MaxLevel == -1 || (x.Value.CurLevel < x.Value.MaxLevel));
-        
-        int returnSize = Mathf.Min(remainPositiveTokens.Count(), remainNegativeTokens.Count());
+        IEnumerable<TokenBase> remainPositiveTokens = positiveTokenPool.Values.Where(x => (x.MaxLevel == -1) || (x.CurLevel < x.MaxLevel));
+        IEnumerable<TokenBase> remainNegativeTokens = negativeTokenPool.Values.Where(x => (x.MaxLevel == -1) || (x.CurLevel < x.MaxLevel));
+        int returnSize = 0;
+
+        for (int i = 0; i < 4; i++)
+        {
+            var remainP = positiveTokenPool.Values.Where(x => x.Rarity == (Rarity)i).Count();
+            var remainN = negativeTokenPool.Values.Where(x => x.Rarity == (Rarity)i).Count();
+
+            returnSize += Mathf.Min(remainP, remainN);
+        }
+
+        returnSize = Mathf.Min(3, returnSize);
 
         Dictionary<int, TokenBase> poppedPositiveTokens = new(returnSize);
         Dictionary<int, TokenBase> poppedNegativeTokens = new(returnSize);
@@ -83,18 +92,18 @@ public class TokenProvider : MonoBehaviour
 
         for (int i = 0; i < returnSize; i++)
         {
-            KeyValuePair<int, TokenBase> positive, negative;
+            TokenBase positive, negative;
             while (true)
             {
                 var rarity = GetRandomRarity();
                 var positiveQuery = remainPositiveTokens
                     .Where(x =>
-                        !(poppedPositiveTokens.TryGetValue(x.Key, out var token)) &&
-                        rarity == x.Value.Rarity).OrderBy(_ => random.Next()).ToList();
+                        !(poppedPositiveTokens.TryGetValue(x.Id, out var token)) &&
+                        rarity == x.Rarity).OrderBy(_ => random.Next()).ToList();
                 var negativeQuery = remainNegativeTokens
                     .Where(x => 
-                        !(poppedNegativeTokens.TryGetValue(x.Key, out var token)) &&
-                        rarity == x.Value.Rarity).OrderBy(_ => random.Next()).ToList();
+                        !(poppedNegativeTokens.TryGetValue(x.Id, out var token)) &&
+                        rarity == x.Rarity).OrderBy(_ => random.Next()).ToList();
                 if (positiveQuery.Any() && negativeQuery.Any())
                 {
                     positive = positiveQuery.First();
@@ -103,13 +112,13 @@ public class TokenProvider : MonoBehaviour
                 }
             }
             
-            poppedPositiveTokens.TryAdd(positive.Key, positive.Value);
-            poppedNegativeTokens.TryAdd(negative.Key, negative.Value);
+            poppedPositiveTokens.TryAdd(positive.Id, positive);
+            poppedNegativeTokens.TryAdd(negative.Id, negative);
 
             TokenPair pair = new TokenPair
             {
-                PositiveToken = positive.Value,
-                NegativeToken = negative.Value
+                PositiveToken = positive,
+                NegativeToken = negative
             };
             tokens.Add(pair);
         }
