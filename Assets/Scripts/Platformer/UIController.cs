@@ -18,8 +18,8 @@ public class UIController : MonoBehaviour
         //result = Instantiate(result);
         //curtain = Instantiate(curtain);
 
-        sc.AddStageEventListener(StageEventType.Awake, curtain.Close);
-        sc.AddStageEventListener(StageEventType.Start, curtain.Open);
+        // sc.AddStageEventListener(StageEventType.Awake, curtain.Close);
+        // sc.AddStageEventListener(StageEventType.Start, curtain.Open);
     }
 
     public void ShowCurtain()
