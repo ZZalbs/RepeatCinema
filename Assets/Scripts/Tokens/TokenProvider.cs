@@ -85,11 +85,11 @@ public class TokenProvider : MonoBehaviour
                 var rarity1 = rarity;
                 var positiveQuery = positiveTokenPool
                     .Where(x =>
-                        !(poppedPositiveTokens.TryGetValue(x.Key, out var token) && token.MaxLevel == token.CurLevel) &&
+                        !(poppedPositiveTokens.TryGetValue(x.Key, out var token)) &&
                         rarity1 == x.Value.Rarity).OrderBy(_ => random.Next()).ToList();
                 var negativeQuery = negativeTokenPool
                     .Where(x => 
-                        !(poppedNegativeTokens.TryGetValue(x.Key, out var token) && token.MaxLevel == token.CurLevel) && 
+                        !(poppedNegativeTokens.TryGetValue(x.Key, out var token)) && 
                         rarity1 == x.Value.Rarity).OrderBy(_ => random.Next()).ToList();
                 if (positiveQuery.Any() && negativeQuery.Any())
                 {
