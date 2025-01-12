@@ -20,7 +20,7 @@ public class GenerateWalkerToken : TokenBase
     public override void OnStartStage()
     {
         base.OnStartStage();
-        walkers = StageManager.Instance.SpawnOnRandomTile(walkerPrefab, CurLevel);
+        walkers = StageManager.Instance.SpawnOnRandomTile(walkerPrefab, CurLevel * 2);
     }
 
     public override void OnEndStage()

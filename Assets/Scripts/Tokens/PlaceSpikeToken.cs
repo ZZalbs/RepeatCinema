@@ -22,7 +22,7 @@ public class PlaceSpikeToken : TokenBase
     public override void OnStartStage()
     {
         base.OnStartStage();
-        spikes = StageManager.Instance.SpawnOnRandomTile(spikePrefab, CurLevel);
+        spikes = StageManager.Instance.SpawnOnRandomTile(spikePrefab, CurLevel * 3);
     }
     
     public override void OnEndStage()
