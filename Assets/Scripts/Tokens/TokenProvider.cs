@@ -102,8 +102,8 @@ public class TokenProvider : MonoBehaviour
                 rarity = (Rarity)((int)rarity - 1);
             }
             
-            poppedPositiveTokens.Add(positive.Key, positive.Value);
-            poppedNegativeTokens.Add(negative.Key, negative.Value);
+            poppedPositiveTokens.TryAdd(positive.Key, positive.Value);
+            poppedNegativeTokens.TryAdd(negative.Key, negative.Value);
 
             TokenPair pair = new TokenPair
             {
