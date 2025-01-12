@@ -19,17 +19,19 @@ public class LastMercyToken : TokenBase
     public override void Acquire()
     {
         base.Acquire();
-        playerLife.onDead += Revive;
+        playerLife.onHit += Revive;
     }
     
     public override void OnDestroy()
     {
         base.OnDestroy();
-        playerLife.onDead -= Revive;
+        playerLife.onHit -= Revive;
     }
 
     private void Revive()
     {
+        if (playerLife.CurLife > 0) return;
+
         playerLife.Init();
         controller.DestroyAllPositiveToken();
         stageController.Revive();
