@@ -96,8 +96,6 @@ public class TokenProvider : MonoBehaviour
                     negative = negativeQuery.First();
                     break;
                 }
-
-                if (rarity == Rarity.Common) return null;
             }
             
             poppedPositiveTokens.TryAdd(positive.Key, positive.Value);
