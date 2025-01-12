@@ -99,7 +99,7 @@ public class TokenProvider : MonoBehaviour
                 }
 
                 if (rarity == Rarity.Common) return null;
-                rarity = (Rarity)((int)rarity - 1);
+                rarity = GetRandomRarity();
             }
             
             poppedPositiveTokens.TryAdd(positive.Key, positive.Value);

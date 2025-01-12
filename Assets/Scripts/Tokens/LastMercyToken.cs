@@ -30,6 +30,7 @@ public class LastMercyToken : TokenBase
 
     private void Revive()
     {
+        playerLife.Init();
         controller.DestroyAllPositiveToken();
         stageController.Revive();
     }
