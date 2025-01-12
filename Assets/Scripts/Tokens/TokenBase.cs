@@ -52,7 +52,7 @@ public abstract class TokenBase
 
     public virtual void OnDestroy()
     {
-
+        CurLevel = 0;
     }
 
     public virtual void OnStartStage()
