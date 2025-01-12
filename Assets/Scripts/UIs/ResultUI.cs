@@ -31,6 +31,11 @@ public class ResultUI : MonoBehaviour
     public void Show()
     {
         var tokens = tokenProvider.GetRandomTokens();
+        if (tokens == null)
+        {
+            stageController.InitStage(true);
+            return;
+        }
 
         for(int i = 0 ; i < 3; i ++)
         {
