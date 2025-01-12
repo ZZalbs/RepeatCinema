@@ -33,6 +33,7 @@ public class FlashToken : TokenBase
 
     public override void Update()
     {
+        base.Update();
         if (flashCount > 0)
         {
             if (timer > 0)

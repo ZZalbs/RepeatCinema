@@ -27,6 +27,7 @@ public class PlaceCriticalSpikeToken : TokenBase
     
     public override void OnEndStage()
     {
+        base.OnEndStage();
         for (int i = spikes.Count - 1; i >= 0; i--)
         {
             var toDestroy = spikes[i].gameObject;

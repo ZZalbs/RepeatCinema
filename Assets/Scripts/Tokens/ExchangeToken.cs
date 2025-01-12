@@ -18,6 +18,7 @@ public class ExchangeToken : TokenBase
 
     public override void Acquire()
     {
+        base.Acquire();
         onHit = () =>
         {
             playerLife.CurLife++;
@@ -29,6 +30,7 @@ public class ExchangeToken : TokenBase
     
     public override void OnDestroy()
     {
+        base.OnDestroy();
         playerLife.onHit -= onHit;
     }
 }

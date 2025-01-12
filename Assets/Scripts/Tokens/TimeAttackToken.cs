@@ -16,11 +16,13 @@ public class TimeAttackToken : TokenBase
     
     public override void OnStartStage()
     {
+        base.OnStartStage();
         timer = 0;
     }
     
     public override void Update()
     {
+        base.Update();
         timer += Time.deltaTime;
         if (timer >= fullTime)
         {

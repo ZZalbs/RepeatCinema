@@ -75,6 +75,8 @@ public class TokenController : MonoBehaviour
 
     public void SelectToken(TokenBase newToken)
     {
+        newToken.LevelUp();
+
         if (newToken.IsPositive)
         {
             if (!PositiveTokens.ContainsKey(newToken.Id))
@@ -82,8 +84,6 @@ public class TokenController : MonoBehaviour
                 PositiveTokens.Add(newToken.Id, newToken);
                 newToken.Acquire();
             }
-
-            PositiveTokens[newToken.Id].LevelUp();
         }
         else
         {
@@ -92,8 +92,6 @@ public class TokenController : MonoBehaviour
                 NegativeTokens.Add(newToken.Id, newToken);
                 newToken.Acquire();
             }
-
-            NegativeTokens[newToken.Id].LevelUp();
         }
     }
 

@@ -11,5 +11,6 @@ public class RemovePosToken : TokenBase
     {
         base.Acquire();
         controller.DestroyOnePositiveToken();
+        controller.DestroyToken(this);
     }
 }

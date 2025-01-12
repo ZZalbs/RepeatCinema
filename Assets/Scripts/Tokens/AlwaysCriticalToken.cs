@@ -28,6 +28,7 @@ public class AlwaysCriticalToken : TokenBase
     
     public override void OnDestroy()
     {
+        base.OnDestroy();
         controller.LifeController.onHit -= Critical;
     }
 }
