@@ -36,7 +36,7 @@ public abstract class TokenBase
         SourceImage = Resources.Load<Sprite>(address);
     }
 
-    public void LevelUp()
+    public virtual void LevelUp()
     {
         CurLevel++;
     }

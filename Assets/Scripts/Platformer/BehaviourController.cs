@@ -52,6 +52,7 @@ public class BehaviourController : MonoBehaviour
     {
         CurJumpCount = 0;
         MoveDir = Vector2.zero;
+        Body.velocity = Vector2.zero;
         Body.position = playerStartPosition;
     }
 

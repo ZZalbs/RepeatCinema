@@ -79,9 +79,8 @@ public class TokenUI : MonoBehaviour
 
     public void Select()
     {
-
-        controller.SelectToken(token.PositiveToken);
         controller.SelectToken(token.NegativeToken);
+        controller.SelectToken(token.PositiveToken);
     }
 
     public void Show()
