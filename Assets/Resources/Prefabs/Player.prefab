@@ -195,7 +195,7 @@ MonoBehaviour:
   Body: {fileID: 0}
   Speed: 5
   CurJumpCount: 0
-  MaxJumpCount: 30
+  MaxJumpCount: 1
   MoveDir: {x: 0, y: 0}
   JumpForce: 11.5
 --- !u!114 &8163409153744133463
@@ -238,6 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5bc5a52a0f87c9428fc1a42a675bbef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curtainUI: {fileID: 0}
 --- !u!114 &1887422180855210558
 MonoBehaviour:
   m_ObjectHideFlags: 0
