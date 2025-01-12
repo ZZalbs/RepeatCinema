@@ -14,14 +14,14 @@ public class GhostLifeToken : TokenBase
     {
         base.Acquire();
 
-        controller.LifeController.onHit += onHit;
+        controller.LifeController.onHit += OnHit;
     }
     
     public override void OnDestroy()
     {
         base.OnDestroy();
 
-        controller.LifeController.onHit -= onHit;
+        controller.LifeController.onHit -= OnHit;
     }
 
     private void OnHit()
