@@ -72,7 +72,10 @@ public class TokenProvider : MonoBehaviour
 
     public List<TokenPair> GetRandomTokens()
     {
-        int returnSize = positiveTokenPool.Where(x => x.Value.MaxLevel == -1 || (x.Value.CurLevel < x.Value.MaxLevel)).Count();
+        var remainPositiveTokens = positiveTokenPool.Where(x => x.Value.MaxLevel == -1 || (x.Value.CurLevel < x.Value.MaxLevel));
+        var remainNegativeTokens = positiveTokenPool.Where(x => x.Value.MaxLevel == -1 || (x.Value.CurLevel < x.Value.MaxLevel));
+        
+        int returnSize = Mathf.Min(remainPositiveTokens.Count(), remainNegativeTokens.Count());
 
         Dictionary<int, TokenBase> poppedPositiveTokens = new(returnSize);
         Dictionary<int, TokenBase> poppedNegativeTokens = new(returnSize);
@@ -84,14 +87,14 @@ public class TokenProvider : MonoBehaviour
             while (true)
             {
                 var rarity = GetRandomRarity();
-                var positiveQuery = positiveTokenPool
+                var positiveQuery = remainPositiveTokens
                     .Where(x =>
                         !(poppedPositiveTokens.TryGetValue(x.Key, out var token)) &&
-                        rarity == x.Value.Rarity && x.Value.CurLevel < x.Value.MaxLevel).OrderBy(_ => random.Next()).ToList();
-                var negativeQuery = negativeTokenPool
+                        rarity == x.Value.Rarity).OrderBy(_ => random.Next()).ToList();
+                var negativeQuery = remainNegativeTokens
                     .Where(x => 
                         !(poppedNegativeTokens.TryGetValue(x.Key, out var token)) &&
-                        rarity == x.Value.Rarity && x.Value.CurLevel < x.Value.MaxLevel).OrderBy(_ => random.Next()).ToList();
+                        rarity == x.Value.Rarity).OrderBy(_ => random.Next()).ToList();
                 if (positiveQuery.Any() && negativeQuery.Any())
                 {
                     positive = positiveQuery.First();
