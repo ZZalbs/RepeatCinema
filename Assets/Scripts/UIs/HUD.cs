@@ -47,7 +47,7 @@ public class HUD : MonoBehaviour
                 continue;
             if (curHeartIndex < controller.LifeController.CurLife)
                 hearts[curHeartIndex].sprite = fullHeart;
-            else if (curHeartIndex < hpGhostSum)
+            else if (curHeartIndex < controller.LifeController.CurLife+controller.GetGhostLevel())
                 hearts[curHeartIndex].sprite = ghostHeart;
             else
                 hearts[curHeartIndex].sprite = emptyHeart;
