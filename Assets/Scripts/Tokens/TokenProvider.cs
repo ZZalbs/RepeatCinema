@@ -72,7 +72,7 @@ public class TokenProvider : MonoBehaviour
 
     public List<TokenPair> GetRandomTokens()
     {
-        int returnSize = positiveTokenPool.Where(x => x.Value.CurLevel < x.Value.MaxLevel).Count();
+        int returnSize = positiveTokenPool.Where(x => x.Value.MaxLevel == -1 || (x.Value.CurLevel < x.Value.MaxLevel)).Count();
 
         Dictionary<int, TokenBase> poppedPositiveTokens = new(returnSize);
         Dictionary<int, TokenBase> poppedNegativeTokens = new(returnSize);
