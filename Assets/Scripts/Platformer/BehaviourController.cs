@@ -27,6 +27,7 @@ public class BehaviourController : MonoBehaviour
         Animator = GetComponent<Animator>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
         Behaviours = new();
+        MoveDir = Vector2.zero;
 
         Behaviours.Add(BehaviourType.RMove, new RightMove(this));
         Behaviours.Add(BehaviourType.LMove, new LeftMove(this));
