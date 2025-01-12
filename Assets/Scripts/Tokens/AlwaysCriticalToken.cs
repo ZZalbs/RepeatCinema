@@ -11,7 +11,7 @@ public class AlwaysCriticalToken : TokenBase
 
     public AlwaysCriticalToken(TokenController controller, string name, string description, Rarity rarity, bool isPositive, int maxLevel) : base(controller, name, description, rarity, isPositive, maxLevel)
     {
-        
+        playerLife = controller.LifeController;
     }
 
     private void Critical()
