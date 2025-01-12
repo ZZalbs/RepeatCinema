@@ -7,10 +7,16 @@ public class BonusJumpToken : TokenBase
 
     public override float Timer => 0;
 
+    public override void LevelUp()
+    {
+        base.LevelUp();
+
+        controller.PlayerBehaviourController.MaxJumpCount++;
+    }
+
     public override void Acquire()
     {
         base.Acquire();
-        controller.PlayerBehaviourController.MaxJumpCount++;
     }
 
     public override void OnDestroy()

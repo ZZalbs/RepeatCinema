@@ -7,11 +7,13 @@ public class MaxLifePlusToken : TokenBase
 
     public override float Timer => 0;
 
-    public override void Acquire()
+    public override void LevelUp()
     {
-        base.Acquire();
+        base.LevelUp();
+
         controller.LifeController.MaxLife++;
     }
+
     public override void OnDestroy()
     {
         controller.LifeController.MaxLife--;
