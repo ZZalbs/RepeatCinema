@@ -79,18 +79,17 @@ public class TokenProvider : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             KeyValuePair<int, TokenBase> positive, negative;
-            var rarity = GetRandomRarity();
             while (true)
             {
-                var rarity1 = rarity;
+                var rarity = GetRandomRarity();
                 var positiveQuery = positiveTokenPool
                     .Where(x =>
                         !(poppedPositiveTokens.TryGetValue(x.Key, out var token)) &&
-                        rarity1 == x.Value.Rarity).OrderBy(_ => random.Next()).ToList();
+                        rarity == x.Value.Rarity && x.Value.CurLevel < x.Value.MaxLevel).OrderBy(_ => random.Next()).ToList();
                 var negativeQuery = negativeTokenPool
                     .Where(x => 
-                        !(poppedNegativeTokens.TryGetValue(x.Key, out var token)) && 
-                        rarity1 == x.Value.Rarity).OrderBy(_ => random.Next()).ToList();
+                        !(poppedNegativeTokens.TryGetValue(x.Key, out var token)) &&
+                        rarity == x.Value.Rarity && x.Value.CurLevel < x.Value.MaxLevel).OrderBy(_ => random.Next()).ToList();
                 if (positiveQuery.Any() && negativeQuery.Any())
                 {
                     positive = positiveQuery.First();
@@ -99,7 +98,6 @@ public class TokenProvider : MonoBehaviour
                 }
 
                 if (rarity == Rarity.Common) return null;
-                rarity = GetRandomRarity();
             }
             
             poppedPositiveTokens.TryAdd(positive.Key, positive.Value);
