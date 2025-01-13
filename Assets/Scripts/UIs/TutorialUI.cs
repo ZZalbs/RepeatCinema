@@ -7,21 +7,15 @@ public class TutorialUI : MonoBehaviour
 
     [SerializeField] private Toggle tutorialSkip;
 
-    private void Awake()
+    private void Start()
     {
         playerSetting = Resources.Load<PlayerSettingDataSO>("PlayerSettingData");
 
-        Time.timeScale = 0f;
         gameObject.SetActive(playerSetting.NeedTutorial);
     }
 
     public void ToggleTutorialSkip()
     {
         playerSetting.NeedTutorial = !tutorialSkip.isOn;
-    }
-
-    private void OnDisable()
-    {
-        Time.timeScale = 1f;
     }
 }
