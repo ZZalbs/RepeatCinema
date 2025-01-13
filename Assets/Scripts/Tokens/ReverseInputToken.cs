@@ -7,33 +7,34 @@ public class ReverseInputToken : TokenBase
     private StageController stageController;
     private InputController inputController;
     private BehaviourController playerBehaviourController;
-
-    private InverseRightMove inverseRightMove;
-    private InverseLeftMove inverseLeftMove;
     
     public ReverseInputToken(TokenController controller, string name, string description, Rarity rarity, bool isPositive, int maxLevel) : base(controller, name, description, rarity, isPositive, maxLevel)
     {
         stageController = controller.StageController;
         inputController = controller.InputController;
         playerBehaviourController = controller.PlayerBehaviourController;
-
-        inverseRightMove = new InverseRightMove(playerBehaviourController);
-        inverseLeftMove = new InverseLeftMove(playerBehaviourController);
     }
 
-    // Update is called once per frame
     public override float Timer => 0;
 
     public override void OnStartStage()
     {
         base.OnStartStage();
+        playerBehaviourController.ReverseMode = false;
         if (stageController.CurrentStage % (6 - CurLevel) != 0) return;
         base.Acquire();
+
         inputController.RemoveAllPlayerBehaviour();
-        playerBehaviourController.Behaviours.Remove(BehaviourType.LMove);
+
+        playerBehaviourController.ReverseMode = true;
+
+        IBehaviour left = playerBehaviourController.Behaviours[BehaviourType.LMove];
+        IBehaviour right = playerBehaviourController.Behaviours[BehaviourType.RMove];
+        playerBehaviourController.Behaviours .Remove(BehaviourType.LMove);
         playerBehaviourController.Behaviours.Remove(BehaviourType.RMove);
-        playerBehaviourController.Behaviours.Add(BehaviourType.LMove, inverseLeftMove);
-        playerBehaviourController.Behaviours.Add(BehaviourType.RMove, inverseRightMove);
+        playerBehaviourController.Behaviours.Add(BehaviourType.LMove, right);
+        playerBehaviourController.Behaviours.Add(BehaviourType.RMove, left);
+
         inputController.AddAllPlayerBehaviour();
     }
     
@@ -41,11 +42,18 @@ public class ReverseInputToken : TokenBase
     {
         base.OnEndStage();
         if (stageController.CurrentStage % (6 - CurLevel) != 0) return;
+
         inputController.RemoveAllPlayerBehaviour();
+
+        playerBehaviourController.ReverseMode = false;
+
+        IBehaviour left = playerBehaviourController.Behaviours[BehaviourType.RMove];
+        IBehaviour right = playerBehaviourController.Behaviours[BehaviourType.LMove];
         playerBehaviourController.Behaviours.Remove(BehaviourType.LMove);
         playerBehaviourController.Behaviours.Remove(BehaviourType.RMove);
-        playerBehaviourController.Behaviours.Add(BehaviourType.LMove, new LeftMove(playerBehaviourController));
-        playerBehaviourController.Behaviours.Add(BehaviourType.RMove, new RightMove(playerBehaviourController));
+        playerBehaviourController.Behaviours.Add(BehaviourType.LMove, right);
+        playerBehaviourController.Behaviours.Add(BehaviourType.RMove, left);
+
         inputController.AddAllPlayerBehaviour();
     }
 

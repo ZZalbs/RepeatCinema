@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,7 +7,7 @@ public class RightMove : IBehaviour
 {
     private BehaviourController controller;
     public BehaviourType Type => BehaviourType.RMove;
-
+    private Vector2 negative;
     public RightMove(BehaviourController controller)
     {
         this.controller = controller;
@@ -14,14 +15,15 @@ public class RightMove : IBehaviour
 
     public void OnPressed(InputAction.CallbackContext ctx)
     {
-        controller.MoveDir += Vector2.right;
+        controller.MoveDir += controller.ReverseMode ? Vector2.left : Vector2.right;
+        negative = controller.ReverseMode ? Vector2.right : Vector2.left;
         controller.Animator.SetFloat("VelocityX", controller.MoveDir.x);
         controller.SpriteRenderer.flipX = false;
     }
 
     public void OnReleased(InputAction.CallbackContext ctx)
     {
-        controller.MoveDir -= Vector2.right;
+        controller.MoveDir += negative;
         controller.Animator.SetFloat("VelocityX", -controller.MoveDir.x);
 
         if(Mathf.Abs(controller.MoveDir.x) > 0.01f)

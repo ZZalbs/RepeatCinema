@@ -8,6 +8,8 @@ public class LeftMove : IBehaviour
 
     public BehaviourType Type => BehaviourType.LMove;
 
+    private Vector2 negative;
+
     public LeftMove(BehaviourController controller)
     {
         this.controller = controller;
@@ -15,14 +17,15 @@ public class LeftMove : IBehaviour
 
     public void OnPressed(InputAction.CallbackContext ctx)
     {
-        controller.MoveDir += Vector2.left;
+        controller.MoveDir += controller.ReverseMode ? Vector2.right : Vector2.left;
+        negative = controller.ReverseMode ? Vector2.left : Vector2.right;
         controller.Animator.SetFloat("VelocityX", -controller.MoveDir.x);
         controller.SpriteRenderer.flipX = true;
     }
 
     public void OnReleased(InputAction.CallbackContext ctx)
     {
-        controller.MoveDir -= Vector2.left;
+        controller.MoveDir += negative;
         controller.Animator.SetFloat("VelocityX", controller.MoveDir.x);
 
         if (Mathf.Abs(controller.MoveDir.x) > 0.01f)

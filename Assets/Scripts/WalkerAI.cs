@@ -11,6 +11,7 @@ public class WalkerAI : MonoBehaviour
         behaviourController = GetComponent<BehaviourController>();
         behaviourController.Init();
         behaviourController.MoveDir = Vector2.right;
+        behaviourController.SetMovable(true);
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 

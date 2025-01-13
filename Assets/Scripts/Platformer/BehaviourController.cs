@@ -17,6 +17,7 @@ public class BehaviourController : MonoBehaviour
     public Dictionary<BehaviourType, IBehaviour> Behaviours;
 
     private bool movable = false;
+    public bool ReverseMode = false;
 
     public bool IsMovable => movable;
 
