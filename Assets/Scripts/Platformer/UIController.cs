@@ -22,11 +22,6 @@ public class UIController : MonoBehaviour
         // sc.AddStageEventListener(StageEventType.Start, curtain.Open);
     }
 
-    public void ShowCurtain()
-    {
-        curtain.Show(2f);
-    }
-
     public void Update()
     {
         hud.UpdateHUD();

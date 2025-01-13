@@ -98,7 +98,6 @@ public class LifeController : MonoBehaviour
     {
         behaviourController.Animator.SetBool("IsDaed", true);
         onDead?.Invoke();
-        Debug.Log("Player Died!");
     }
 
     public void SetImmune(bool value)

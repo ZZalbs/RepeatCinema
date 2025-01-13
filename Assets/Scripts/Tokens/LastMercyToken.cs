@@ -7,7 +7,6 @@ public class LastMercyToken : TokenBase
     private StageController stageController;
     private LifeController playerLife;
 
-    // Update is called once per frame
     public override float Timer => 0f;
 
     public LastMercyToken(TokenController controller, string name, string description, Rarity rarity, bool isPositive, int maxLevel) : base(controller, name, description, rarity, isPositive, maxLevel)
