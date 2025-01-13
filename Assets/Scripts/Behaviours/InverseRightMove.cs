@@ -7,7 +7,9 @@ public class InverseRightMove : IBehaviour
     private BehaviourController controller;
 
     public BehaviourType Type => BehaviourType.RMove;
-    
+    private bool isValidInput;
+
+
     public InverseRightMove(BehaviourController controller)
     {
         this.controller = controller;
@@ -17,10 +19,13 @@ public class InverseRightMove : IBehaviour
         controller.MoveDir += Vector2.left;
         controller.Animator.SetFloat("VelocityX", -controller.MoveDir.x);
         controller.SpriteRenderer.flipX = false;
+        isValidInput = true;
     }
 
     public void OnReleased(InputAction.CallbackContext ctx)
     {
+        if (!isValidInput) return;
+        isValidInput = false;
         controller.MoveDir -= Vector2.left;
         controller.Animator.SetFloat("VelocityX", controller.MoveDir.x);
 
