@@ -34,6 +34,7 @@ public class LifeController : MonoBehaviour
     public event UnityAction onHit;
     public event UnityAction onHitUI;
     public event UnityAction onDead;
+    public event UnityAction beforeDead;
 
     private SpriteRenderer spriteRenderer;
 
@@ -68,6 +69,8 @@ public class LifeController : MonoBehaviour
                     curLife--;
                     onHit?.Invoke();
                     onHitUI?.Invoke();
+
+                    beforeDead?.Invoke();
                     if (curLife <= 0) Die();
                     else SetImmuneForTime(2f);
                 }
