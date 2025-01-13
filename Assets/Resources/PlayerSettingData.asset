@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PlayerSettingData
   m_EditorClassIdentifier: 
   HighScore: 0
-  NeedTutorial: 0
+  NeedTutorial: 1
