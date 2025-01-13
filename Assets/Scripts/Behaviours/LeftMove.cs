@@ -6,8 +6,6 @@ public class LeftMove : IBehaviour
 {
     private BehaviourController controller;
 
-    private bool isValidInput = true;
-
     public BehaviourType Type => BehaviourType.LMove;
 
     public LeftMove(BehaviourController controller)
@@ -17,12 +15,6 @@ public class LeftMove : IBehaviour
 
     public void OnPressed(InputAction.CallbackContext ctx)
     {
-        if (!controller.IsMovable)
-        {
-            isValidInput = false;
-            return;
-        }
-        else isValidInput = true;
         controller.MoveDir += Vector2.left;
         controller.Animator.SetFloat("VelocityX", -controller.MoveDir.x);
         controller.SpriteRenderer.flipX = true;
@@ -30,7 +22,6 @@ public class LeftMove : IBehaviour
 
     public void OnReleased(InputAction.CallbackContext ctx)
     {
-        if (!controller.IsMovable || !isValidInput) return;
         controller.MoveDir -= Vector2.left;
         controller.Animator.SetFloat("VelocityX", controller.MoveDir.x);
 

@@ -15,12 +15,6 @@ public class InverseLeftMove : IBehaviour
     }
     public void OnPressed(InputAction.CallbackContext ctx)
     {
-        if (!controller.IsMovable)
-        {
-            isValidInput = false;
-            return;
-        }
-        else isValidInput = true;
         controller.MoveDir += Vector2.right;
         controller.Animator.SetFloat("VelocityX", controller.MoveDir.x);
         controller.SpriteRenderer.flipX = false;
@@ -28,7 +22,6 @@ public class InverseLeftMove : IBehaviour
 
     public void OnReleased(InputAction.CallbackContext ctx)
     {
-        if (!controller.IsMovable || !isValidInput) return;
         controller.MoveDir -= Vector2.right;
         controller.Animator.SetFloat("VelocityX", -controller.MoveDir.x);
 

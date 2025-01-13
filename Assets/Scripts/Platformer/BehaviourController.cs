@@ -45,7 +45,6 @@ public class BehaviourController : MonoBehaviour
     public void SetMovable(bool movable)
     {
         this.movable = movable;
-        if (!movable) MoveDir = Vector2.zero;
     }
 
     public void StageAwake()
@@ -57,7 +56,8 @@ public class BehaviourController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Body.velocity = new Vector2(MoveDir.x * Speed, Body.velocity.y);
+        if(IsMovable)
+            Body.velocity = new Vector2(MoveDir.x * Speed, Body.velocity.y);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
