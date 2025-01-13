@@ -21,7 +21,7 @@ public class TokenProvider : MonoBehaviour
 
     private void Start()
     {
-        positiveTokenPool.Add(0, new FlashToken(tokenController, "점멸", "[Shift] 키를 눌러 바라보는 방향으로 짧은 거리를 점멸합니다. 점멸 횟수를 모두 사용하면 착지 후 쿨타임이 필요합니다.", Rarity.Common, true, 3));
+        positiveTokenPool.Add(0, new FlashToken(tokenController, "점멸", "[Shift] 키를 눌러 짧은 거리를 점멸합니다. 사용 후 쿨다운이 필요합니다.", Rarity.Common, true, 3));
         positiveTokenPool.Add(1, new BonusJumpToken(tokenController, "점프 부스터", "공중에서 점프합니다. 점프 횟수를 모두 사용하면 착지해야 다시 점프할 수 있습니다.", Rarity.Common, true, 3));
         positiveTokenPool.Add(2, new GhostLifeToken(tokenController, "영혼 체력 추가", "영혼 체력을 1 추가합니다. 피격 시 일반 체력 대신 감소하는 일회성 추가 체력입니다.", Rarity.Common, true, -1));
         positiveTokenPool.Add(3, new MaxLifePlusToken(tokenController, "체력 추가", "최대 체력을 1 추가합니다. 매 스테이지마다 플레이어가 최대 체력만큼의 체력을 가진 채로 시작합니다.", Rarity.Rare, true, -1));
