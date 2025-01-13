@@ -11,17 +11,13 @@ public class TutorialUI : MonoBehaviour
     {
         playerSetting = Resources.Load<PlayerSettingDataSO>("PlayerSettingData");
 
+        Time.timeScale = 0f;
         gameObject.SetActive(playerSetting.NeedTutorial);
     }
 
     public void ToggleTutorialSkip()
     {
         playerSetting.NeedTutorial = !tutorialSkip.isOn;
-    }
-
-    private void OnEnable()
-    {
-        Time.timeScale = 0f;
     }
 
     private void OnDisable()
