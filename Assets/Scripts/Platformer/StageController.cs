@@ -51,7 +51,7 @@ public class StageController : MonoBehaviour
         StageManager.Instance.RollTheme();
 
         player.StageAwake();
-        if (currentStage > 1) curtainUI.Close();
+        if (currentStage > 1) curtainUI.Close(true);
 
         entries[StageEventType.Awake]?.Invoke();
 
@@ -84,7 +84,7 @@ public class StageController : MonoBehaviour
 
     public void StageOver()
     {
-        curtainUI.Close();
+        curtainUI.Close(true);
         entries[StageEventType.Over]?.Invoke();
         player.SetMovable(false);
     }
