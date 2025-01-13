@@ -24,7 +24,14 @@ public class Flash : IBehaviour
             token.CountFlash();
 
             Vector2 flashVector = !controller.SpriteRenderer.flipX ? Vector2.right : Vector2.left;
-            controller.transform.Translate(flashVector);
+
+            RaycastHit2D hit = Physics2D.Raycast(controller.transform.position, flashVector, 1f, 1 << LayerMask.NameToLayer("Ground"));
+            if (hit)
+            {
+                flashVector.x *= Mathf.Min(0f, hit.distance - 0.1f);
+            }
+
+            controller.Body.transform.Translate(flashVector);
         }
     }
 
