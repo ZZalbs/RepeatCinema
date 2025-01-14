@@ -23,7 +23,7 @@ public class GhostToken : TokenBase
     public override void OnStartStage()
     {
         base.OnStartStage();
-        ghost = Object.Instantiate(ghostMovementPrefab, ghostPosition, Quaternion.identity);
+        ghost = Object.Instantiate(ghostMovementPrefab, ghostPosition + Vector2.up * Random.Range(-3f, 3f), Quaternion.identity);
         ghost.SetTarget(target);
     }
     
