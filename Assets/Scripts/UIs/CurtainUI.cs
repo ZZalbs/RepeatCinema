@@ -22,14 +22,4 @@ public class CurtainUI : MonoBehaviour
         animator.ResetTrigger("Open");
         animator.SetTrigger("Close");
     }
-
-    public void Show(float duration, bool needCover = false)
-    {
-        Close(needCover);
-
-        LMotion.Create(0f, 1f, duration).WithOnComplete(() =>
-        {
-            Open();
-        }).RunWithoutBinding();
-    }
 }

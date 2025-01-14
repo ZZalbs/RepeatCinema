@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class StageController : MonoBehaviour
 {
-    [SerializeField] private CurtainUI curtainUI;
-    
     private int currentStage = 1;
 
     private BehaviourController player;
     private LifeController lifeController;
+    private UIController uiController;
     private Vector3 playerPosition;
 
     private Dictionary<StageEventType, Action> entries = new();
@@ -21,6 +20,7 @@ public class StageController : MonoBehaviour
     {
         player = GetComponent<BehaviourController>();
         lifeController = GetComponent<LifeController>();
+        uiController = GetComponent<UIController>();
         lifeController.onDead += StageOver;
     }
 
@@ -51,7 +51,7 @@ public class StageController : MonoBehaviour
         StageManager.Instance.RollTheme();
 
         player.StageAwake();
-        if (currentStage > 1) curtainUI.Close(true);
+        if (currentStage > 1) uiController.CloseCurtain(true);
 
         entries[StageEventType.Awake]?.Invoke();
 
@@ -61,7 +61,7 @@ public class StageController : MonoBehaviour
     public void StartStage()
     {
         entries[StageEventType.Start]?.Invoke();
-        curtainUI.Open(); 
+        uiController.OpenCurtain();
         player.SetMovable(true);
     }
 
@@ -73,7 +73,7 @@ public class StageController : MonoBehaviour
 
     public void Revive()
     {
-        curtainUI.Show(1f);
+        uiController.ShowCurtain(1f);
         player.StageAwake();
         lifeController.Init();
         player.SetMovable(true);
@@ -84,7 +84,7 @@ public class StageController : MonoBehaviour
 
     public void StageOver()
     {
-        curtainUI.Close(true);
+        uiController.CloseCurtain(true);
         entries[StageEventType.Over]?.Invoke();
         player.SetMovable(false);
     }
