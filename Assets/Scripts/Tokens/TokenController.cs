@@ -129,29 +129,28 @@ public class TokenController : MonoBehaviour
     public void DestroyOnePositiveToken()
     {
         if (PositiveTokens.Count == 0) return;
-        int randomIndex = PositiveTokens.Keys.ToList()[Random.Range(0, PositiveTokens.Count)];
-        
-        PositiveTokens[randomIndex].OnDestroy();
-        PositiveTokens.Remove(randomIndex);
+        var randomToken = PositiveTokens.Values.ToList()[Random.Range(0, PositiveTokens.Count)];
+
+        DestroyToken(randomToken);
     }
     public void DestroyOneNegativeToken()
     {
-        int randomIndex = NegativeTokens.Keys.ToList()[Random.Range(0, NegativeTokens.Count)];
+        if (NegativeTokens.Count == 0) return;
+        var randomToken = NegativeTokens.Values.ToList()[Random.Range(0, NegativeTokens.Count)];
 
-        NegativeTokens[randomIndex].OnDestroy();
-        NegativeTokens.Remove(randomIndex);
+        DestroyToken(randomToken);
     }
 
     public void DestroyToken(TokenBase token)
     {
         if (token.IsPositive)
         {
-            PositiveTokens[token.Id].OnDestroy();
+            PositiveTokens[token.Id]?.OnDestroy();
             PositiveTokens.Remove(token.Id);
         }
         else
         {
-            NegativeTokens[token.Id].OnDestroy();
+            NegativeTokens[token.Id]?.OnDestroy();
             NegativeTokens.Remove(token.Id);
         }
     }
