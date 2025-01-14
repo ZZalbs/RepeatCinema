@@ -28,7 +28,7 @@ public class GameOverUI : MonoBehaviour
         gameObject.SetActive(true);
         LMotion.Create(0, 1f, 1f)
             .Bind(a => { if (canvasGroup) canvasGroup.alpha = a; });
-        scoreText.text = $"도달 스테이지: <b>{stageController.CurrentStage}!</b>";
+        scoreText.text = $"최종 회차: <b>{stageController.CurrentStage}!</b>";
     }
 
     private void Hide()

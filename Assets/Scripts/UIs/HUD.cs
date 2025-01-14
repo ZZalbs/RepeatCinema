@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -63,7 +63,7 @@ public class HUD : MonoBehaviour
     }
     public void UpdateLevel()
     {
-        stageLevel.text = $"Stage: {controller.StageController.CurrentStage}";
+        stageLevel.text = $"회차: {controller.StageController.CurrentStage}";
     }
     public void UpdatePositiveTokens()
     {
