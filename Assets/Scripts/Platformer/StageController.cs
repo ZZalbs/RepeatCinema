@@ -84,7 +84,7 @@ public class StageController : MonoBehaviour
 
     public void StageOver()
     {
-        uiController.CloseCurtain(true);
+        uiController.CloseCurtain(false);
         entries[StageEventType.Over]?.Invoke();
         player.SetMovable(false);
     }
