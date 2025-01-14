@@ -19,7 +19,7 @@ public class StartScene : MonoBehaviour
         curtainUI.Close();
         LMotion.Create(0, 1f, 1f).WithOnComplete(() =>
         {
-            SceneManager.LoadScene("MainScene");
+            SceneManager.LoadScene("CutScene");
         }).RunWithoutBinding();
     }
     
