@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -34,9 +31,13 @@ public class GhostMovement : MonoBehaviour
     {
         if (!isMoving) return;
         Vector2 direction = (target.position - transform.position);
+        float distance = direction.magnitude;
+
+        spriteRenderer.flipX = direction.x < 0;
+
         var cos = Vector2.Dot(rb.velocity.normalized, direction.normalized);
-        var force = direction * (speed * (1.5f - cos / 2) * direction.magnitude);
+        direction = cos < 0.01f ? direction.normalized : (1.1f * cos * direction.normalized - 0.1f * rb.velocity.normalized).normalized;
+        var force = direction * (1.5f - cos / 2) * speed * Mathf.Clamp(distance, 0.1f, 5f);
         rb.AddForce(force, ForceMode2D.Force);
-        spriteRenderer.flipX = rb.velocity.x < 0;
     }
 }
