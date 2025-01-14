@@ -54,7 +54,7 @@ public class LifeController : MonoBehaviour
         CurLife = MaxLife;
         CurShield = MaxShield;
         isImmune = false;
-        behaviourController.Animator.SetBool("IsDaed", false);
+        behaviourController.Animator.SetBool("IsDead", false);
     }
 
     public void OnDamaged(DamageType damageType)
@@ -99,7 +99,7 @@ public class LifeController : MonoBehaviour
 
     public void Die()
     {
-        behaviourController.Animator.SetBool("IsDaed", true);
+        behaviourController.Animator.SetBool("IsDead", true);
         onDead?.Invoke();
     }
 

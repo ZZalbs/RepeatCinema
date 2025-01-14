@@ -16,8 +16,6 @@ public class InputController : MonoBehaviour
 
     private void Awake()
     {
-        
-
         playerEntries = new();
         uiEntries = new();
 
@@ -35,13 +33,11 @@ public class InputController : MonoBehaviour
         characterController = GetComponent<BehaviourController>();
         characterController.Init();
 
-        // register callback
         AddAllPlayerBehaviour();
     }
 
     public void AddPlayerBehaviour(IBehaviour callbackBehaviour)
     {
-
         playerEntries[callbackBehaviour.Type].performed += callbackBehaviour.OnPressed;
         playerEntries[callbackBehaviour.Type].canceled += callbackBehaviour.OnReleased;
     }
@@ -54,20 +50,23 @@ public class InputController : MonoBehaviour
     
     public void RemoveAllPlayerBehaviour()
     {
-        foreach(var behaviour in characterController.Behaviours)
+        foreach(var behaviour in characterController.Behaviours.Values)
         {
-            playerEntries[behaviour.Value.Type].performed -= behaviour.Value.OnPressed;
-            playerEntries[behaviour.Value.Type].canceled -= behaviour.Value.OnReleased;
+            RemovePlayerBehaviour(behaviour);
         }
     }
     
     public void AddAllPlayerBehaviour()
     {
         
-        foreach(var behaviour in characterController.Behaviours)
+        foreach(var behaviour in characterController.Behaviours.Values)
         {
-            AddPlayerBehaviour(behaviour.Value);
+            AddPlayerBehaviour(behaviour);
         }
     }
-    
+
+    private void OnDisable()
+    {
+        RemoveAllPlayerBehaviour();
+    }
 }

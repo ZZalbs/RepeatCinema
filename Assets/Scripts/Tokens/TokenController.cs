@@ -47,6 +47,12 @@ public class TokenController : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        DestroyAllPositiveToken();
+        DestroyAllNegativeToken();
+    }
+
     private void OnStartStage()
     {
         isStageActive = true;

@@ -9,10 +9,15 @@ public class WalkerAI : MonoBehaviour
     private void Awake()
     {
         behaviourController = GetComponent<BehaviourController>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
         behaviourController.Init();
+        behaviourController.Behaviours.Remove(BehaviourType.Jump);
         behaviourController.MoveDir = Vector2.right;
         behaviourController.SetMovable(true);
-        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

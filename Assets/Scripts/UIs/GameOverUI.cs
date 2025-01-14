@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using LitMotion;
 using TMPro;
 using UnityEngine;
@@ -30,7 +27,7 @@ public class GameOverUI : MonoBehaviour
     {
         gameObject.SetActive(true);
         LMotion.Create(0, 1f, 1f)
-            .Bind(a => canvasGroup.alpha = a);
+            .Bind(a => { if (canvasGroup) canvasGroup.alpha = a; });
         scoreText.text = $"도달 스테이지: <b>{stageController.CurrentStage}!</b>";
     }
 
