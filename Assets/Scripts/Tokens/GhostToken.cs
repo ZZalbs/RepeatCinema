@@ -10,7 +10,7 @@ public class GhostToken : TokenBase
     static GhostToken()
     {
         ghostMovementPrefab = Resources.Load<GhostMovement>("Prefabs/Ghost");
-        ghostPosition = new Vector2(-10, 4);
+        ghostPosition = new Vector2(-40, -5);
     }
     
     public GhostToken(TokenController controller, string name, string description, Rarity rarity, bool isPositive, int maxLevel) : base(controller, name, description, rarity, isPositive, maxLevel)
