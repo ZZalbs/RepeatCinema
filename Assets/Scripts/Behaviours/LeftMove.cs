@@ -1,3 +1,4 @@
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,14 +20,14 @@ public class LeftMove : IBehaviour
     {
         controller.MoveDir += controller.ReverseMode ? Vector2.right : Vector2.left;
         negative = controller.ReverseMode ? Vector2.left : Vector2.right;
-        controller.Animator.SetFloat("VelocityX", -controller.MoveDir.x);
-        controller.SpriteRenderer.flipX = true;
+        controller.Animator.SetFloat("VelocityX", Mathf.Abs(controller.MoveDir.x));
+        controller.SpriteRenderer.flipX = !controller.ReverseMode;
     }
 
     public void OnReleased(InputAction.CallbackContext ctx)
     {
         controller.MoveDir += negative;
-        controller.Animator.SetFloat("VelocityX", controller.MoveDir.x);
+        controller.Animator.SetFloat("VelocityX", Mathf.Abs(controller.MoveDir.x));
 
         if (Mathf.Abs(controller.MoveDir.x) > 0.01f)
         {

@@ -17,16 +17,16 @@ public class RightMove : IBehaviour
     {
         controller.MoveDir += controller.ReverseMode ? Vector2.left : Vector2.right;
         negative = controller.ReverseMode ? Vector2.right : Vector2.left;
-        controller.Animator.SetFloat("VelocityX", controller.MoveDir.x);
-        controller.SpriteRenderer.flipX = false;
+        controller.Animator.SetFloat("VelocityX", Mathf.Abs(controller.MoveDir.x));
+        controller.SpriteRenderer.flipX = controller.ReverseMode;
     }
 
     public void OnReleased(InputAction.CallbackContext ctx)
     {
         controller.MoveDir += negative;
-        controller.Animator.SetFloat("VelocityX", -controller.MoveDir.x);
+        controller.Animator.SetFloat("VelocityX", Mathf.Abs(controller.MoveDir.x));
 
-        if(Mathf.Abs(controller.MoveDir.x) > 0.01f)
+        if (Mathf.Abs(controller.MoveDir.x) > 0.01f)
         {
             controller.SpriteRenderer.flipX = controller.MoveDir.x > 0.01f ? false : true;
         }
