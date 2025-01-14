@@ -27,7 +27,7 @@ public class GhostLifeToken : TokenBase
     private void OnHit()
     {
         controller.LifeController.CurLife++;
-        if (CurLevel > 2) CurLevel--;
+        if (CurLevel > 1) CurLevel--;
         else controller.DestroyToken(this);
     }
 }

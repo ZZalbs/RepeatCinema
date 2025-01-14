@@ -14,7 +14,7 @@ public class BehaviourController : MonoBehaviour
     public Vector2 MoveDir;
     public float JumpForce;
 
-    public Dictionary<BehaviourType, IBehaviour> Behaviours;
+    public Dictionary<BehaviourType, IBehaviour> Behaviours = new();
 
     private bool movable = false;
     public bool ReverseMode = false;
@@ -27,7 +27,6 @@ public class BehaviourController : MonoBehaviour
         Body = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
-        Behaviours = new();
         //MoveDir = Vector2.zero;
 
         Behaviours.Add(BehaviourType.RMove, new RightMove(this))    ;

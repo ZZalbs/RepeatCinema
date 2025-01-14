@@ -10166,6 +10166,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5bc5a52a0f87c9428fc1a42a675bbef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1951863415 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3536212083762349463, guid: 22c759ef56e90bc4a8632947036cabf9, type: 3}
+  m_PrefabInstance: {fileID: 2679535449067276557}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c632d30635b23047bc3740b4752037f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1966503712
 GameObject:
   m_ObjectHideFlags: 0
@@ -10828,6 +10839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialSkip: {fileID: 1342913966}
+  player: {fileID: 1951863415}
 --- !u!1001 &2086940367
 PrefabInstance:
   m_ObjectHideFlags: 0
