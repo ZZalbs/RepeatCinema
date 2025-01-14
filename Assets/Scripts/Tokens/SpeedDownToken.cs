@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpeedDownToken : TokenBase
@@ -10,15 +8,10 @@ public class SpeedDownToken : TokenBase
 
     public override float Timer => 0;
 
-    public override void Acquire()
+    public override void OnStartStage()
     {
-        base.Acquire();
-        //controller.PlayerBehaviourController.Speed;
-    }
+        base.OnStartStage();
 
-    public override void OnDestroy()
-    {
-        base.OnDestroy();
-        controller.LifeController.MaxLife--;
+        controller.PlayerBehaviourController.Speed *= Mathf.Pow(0.95f, CurLevel);
     }
 }

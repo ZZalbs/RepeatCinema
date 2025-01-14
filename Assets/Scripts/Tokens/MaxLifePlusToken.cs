@@ -17,7 +17,8 @@ public class MaxLifePlusToken : TokenBase
     public override void OnDestroy()
     {
         base.OnDestroy();
-        controller.LifeController.MaxLife--;
+        controller.LifeController.MaxLife = 1;
+        controller.LifeController.CurLife = 1;
     }
 
 }

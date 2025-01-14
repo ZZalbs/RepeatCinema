@@ -22,6 +22,6 @@ public class BonusJumpToken : TokenBase
     public override void OnDestroy()
     {
         base.OnDestroy();
-        controller.PlayerBehaviourController.MaxJumpCount--;
+        controller.PlayerBehaviourController.MaxJumpCount = 1;
     }
 }
