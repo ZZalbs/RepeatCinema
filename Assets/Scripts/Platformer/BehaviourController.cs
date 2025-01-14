@@ -51,6 +51,7 @@ public class BehaviourController : MonoBehaviour
     public void StageAwake()
     {
         CurJumpCount = 0;
+        Speed = 7;
         Body.velocity = Vector2.zero;
         Body.position = playerStartPosition;
     }
