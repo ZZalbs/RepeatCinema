@@ -60,6 +60,8 @@ public class BehaviourController : MonoBehaviour
     {
         if(IsMovable)
             Body.velocity = new Vector2(MoveDir.x * Speed, Body.velocity.y);
+        else
+            Body.velocity = Vector2.zero;
     }
 
     private void OnCollisionStay2D(Collision2D collision)
