@@ -27,7 +27,7 @@ public class TokenProvider : MonoBehaviour
         positiveTokenPool.Add(3, new MaxLifePlusToken(tokenController, "체력 추가", "최대 체력을 1 추가합니다. 매 스테이지마다 플레이어가 최대 체력만큼의 체력을 가진 채로 시작합니다.", Rarity.Rare, true, -1));
         positiveTokenPool.Add(4, new InvincibleToken(tokenController, "무적", "스테이지 시작 후 잠깐동안 피격 면역 상태를 유지합니다. 즉사를 제외한 모든 피해에 면역입니다.", Rarity.Rare, true, 5));
         positiveTokenPool.Add(5, new LastMercyToken(tokenController, "마지막 자비", "사망 시 모든 능력 토큰을 파괴하고 1회 부활합니다.", Rarity.Epic, true, 1));
-        positiveTokenPool.Add(6, new HighShieldToken(tokenController, "하이 실드", "치명적 피격을 일반 피격으로 바꿔주는 하이 실드를 추가합니다.", Rarity.Epic, true, 3));
+        positiveTokenPool.Add(6, new HighShieldToken(tokenController, "하이 실드", "치명적 피격을 일반 피격으로 바꿔주는 하이 실드를 1개 추가합니다. 하이 실드는 치명적 피격 시 차감됩니다", Rarity.Epic, true, 3));
         positiveTokenPool.Add(7, new OneMoreTime(tokenController, "한판만", "사망 시 모든 토큰을 파괴하고 1회 부활합니다.", Rarity.Legendary, true, 1));
 
         negativeTokenPool.Add(100, new GenerateWalkerToken(tokenController, "뚜벅이 생성", "랜덤한 플랫폼 위에 적‘뚜벅이'가 생성됩니다.", Rarity.Common, false, 10));
